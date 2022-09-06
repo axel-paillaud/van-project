@@ -8,6 +8,11 @@
     <title><?= $title ?></title>
 </head>
 <body>
-    <?= content ?>
+    <?php include($header); ?>
+
+    <?php
+    // <?= $content
+
+    // <?= $footer ?>
 </body>
 </html>
