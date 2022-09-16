@@ -9,16 +9,26 @@ body {
     height: 44px;
     width: 100%;
     position: fixed;
+    display: flex;
+    align-items: center;
+}
+
+.header-container-button {
+    justify-content: flex-end;
 }
 
 .logo-xs {
+    display: flex;
     position: relative;
-    top: 4px;
+    left: 20%;
 }
 
 .btn-orange {
     position: relative;
-    right: 0px;
+}
+
+.btn-orange-log-in {
+    position: relative;
 }
 
 
