@@ -6,26 +6,38 @@ body {
 .header-container-offline {
     background-color: #D6CE99;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-    height: 44px;
+    height: 52px;
     width: 100%;
     position: fixed;
     display: flex;
     align-items: center;
     justify-content: space-around;
+    flex-direction: row;
+}
+
+.header-container-button {
+    position: relative;
+    right: 5%;
 }
 
 .logo-xs {
     display: flex;
+    position: relative;
+    left: 5%;
 }
-
 
 .btn-orange-subscribe {
-    left: 20%;
+    background-color: #D96C06;
+    padding: 0.5em 0.8em;
+    margin: 4px;
+    border-radius: 3px;
+    border: none;
 }
 
-/*
+
 .btn-orange-log-in {
+    margin: 4px;;
 }
-*/
+
 
 
