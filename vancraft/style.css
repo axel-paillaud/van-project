@@ -26,17 +26,43 @@ body {
     left: 5%;
 }
 
-.btn-orange-subscribe {
+.btn-orange {
     background-color: #D96C06;
-    padding: 0.5em 0.8em;
+    color: white;
+    padding: 0.7em 1.3em;
     margin: 4px;
     border-radius: 3px;
     border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-orange:hover {
+    background-color: #ae5604;
 }
 
 
 .btn-orange-log-in {
+    background-color: #C99C72;
+    color: white;
+    padding: 0.7em 1.3em;
     margin: 4px;;
+    border-radius: 3px;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-orange-log-in:hover {
+    background-color: #c08b59;
+}
+
+.search-bar-primary {
+    position: relative;
+    padding: 0.55em;
+    border-radius: 3px;
+    border: 1px;
+    border-color: #545454;
+    border-style: solid;
+    border-width: 1px;
 }
 
 
