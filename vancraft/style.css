@@ -11,25 +11,21 @@ body {
     position: fixed;
     display: flex;
     align-items: center;
-}
-
-.header-container-button {
-    justify-content: flex-end;
+    justify-content: space-around;
 }
 
 .logo-xs {
     display: flex;
-    position: relative;
+}
+
+
+.btn-orange-subscribe {
     left: 20%;
 }
 
-.btn-orange {
-    position: relative;
-}
-
+/*
 .btn-orange-log-in {
-    position: relative;
 }
-
+*/
 
 
