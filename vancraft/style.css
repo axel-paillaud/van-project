@@ -85,14 +85,22 @@ body {
     padding: 16px 8px;
 }
 
-.sidenav a:active {
+.sidenav a:hover {
     color: #D96C06;
+}
+
+.sidenav a:active {
+    color: #ae5604;
 }
 
 #here {
     color: #D96C06;
 }
 
-#here:active {
+#here:hover {
     color: #ae5604;
+}
+
+#here:active {
+    color: #7D3E03;
 }
