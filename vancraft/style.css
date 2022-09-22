@@ -1,6 +1,11 @@
 body {
     margin: 0;
     background: #E5E1DC;
+    font-family: lato;
+}
+
+.main {
+    margin-right: 160px;
 }
 
 .header-container-offline {
@@ -12,6 +17,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 3;
 }
 
 .logo-xs {
@@ -61,4 +67,32 @@ body {
     flex-basis: 700px;
 }
 
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    background-color: #D6CE99;
+    z-index: 2;
+    padding: 80px 24px;
+}
 
+.sidenav a {
+    display: block;
+    font-weight: bold;
+    font-size: 20;
+    text-decoration: none;
+    color: black;
+    padding: 16px 8px;
+}
+
+.sidenav a:active {
+    color: #D96C06;
+}
+
+#here {
+    color: #D96C06;
+}
+
+#here:active {
+    color: #ae5604;
+}
