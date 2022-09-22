@@ -8,12 +8,12 @@
     <title><?= $title ?></title>
 </head>
 <body>
-    <?php include($header); ?>
+
+    <?php// include($sidebar); ?>
 
     <?php
     // <?= $content
 
     // <?= $footer ?>
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>vv
 </body>
 </html>
