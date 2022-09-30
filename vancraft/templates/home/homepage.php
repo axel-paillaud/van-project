@@ -1,4 +1,4 @@
-<?php $title = "Page d'accueil"; ?>
+<?php $title = "VanCraft - Page d'accueil"; ?>
 <div class="main">
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 </div>
