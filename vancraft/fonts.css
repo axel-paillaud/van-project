@@ -11,6 +11,12 @@
 
 @font-face {
     font-family: lato;
+    src: url(fonts/lato/Lato-Light.ttf);
+    font-weight: lighter;
+}
+
+@font-face {
+    font-family: lato;
     src: url(fonts/lato/Lato-Italic.ttf);
     font-style: italic;
 }

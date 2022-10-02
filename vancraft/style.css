@@ -4,8 +4,13 @@ body {
     font-family: lato;
 }
 
+h1 {
+    font-family: nova_mono;
+}
+
 .main {
-    margin-right: 160px;
+    margin-right: 208px;
+    margin-left: 208px;
 }
 
 .header-container-offline {
@@ -115,4 +120,36 @@ changer aussi le focus des boutons
 
 #here:active {
     color: #7D3E03;
+}
+
+.container-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 140px;
+}
+
+.title-text-container {
+    position: relative;
+    right: 24px;
+}
+
+.title-logo-container {
+    position: relative;
+    left: 24px;
+}
+
+.title-title {
+    font-size: 72;
+    margin: 16px;
+    margin-top: 0;
+    font-weight: normal;
+    text-align: center;
+}
+
+.title-subtitle {
+    font-size: 24;
+    margin: 16px;
+    font-weight: normal;
+    text-align: center;
 }
