@@ -10,9 +10,7 @@
 </head>
 <body>
 
-    <?php
-    // <?= $content
+    <?= $content ?>
 
-    // <?= $footer ?>
 </body>
 </html>

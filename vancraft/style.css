@@ -13,6 +13,11 @@ h1 {
     margin-left: 208px;
 }
 
+.horizontal-rule {
+    color: #9F9F9F;
+    margin: 8px 0 40px;
+}
+
 .header-container-offline {
     background-color: #D6CE99;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
@@ -42,6 +47,8 @@ h1 {
 
 .btn-orange:hover {
     background-color: #ae5604;
+    cursor: pointer;
+
 }
 
 .btn-orange-log-in {
@@ -57,6 +64,7 @@ h1 {
 
 .btn-orange-log-in:hover {
     background-color: #B97E46;
+    cursor: pointer;
 }
 
 .search-bar-primary {
@@ -122,11 +130,12 @@ changer aussi le focus des boutons
     color: #7D3E03;
 }
 
-.container-title {
+.title-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 140px;
+    padding: 136px;
+    padding-bottom: 68px;
 }
 
 .title-text-container {
@@ -152,4 +161,75 @@ changer aussi le focus des boutons
     margin: 16px;
     font-weight: normal;
     text-align: center;
+}
+
+.content-post-container {
+    padding: 0 80px 80px;
+}
+
+.title-btn-post-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-title-post {
+    font-size: 24;
+    margin: 10px 0;
+}
+
+.post-container {
+    background-color: #D6CE99;
+    padding: 32px 32px 32px 24px;
+    display: flex;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #BF956C;
+    flex-direction: column;
+}
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.post-container:first-child {
+    border-radius: 6px 6px 0 0;
+}
+
+.post-container:last-child {
+    border-radius: 0 0 6px 6px;
+    border-bottom-style: none;
+}
+
+.post-title {
+    font-size: 20px;
+    order: 2;
+}
+
+.views-votes-container {
+    order: 1;
+    margin-right: 16px;
+    width: 400px;
+}
+
+.post-stat {
+    margin-bottom: 16px;
+}
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 20px 0 0 128px;
+    font-size: 14;
+}
+
+.tag-container div {
+    background-color: #d96c0698;
+    color: #4e2b0a;
+}
+
+.tag-container div:hover {
+    background-color: #b3590698;
+    color: #311b06;
 }
