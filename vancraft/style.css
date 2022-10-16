@@ -179,7 +179,7 @@ changer aussi le focus des boutons
 
 .post-container {
     background-color: #D6CE99;
-    padding: 32px 32px 32px 24px;
+    padding: 32px 32px 16px 24px;
     display: flex;
     border-bottom-style: solid;
     border-bottom-width: 1px;
@@ -208,8 +208,10 @@ changer aussi le focus des boutons
 
 .views-votes-container {
     order: 1;
-    margin-right: 16px;
-    width: 400px;
+    margin-right: 24px;
+    white-space: nowrap;
+    height: 24px;
+    /*width: 400px;*/ /*try here a padding for all the post-container exept for this class ?*/
 }
 
 .post-stat {
@@ -220,16 +222,47 @@ changer aussi le focus des boutons
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    margin: 20px 0 0 128px;
+    align-content: center;
+    margin: 8px 0 0 94px;
     font-size: 14;
 }
 
 .tag-container div {
-    background-color: #d96c0698;
+    background-color: #e1812699;
     color: #4e2b0a;
+    padding: 0.4em 0.8em;
+    margin: 4px;
 }
 
 .tag-container div:hover {
-    background-color: #b3590698;
+    background-color: #ac631f99;
     color: #311b06;
+}
+
+.user-container {
+    display: flex;
+    align-items: center;
+    background-color: #4E1E18C7;
+    border-radius: 6px;
+    text-align: center;
+    color: white;
+    margin-left: auto;
+    margin-top: 16px;
+    padding: 8px;
+    max-height: 54px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    /* see if a min-width is necessary but I thinks yes to prevent shrink */
+}
+
+.user-container:hover {
+    background-color: #351410C7;
+
+}
+
+.profile-picture-small {
+    border-style: solid;
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
 }

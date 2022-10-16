@@ -1,13 +1,14 @@
 <?php
 
-class Post {
+class Post 
+{
     public int $id;
     public string $title;
-    public string $frenchCreationDate;
+    public string $creation_date;
     public int $views;
     public int $votes;
     public string $content;
-    public string $frenchLastModification;
+    public string $last_modification;
     public int $answers;
 }
 
@@ -28,12 +29,12 @@ class PostRepository
             $post = new Post();
             $post->id = $row['post_id'];
             $post->title = $row['title'];
-            $post->frenchCreationDate = $row['french_creation_date'];
+            $post->creation_date = $row['french_creation_date'];
             $post->views = $row['views'];
             $post->votes = $row['votes'];
             $post->answers = $row['answers'];
             $post->content = $row['content'];
-            $post->frenchLastModification = $row['french_last_modification'];
+            $post->last_modification = $row['french_last_modification'];
 
             $posts[] = $post;
         }
@@ -50,8 +51,6 @@ class PostRepository
         }
     }
 }
-
-
 
 require_once('src/model/model.php');
 
