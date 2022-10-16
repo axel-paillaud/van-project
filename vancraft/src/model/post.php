@@ -10,6 +10,8 @@ class Post
     public string $content;
     public string $last_modification;
     public int $answers;
+    public int $user_id;
+    public string $user_name;
 }
 
 class PostRepository

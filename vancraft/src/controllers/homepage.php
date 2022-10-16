@@ -1,6 +1,7 @@
 <?php
 
 require_once('src/model/post.php');
+require_once('src/model/user.php');
 
 
 function homepage() {
@@ -21,8 +22,17 @@ function homepage() {
 
 
     $postRepository = new PostRepository();
+    $userRepository = new UserRepository();
 
     $posts = $postRepository->getPosts($limit, $orderBy);
+
+    foreach ($posts as $post) {
+        $post_id = $post->id;
+        $user = $userRepository->getPostUser($post_id);
+
+        $post->user_id = $user->id;
+        $post->user_name = $user->name;
+    }
 
     require('templates/home/homepage.php');
 }

@@ -16,7 +16,7 @@ class UserRepository
 {
     public ?PDO $database = null;
 
-    public function getPostUser(string $post_id) : User {
+    public function getPostUser(int $post_id) : User {
         $this->dbConnect();
 
         $statement = $this->database->prepare(
