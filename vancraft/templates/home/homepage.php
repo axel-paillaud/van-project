@@ -20,8 +20,8 @@
         <hr class="horizontal-rule">
 
         <!-- parent's div for first child and last child -->
-        <?php foreach ($posts as $post) : ?>
         <div>
+        <?php foreach ($posts as $post) : ?>
             <div class="post-container">
                 <div class="row-container">
                     <div class="post-title">
@@ -41,10 +41,9 @@
                 </div>
                 <div class="row-container">
                     <div class="tag-container">
-                        <div class="btn-orange">Armaflex</div>
-                        <div class="btn-orange">Styrodur</div>
-                        <div class="btn-orange">Laine de verre</div>
-                        <div class="btn-orange">Isolation</div>
+                        <?php foreach ($post->tags as $tag) : ?>
+                            <div class="btn-orange"><?= $tag->title ?></div>
+                        <?php endforeach; ?>
                     </div>
                     <div class="user-container">
                         <img class="profile-picture-small" src="<?= $post->user_image_profile_url ?>" alt="Photo profil">

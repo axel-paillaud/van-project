@@ -206,6 +206,11 @@ changer aussi le focus des boutons
     order: 2;
 }
 
+.post-title:hover {
+    cursor: pointer;
+    color: rgb(66, 66, 66);
+}
+
 .views-votes-container {
     order: 1;
     margin-right: 24px;
@@ -265,4 +270,22 @@ changer aussi le focus des boutons
     border-radius: 8px;
     width: 48px;
     height: 48px;
+}
+
+/*element below at the end of the file style.css */
+.footer-container {
+    display: flex;
+    position: relative;
+    z-index: 3;
+    background-color: #071013;
+    color: white;
+    padding-left: 208px;
+}
+
+.text-footer-container div:first-child {
+    margin-bottom: 8px;
+}
+
+.text-footer-container {
+    margin: 16px 24px;
 }

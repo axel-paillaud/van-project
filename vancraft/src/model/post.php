@@ -13,6 +13,7 @@ class Post
     public int $user_id;
     public string $user_name;
     public string $user_image_profile__url;
+    public array $tags;
 }
 
 class PostRepository
