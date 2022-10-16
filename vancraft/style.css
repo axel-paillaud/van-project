@@ -11,6 +11,8 @@ h1 {
 .main {
     margin-right: 208px;
     margin-left: 208px;
+    min-height: 100vh
+    /* min-height on my 16:10 screen: 762px. Try on another screen */
 }
 
 .horizontal-rule {
@@ -272,6 +274,10 @@ changer aussi le focus des boutons
     height: 48px;
 }
 
+.subscribe-container {
+    background-color: #D6CE99;
+}
+
 /*element below at the end of the file style.css */
 .footer-container {
     display: flex;
@@ -280,6 +286,7 @@ changer aussi le focus des boutons
     background-color: #071013;
     color: white;
     padding-left: 208px;
+    padding-right: 208px;
 }
 
 .text-footer-container div:first-child {
