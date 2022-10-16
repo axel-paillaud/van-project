@@ -79,5 +79,9 @@ SELECT title FROM tags WHERE tag_id IN
 (SELECT tag_id FROM posts_tags WHERE post_id = 1);
 
 SELECT user_id, name FROM users WHERE user_id IN (
-   SELECT user_id FROM posts_users WHERE post_id = 1
+   SELECT user_id FROM posts_users WHERE post_id = 3
 );
+
+ALTER TABLE images_profiles MODIFY COLUMN image_url_sm varchar(255) NOT NULL DEFAULT "images/users/default/profile_pictures/01.jpg";
+
+UPDATE images_profiles SET image_url_sm = "images/users/shaun/profile_pictures/01.jpg" WHERE user_id = 1;

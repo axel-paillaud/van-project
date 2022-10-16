@@ -32,6 +32,7 @@ function homepage() {
 
         $post->user_id = $user->id;
         $post->user_name = $user->name;
+        $post->user_image_profile_url = $user->image_profile_url;
     }
 
     require('templates/home/homepage.php');

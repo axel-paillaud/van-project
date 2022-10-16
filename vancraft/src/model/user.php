@@ -10,6 +10,7 @@ class User
     public string $last_modification;
     public int $numbers_of_questions;
     public int $numbers_of_answers;
+    public string $image_profile_url;
 }
 
 class UserRepository
@@ -29,6 +30,14 @@ class UserRepository
 
         $user->id = $row['user_id'];
         $user->name = $row['name'];
+
+        $statement = $this->database->prepare(
+            "SELECT image_url_sm FROM images_profiles WHERE user_id = ?;"
+        );
+        $statement->execute([$user->id]);
+
+        $row = $statement->fetch();
+        $user->image_profile_url = $row['image_url_sm'];
 
         return $user;
     }
