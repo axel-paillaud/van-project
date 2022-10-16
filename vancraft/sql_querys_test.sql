@@ -85,3 +85,5 @@ SELECT user_id, name FROM users WHERE user_id IN (
 ALTER TABLE images_profiles MODIFY COLUMN image_url_sm varchar(255) NOT NULL DEFAULT "images/users/default/profile_pictures/01.jpg";
 
 UPDATE images_profiles SET image_url_sm = "images/users/shaun/profile_pictures/01.jpg" WHERE user_id = 1;
+
+/images/users/anne/profile_pictures/01jpg
