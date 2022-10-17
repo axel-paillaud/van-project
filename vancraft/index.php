@@ -8,6 +8,7 @@ require_once('src/controllers/log.php');
 
 $header = header_nav();
 $sidebar = sidebar(1);
+$footer = footer();
 echo $header;
 echo $sidebar;
 
@@ -19,8 +20,5 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
 else {
     homepage();
 }
-
-
-$footer = footer();
 
 echo $footer;

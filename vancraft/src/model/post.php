@@ -18,7 +18,7 @@ class Post
 
 class PostRepository
 {
-    public ?PDO $database = null;
+    private ?PDO $database = null;
 
      public function getPosts(string $limit, string $orderBy) : array {
         $this->dbConnect();
@@ -45,7 +45,7 @@ class PostRepository
         return $posts;
     }
 
-    public function dbConnect() {
+    private function dbConnect() {
         try {
             if ($this->database == null) {
                 $this->database = new PDO('mysql:host=localhost;dbname=vancraft;charset=utf8', 'shaun', 'cRadoc!54');
