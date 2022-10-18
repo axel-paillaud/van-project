@@ -9,10 +9,10 @@ h1 {
 }
 
 .main {
+    padding-top: 52px;
     margin-right: 208px;
     margin-left: 208px;
-    min-height: 100vh
-    /* min-height on my 16:10 screen: 762px. Try on another screen */
+    min-height: 100vh;
 }
 
 .horizontal-rule {
@@ -136,7 +136,7 @@ changer aussi le focus des boutons
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 136px;
+    padding: 84px;
     padding-bottom: 68px;
 }
 
@@ -275,14 +275,32 @@ changer aussi le focus des boutons
 }
 
 .subscribe-container {
+    display: flex;
+    justify-content: center;
     background-color: #D6CE99;
+    margin: 40px 224px;
+    padding: 32px;
+}
+
+.subscribe-container div {
+    margin: 8px 0 8px 0;
+}
+
+.subscribe-field {
+    width: 512px;
+    height: 32px;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #545454;
+
 }
 
 /*element below at the end of the file style.css */
 
 .footer-container {
     display: flex;
-    position: relative;
+    position: relative; /* for windows fullscreen, maybe put some javascript condition */
     z-index: 3;
     background-color: #071013;
     color: white;
