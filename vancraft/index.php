@@ -16,6 +16,11 @@ if (isset($_GET['action']) && $_GET['action'] !== '') {
     if ($_GET['action'] === 'subscribe') {
         subscribe();
     }
+    elseif ($_GET['action'] === 'submit-subscribe') {
+        addUser($_POST['name'], $_POST['email'], $_POST['password']);
+
+        subscribe();
+    }
 }
 else {
     homepage();

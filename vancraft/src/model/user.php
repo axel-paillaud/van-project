@@ -42,6 +42,21 @@ class UserRepository
         return $user;
     }
 
+    public function subscribeUser($name, $email, $password) {
+        $this->dbConnect();
+
+        $statement = $this->database->prepare(
+            "INSERT INTO users (user_id, name, email, account_creation_date, password, last_connexion, numbers_of_answers, numbers_of_questions)
+            VALUES (NULL, :name, :email, NOW(), :hash_password, NOW(), DEFAULT, DEFAULT)"
+        );
+
+        $statement->execute([
+            'name' => $name,
+            'email' => $email,
+            'hash_password' => $password
+        ]);
+    }
+
     public function dbConnect() {
         try {
             if ($this->database == null) {

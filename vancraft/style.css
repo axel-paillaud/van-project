@@ -278,7 +278,7 @@ changer aussi le focus des boutons
     display: flex;
     justify-content: center;
     background-color: #D6CE99;
-    margin: 40px 224px;
+    margin: 40px 296px;
     padding: 32px;
 }
 
@@ -286,14 +286,18 @@ changer aussi le focus des boutons
     margin: 8px 0 8px 0;
 }
 
+.subscribe-form > div:last-child {
+    margin: 0;
+}
+
 .subscribe-field {
-    width: 512px;
+    width: 296px;
     height: 32px;
     border-radius: 3px;
     border-style: solid;
     border-width: 1px;
     border-color: #545454;
-
+    margin-bottom: 8px;
 }
 
 /*element below at the end of the file style.css */

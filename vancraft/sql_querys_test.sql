@@ -90,3 +90,7 @@ UPDATE images_profiles SET image_url_sm = "images/users/shaun/profile_pictures/0
 SELECT tag_id, title FROM tags WHERE tag_id IN (
    SELECT tag_id FROM posts_tags WHERE post_id = 1
 );
+
+INSERT INTO users (user_id, name, email, account_creation_date, password, last_connexion, numbers_of_answers, numbers_of_questions)
+VALUES (NULL, :name, :email, NOW(), :hash_password, NOW(), DEFAULT, DEFAULT)
+
