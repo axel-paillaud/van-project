@@ -325,15 +325,17 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(24) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(48) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `account_creation_date` datetime DEFAULT current_timestamp(),
-  `password` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_connexion` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `numbers_of_answers` int(11) NOT NULL DEFAULT 0,
   `numbers_of_questions` int(11) NOT NULL DEFAULT 0,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `name` (`name`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -346,7 +348,18 @@ INSERT INTO `users` VALUES
 (1,'Shaun','a.paillaud@laposte.net','2022-10-15 15:19:36','passw0rd','2022-10-15 15:19:36',0,0),
 (2,'Leila','leila.bonsigne@laposte.net','2022-10-15 15:20:36','s3cr3t','2022-10-15 15:20:36',14,2),
 (3,'Quentin','quentin.coupery@laposte.net','2022-10-15 15:21:15','admin','2022-10-15 15:21:15',3,0),
-(4,'Anne','anne.p@laposte.net','2022-10-15 15:21:44','anouk','2022-10-15 15:21:44',7,2);
+(4,'Anne','anne.p@laposte.net','2022-10-15 15:21:44','anouk','2022-10-15 15:21:44',7,2),
+(6,'Jean-Marie','jean.marie@example.com','2022-10-19 07:02:36','pouet','2022-10-19 07:02:36',0,0),
+(7,'Papa','jerome.louet@example.com','2022-10-19 20:34:56','$2y$10$D9d7ElIvcvbf.nJSrRrwneOHHwMnUE4ZyTDtGAoi4iwt.hPuLbhJ2','2022-10-19 20:34:56',0,0),
+(18,'Poupinette','poupinette@example.com','2022-10-19 21:33:33','$2y$10$qjx9YNwH28mSZNyGwBAQXuElSqCzASHAlY/MJf.VNpkmjhG5QgSQO','2022-10-19 21:33:33',0,0),
+(19,'Tortue','tortue@example.com','2022-10-19 21:37:28','$2y$10$VyEO8VaUpP.dp3ofYiZZ6u09iah6DjEyDvW5I1HrPastXrUA1ZnYO','2022-10-19 21:37:28',0,0),
+(20,'tarte','tarte@example.com','2022-10-19 21:41:49','$2y$10$O4/wzRObAOC1BjKt6Tiuhumy72y5oFFpCPgmIYQtoUtp36FiXaVF.','2022-10-19 21:41:49',0,0),
+(21,'lapin','lapin@example.com','2022-10-19 21:47:17','$2y$10$x9wrjFC/BOPsIuueKMfdSOYRkIdmFCcLvz13ifP6k9h0KqVCH3Yum','2022-10-19 21:47:17',0,0),
+(22,'voiture','voiture@example.com','2022-10-19 21:48:47','$2y$10$xrtiAtnMIygMNZBkRRhcouCamGmiexCiHOu6XZvX2SSW0w.zryTou','2022-10-19 21:48:47',0,0),
+(23,'caca','caca@example.com','2022-10-19 21:51:13','$2y$10$dKfdxOU8vLgriuzl.wr0P.asd1ESJ8FGqcb1ybpGOs331/u4uD9Xm','2022-10-19 21:51:13',0,0),
+(24,'tatta','atatatat@example.com','2022-10-19 21:55:30','$2y$10$QV1e4LDQrvEsrtjLCWs.qOfu7VYe4FYUiyc/Ag20h1qq7fQWuLoJ2','2022-10-19 21:55:30',0,0),
+(25,'sdfsdfsdf','sdfsdfsdfsdf@example.com','2022-10-19 21:58:45','$2y$10$2vD/kb.JbQcZ.6alf0oZPeGI0d7XIyPy6KXzhVO9uXy6x0cxQsH3y','2022-10-19 21:58:45',0,0),
+(26,'qsdqssdqsd','qsqgqgs@example.com','2022-10-19 22:00:44','$2y$10$jllyhiue0LYYiPzpnCXfmOlXoB/mfzooHduLrSgDk4hegkJoS/gLO','2022-10-19 22:00:44',0,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -417,4 +430,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-10-16 11:34:59
+-- Dump completed on 2022-10-19 22:01:57

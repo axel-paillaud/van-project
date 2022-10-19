@@ -32,7 +32,7 @@ class UserRepository
         $user->name = $row['name'];
 
         $statement = $this->database->prepare(
-            "SELECT image_url_sm FROM images_profiles WHERE user_id = ?;"
+            "SELECT image_url_sm FROM images_profiles WHERE user_id = ?"
         );
         $statement->execute([$user->id]);
 
@@ -42,7 +42,7 @@ class UserRepository
         return $user;
     }
 
-    public function subscribeUser($name, $email, $password) {
+    public function subscribeUser(string $name, string $email, string $password) : bool {
         $this->dbConnect();
 
         $statement = $this->database->prepare(
@@ -55,15 +55,38 @@ class UserRepository
             'email' => $email,
             'hash_password' => $password
         ]);
+
+        return true;
     }
 
+    public function checkIfExist(string $name, string $email) : bool {
+        $this->dbConnect();
+
+        $statement = $this->database->prepare(
+            "SELECT name FROM users WHERE name = ?"
+        );
+
+        $statement->execute([$name]);
+        $name_row = $statement->fetch();
+
+        $statement = $this->database->prepare(
+            "SELECT email FROM users WHERE email = ?"
+        );
+
+        $statement->execute([$email]);
+        $email_row = $statement->fetch();
+
+        if(empty($name_row) && empty($email_row))
+            return false;
+        else
+            throw new Exception("Erreur : L'email ou l'utilisateur existe déjà.");
+            return true;
+    }
+
+    
     public function dbConnect() {
-        try {
-            if ($this->database == null) {
-                $this->database = new PDO('mysql:host=localhost;dbname=vancraft;charset=utf8', 'shaun', 'cRadoc!54');
-            }
-        } catch(Exception $e) {
-            die('Erreur: '.$e->getMessage());
+        if ($this->database == null) {
+            $this->database = new PDO('mysql:host=localhost;dbname=vancraft;charset=utf8', 'shaun', 'cRadoc!54');
         }
     }
 }

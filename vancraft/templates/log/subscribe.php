@@ -13,6 +13,11 @@
             <div><input class="btn-orange" style="margin-left:0;" type="submit" value="S'inscrire"></div>
         </form>
     </div>
+    <?php if($add_user_succes) : ?>
+    <div class="subscribe-succes-container">
+        SUCCES
+    </div>
+    <?php endif; ?>
 </div>
 <?php $content = ob_get_clean(); 
 require('templates/layout.php'); ?>

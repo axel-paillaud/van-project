@@ -300,6 +300,10 @@ changer aussi le focus des boutons
     margin-bottom: 8px;
 }
 
+.subscribe-succes-container {
+    background-color: #4a7c59 0.7;
+}
+
 /*element below at the end of the file style.css */
 
 .footer-container {
