@@ -15,12 +15,36 @@ try {
 
     if (isset($_GET['action']) && $_GET['action'] !== '') {
         if ($_GET['action'] === 'subscribe') {
-            subscribe(false);
+            subscribe();
         }
         elseif ($_GET['action'] === 'submit-subscribe') {
-            $add_user_succes = addUser($_POST['name'], $_POST['email'], $_POST['password']);
+            if (isset($_POST['name'], $_POST['email'], $_POST['password'], $_POST['confirm-password']))
+            {
+                $name = htmlspecialchars($_POST['name']);
+                $email = htmlspecialchars($_POST['email']);
 
-            subscribe($add_user_succes);
+                $subscribe_succes = addUser($name, $email, $_POST['password'], $_POST['confirm-password']);
+                subscribe($subscribe_succes);
+            }
+            else {
+                throw new Exception("Une erreur s'est produite. S'il vous plait envoyer un mail au webmaster : a.paillaud75@gmail.com pour qu'il
+                corrige le problème au plus vite.");
+            }
+        }
+        if ($_GET['action'] === 'log-in') {
+            log_in();
+        }
+        elseif ($_GET['action'] === 'submit-log-in')
+        {
+            if (isset($_POST['name'], $_POST['email'], $_POST['password']))
+            {
+                $name = htmlspecialchars($_POST['name']);
+                $email = htmlspecialchars($_POST['email']);
+
+                $message = log_in_attempt($name, $email, $_POST['password']);
+
+                homepage($message);
+            }
         }
     }
     else {

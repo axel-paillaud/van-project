@@ -1,0 +1,7 @@
+.check-icon {
+    background: url('images/icons/check-white.svg');
+    width: 24px;
+    height: 24px;
+    background-size: 24px;
+    background-repeat: no-repeat;
+}

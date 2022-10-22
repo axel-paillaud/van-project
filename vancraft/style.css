@@ -277,9 +277,10 @@ changer aussi le focus des boutons
 .subscribe-container {
     display: flex;
     justify-content: center;
+    min-width: 408px;
     background-color: #D6CE99;
-    margin: 40px 296px;
-    padding: 32px;
+    margin: 40px 296px 24px 296px;
+    padding: 32px 8px;
 }
 
 .subscribe-container div {
@@ -301,7 +302,15 @@ changer aussi le focus des boutons
 }
 
 .subscribe-succes-container {
-    background-color: #4a7c59 0.7;
+    display: flex;
+    align-items: center;
+    min-width: 408px;
+    background-color: rgba(74, 124, 89, 0.7);
+    margin: 0 296px;
+    color: white;
+    height: 32px;
+    font-size: 20px;
+    padding: 8px;
 }
 
 /*element below at the end of the file style.css */

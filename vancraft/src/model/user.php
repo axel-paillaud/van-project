@@ -42,8 +42,26 @@ class UserRepository
         return $user;
     }
 
-    public function subscribeUser(string $name, string $email, string $password) : bool {
+    public function subscribeUser(string $name, string $email, string $hash_password,string $password, string $confirm_password) : bool {
         $this->dbConnect();
+
+        if (empty($name) || empty($email) || empty($password))
+            throw new Exception("Erreur : Un des champs d'inscription est vide.");
+
+        if ($password !== $confirm_password)
+            throw new Exception("Erreur : Les deux mots de passe ne correspondent pas.");
+
+        $name_len = strlen($name);
+        $email_len = strlen($email);
+
+        if ($name_len > 47)
+            throw new Exception('Erreur : Le prénom doit contenir moins de 48 caractères.');
+
+        if ($email_len > 254)
+            throw new Exception("Erreur : L'adresse mail doit contenir moins de 255 caractères.");
+
+        if ($name_len < 3)
+            throw new Exception("Erreur : Le prénom doit contenir plus de 2 caractères.");
 
         $statement = $this->database->prepare(
             "INSERT INTO users (user_id, name, email, account_creation_date, password, last_connexion, numbers_of_answers, numbers_of_questions)
@@ -53,14 +71,20 @@ class UserRepository
         $statement->execute([
             'name' => $name,
             'email' => $email,
-            'hash_password' => $password
+            'hash_password' => $hash_password
         ]);
 
         return true;
     }
 
-    public function checkIfExist(string $name, string $email) : bool {
+    public function checkIfExist(string $name, string $email) : array {
         $this->dbConnect();
+
+        $check = [
+            'name_check' => false,
+            'email_check' => false,
+            'name_and_email_check' => false
+        ];
 
         $statement = $this->database->prepare(
             "SELECT name FROM users WHERE name = ?"
@@ -76,13 +100,21 @@ class UserRepository
         $statement->execute([$email]);
         $email_row = $statement->fetch();
 
-        if(empty($name_row) && empty($email_row))
-            return false;
-        else
-            throw new Exception("Erreur : L'email ou l'utilisateur existe déjà.");
-            return true;
-    }
+        $statement = $this->database->prepare(
+            "SELECT email, name FROM users WHERE email = :email AND name = :name"
+        );
 
+        $statement->execute(['email'=>$email, 'name'=>$name]);
+        $name_and_email_row = $statement->fetch();
+
+        if(empty($name_row) && empty($email_row))
+            return $check;
+        elseif (!empty($name_and_email_row)) {
+            $check['name_and_email_check'] = true;
+            return $check;
+        }
+        return $check;
+    }
     
     public function dbConnect() {
         if ($this->database == null) {

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="fonts.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <link href="icons.css" rel="stylesheet">
     <title><?= $title ?></title>
 </head>
 <body>
