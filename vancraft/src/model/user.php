@@ -7,7 +7,7 @@ class User
     public string $email;
     public string $creation_date;
     public string $password;
-    public string $last_modification;
+    public string $last_connexion;
     public int $numbers_of_questions;
     public int $numbers_of_answers;
     public string $image_profile_url;
@@ -77,6 +77,34 @@ class UserRepository
         return true;
     }
 
+    public function logUser($name, $email) : User {
+        $this->dbConnect();
+
+        $statement = $this->database->prepare(
+            "SELECT * FROM users WHERE name = :name AND email = :email"
+        );
+        $statement->execute(['name' => $name, 'email' => $email]);
+
+        $row = $statement->fetch();
+        $user = new User();
+        $user->id = $row['user_id'];
+        $user->name = $row['name'];
+        $user->email = $row['email'];
+        $user->creation_date = $row['account_creation_date'];
+        $user->last_connexion = $row['last_connexion'];
+        $user->numbers_of_questions = $row['numbers_of_questions'];
+        $user->numbers_of_answers = $row['numbers_of_answers'];
+
+        $statement = $this->database->prepare(
+            "SELECT image_url_sm, image_url_lg FROM images_profiles WHERE user_id = :user_id"
+        );
+        $statement->execute(['user_id' => $user->id]);
+        $row = $statement->fetch();
+
+        /*$user->image_profile_url = $row['image_url_sm']; */ // update when update image_profile table
+        return $user;
+    }
+
     public function checkIfExist(string $name, string $email) : array {
         $this->dbConnect();
 
@@ -114,6 +142,20 @@ class UserRepository
             return $check;
         }
         return $check;
+    }
+
+    public function checkPassword($name, $email, $password) : bool {
+        $this->dbConnect();
+
+        $statement = $this->database->prepare(
+            "SELECT password FROM users WHERE name = :name AND email = :email"
+        );
+        $statement->execute(['name'=>$name, 'email'=>$email]);
+        $row = $statement->fetch();
+        $password_db = $row['password'];
+        
+        $password_verify = password_verify($password, $password_db);
+        return $password_verify;
     }
     
     public function dbConnect() {

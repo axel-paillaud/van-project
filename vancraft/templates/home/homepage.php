@@ -2,6 +2,11 @@
 
 <?php ob_start(); ?>
 <div class="main">
+    <?php if (isset($message) && !empty($message)) : ?>
+    <div class="message-container">
+        <?= $message ?>
+    </div>
+    <?php endif; ?>
     <div class="title-container">
         <div class="title-text-container">
             <h1 class="title-title">VanCraft</h1>

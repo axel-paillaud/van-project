@@ -313,6 +313,19 @@ changer aussi le focus des boutons
     padding: 8px;
 }
 
+.message-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 408px;
+    background-color: rgba(74, 124, 89, 0.7);
+    margin: 8px 296px;
+    color: white;
+    height: 32px;
+    font-size: 20px;
+    padding: 8px;
+}
+
 /*element below at the end of the file style.css */
 
 .footer-container {
