@@ -8,16 +8,12 @@ require_once('src/controllers/footer.php');
 require_once('src/controllers/log.php');
 
 try {
-    $header = header_nav();
-    $sidebar = sidebar(1);
-    $footer = footer();
-
     if (isset($_GET['action']) && $_GET['action'] !== '') {
         if ($_GET['action'] === 'subscribe') {
-            echo $header;
-            echo $sidebar;
+            header_nav();
+            sidebar(1);
             subscribe();
-            echo $footer;
+            footer();
         }
         elseif ($_GET['action'] === 'submit-subscribe') {
             if (isset($_POST['name'], $_POST['email'], $_POST['password'], $_POST['confirm-password']))
@@ -27,21 +23,21 @@ try {
 
                 $subscribe_succes = addUser($name, $email, $_POST['password'], $_POST['confirm-password']);
 
-                echo $header;
-                echo $sidebar();
+                header_nav();
+                sidebar(1);
                 subscribe($subscribe_succes);
-                echo $footer;
+                footer();
             }
             else {
                 throw new Exception("Une erreur s'est produite. S'il vous plait envoyer un mail au webmaster : a.paillaud75@gmail.com pour qu'il
                 corrige le problème au plus vite.");
             }
         }
-        if ($_GET['action'] === 'log-in') {
-            echo $header;
-            echo $sidebar;
+        elseif ($_GET['action'] === 'log-in') {
+            header_nav();
+            sidebar(1);
             log_in();
-            echo $footer;
+            footer();
         }
         elseif ($_GET['action'] === 'submit-log-in')
         {
@@ -52,18 +48,26 @@ try {
 
                 $message = log_in_attempt($name, $email, $_POST['password']);
 
-                echo $header;
-                echo $sidebar;
+                header_nav();
+                sidebar(1);
                 homepage($message);
-                echo $footer;
+                footer();
             }
+        }
+        elseif ($_GET['action'] === "log-out") {
+            session_destroy();
+            session_start();
+            header_nav();
+            sidebar(1);
+            homepage();
+            footer();
         }
     }
     else {
-        echo $header;
-        echo $sidebar;
+        header_nav();
+        sidebar(1);
         homepage();
-        echo $footer;
+        footer();
     }
 
 } catch (Exception $e) {

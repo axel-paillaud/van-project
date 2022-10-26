@@ -5,3 +5,21 @@
     background-size: 24px;
     background-repeat: no-repeat;
 }
+
+.door-open-fill-icon {
+    background: url('images/icons/door-open-fill.svg');
+    width: 24px;
+    height: 24px;
+    background-size: 24px;
+    background-repeat: no-repeat;
+}
+
+.margin-icon {
+    margin: 8px;
+}
+
+.bigger-icon {
+    width: 32px;
+    height: 32px;
+    background-size: 32px;
+}

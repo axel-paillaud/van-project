@@ -3,5 +3,5 @@
 function footer() {
     require('templates/footer/footer.php');
 
-    return $footer;
+    echo $footer;
 }
