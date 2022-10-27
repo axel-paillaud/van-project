@@ -5,7 +5,7 @@ require_once('src/model/user.php');
 require_once('src/model/tag.php');
 
 
-function homepage(string $message = null, string $color = "green") {
+function homepage(string $message = null, bool $bad = false) {
     $limit = "LIMIT 0, 15";
     $orderBy = "votes";
     //for the moment, the variable limit and orderBy aren't used in model/post.php

@@ -208,6 +208,21 @@ changer aussi le focus des boutons
     flex-direction: column;
 }
 
+.send-post-container {
+    background-color: #D6CE99;
+    display: flex;
+    margin: 24px 256px;
+    padding: 32px;
+}
+
+.send-post-container div {
+    margin: 8px 0 8px 0;
+}
+
+.send-post-container form {
+    width: 100%;
+}
+
 .row-container {
     display: flex;
     flex-direction: row;
@@ -330,6 +345,20 @@ changer aussi le focus des boutons
     margin-bottom: 8px;
 }
 
+.post-field {
+    width: 100%;
+    height: 32px;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #545454;
+    margin-bottom: 8px;
+}
+
+.content {
+    min-height: 196px;
+}
+
 .subscribe-succes-container {
     display: flex;
     align-items: center;
@@ -350,9 +379,13 @@ changer aussi le focus des boutons
     background-color: rgba(74, 124, 89, 0.7);
     margin: 8px 296px;
     color: white;
-    height: 32px;
+    min-height: 32px;
     font-size: 20px;
     padding: 8px;
+}
+
+.error {
+    background-color: rgba(217, 47, 47, 0.7);
 }
 
 /*element below at the end of the file style.css */

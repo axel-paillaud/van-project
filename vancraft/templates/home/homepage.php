@@ -3,9 +3,15 @@
 <?php ob_start(); ?>
 <div class="main">
     <?php if (isset($message) && !empty($message)) : ?>
-    <div class="message-container">
-        <?= $message ?>
-    </div>
+        <?php if ($bad) : ?>
+            <div class="message-container error">
+                <?= $message ?>
+            </div>
+        <?php else : ?>
+            <div class="message-container">
+                <?= $message ?>
+            </div>
+        <?php endif; ?>
     <?php endif; ?>
     <div class="title-container">
         <div class="title-text-container">
@@ -20,7 +26,7 @@
     <div class="content-post-container">
         <div class="title-btn-post-container">
             <h3 class="header-title-post">Questions populaires</h3>
-            <button class="btn-orange"><b>Poser une question</b></button>
+            <a href="index.php?action=post-article"><button class="btn-orange"><b>Poser une question</b></button></a>
         </div>
         <hr class="horizontal-rule">
 

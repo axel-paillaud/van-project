@@ -6,6 +6,7 @@ require_once('src/controllers/homepage.php');
 require_once('src/controllers/sidebar.php');
 require_once('src/controllers/footer.php');
 require_once('src/controllers/log.php');
+require_once('src/controllers/post.php');
 
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {
@@ -47,11 +48,10 @@ try {
                 $email = htmlspecialchars($_POST['email']);
 
                 $message = log_in_attempt($name, $email, $_POST['password']);
-                $color_msg = "red";
 
                 header_nav();
                 sidebar(1);
-                homepage($message, $color_msg);
+                homepage($message);
                 footer();
             }
         }
@@ -61,6 +61,12 @@ try {
             header_nav();
             sidebar(1);
             homepage();
+            footer();
+        }
+        elseif ($_GET['action'] === "post-article") {
+            header_nav();
+            sidebar();
+            post();
             footer();
         }
     }
@@ -73,5 +79,9 @@ try {
 
 } catch (Exception $e) {
     $errorMsg = $e->getMessage();
-    echo $errorMsg;
+    $bad = true;
+    header_nav();
+    sidebar(1);
+    homepage($errorMsg, $bad);
+    footer();
 }
