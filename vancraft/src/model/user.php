@@ -74,6 +74,20 @@ class UserRepository
             'hash_password' => $hash_password
         ]);
 
+        $statement = $this->database->prepare(
+            "INSERT INTO images_profiles (image_id, user_id, image_url_sm) VALUES (NULL, :user_id, DEFAULT)"
+        );
+
+        $statement_user_id = $this->database->prepare(
+            "SELECT user_id FROM users WHERE name = ?"
+        );
+
+        $statement_user_id->execute([$name]);
+        $row = $statement_user_id->fetch();
+        $user_id = $row['user_id'];
+
+        $statement->execute(['user_id' => $user_id]);
+
         return true;
     }
 
@@ -101,7 +115,7 @@ class UserRepository
         $statement->execute(['user_id' => $user->id]);
         $row = $statement->fetch();
 
-        /*$user->image_profile_url = $row['image_url_sm']; */ // update when update image_profile table
+        $user->image_profile_url = $row['image_url_sm'];
         return $user;
     }
 

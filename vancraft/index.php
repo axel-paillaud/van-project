@@ -47,10 +47,11 @@ try {
                 $email = htmlspecialchars($_POST['email']);
 
                 $message = log_in_attempt($name, $email, $_POST['password']);
+                $color_msg = "red";
 
                 header_nav();
                 sidebar(1);
-                homepage($message);
+                homepage($message, $color_msg);
                 footer();
             }
         }

@@ -13,6 +13,10 @@ function addUser($name, $email, $password, $confirm_password) {
 
     $check = $userRepository->checkIfExist($name, $email);
     if($check['name_check'] === false && $check['email_check'] === false) {
+        if (!mkdir("images/users/" . $name . "/profile_pictures", 0733, true) ||
+        !mkdir("images/users/" . $name . "/posts_pictures", 0733, true)) {
+            throw new Exception("Impossible de créer les dossiers de l'utilisateur sur le serveur");
+        }
         $subscribe_succes = $userRepository->subscribeUser($name, $email, $hash_password, $password, $confirm_password);
         return $subscribe_succes;
     }
@@ -42,6 +46,7 @@ function log_in_attempt($name, $email, $password) {
                 $_SESSION['user_last_connexion'] = $user->last_connexion;
                 $_SESSION['user_numbers_of_questions'] = $user->numbers_of_questions;
                 $_SESSION['user_numbers_of_answers'] = $user->numbers_of_answers;
+                $_SESSION['user_image_profile_sm'] = $user->image_profile_url;
                 return $message ="Bienvenue, " . $_SESSION['user_name'];
             }
             else {
