@@ -1,6 +1,6 @@
+<?php ob_start(); ?>
 <?php $title = "VanCraft - Se connecter"; ?>
 
-<?php ob_start(); ?>
 <div class="main">
     <div class="subscribe-container">
         <form action="index.php?action=submit-log-in" method="post">
@@ -15,4 +15,3 @@
     </div>
 </div>
 <?php $content = ob_get_clean(); 
-require('templates/layout.php'); ?>

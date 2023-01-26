@@ -1,6 +1,6 @@
+<?php ob_start(); ?>
 <?php $title = "VanCraft - S'inscrire"; ?>
 
-<?php ob_start(); ?>
 <div class="main">
     <div class="subscribe-container">
         <form action="index.php?action=submit-subscribe" method="post">
@@ -22,4 +22,3 @@
     <?php endif; ?>
 </div>
 <?php $content = ob_get_clean(); 
-require('templates/layout.php'); ?>

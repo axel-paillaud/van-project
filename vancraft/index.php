@@ -9,12 +9,12 @@ require_once('src/controllers/log.php');
 require_once('src/controllers/post.php');
 
 try {
+    $header = headerNav();
+    $footer = footer();
     if (isset($_GET['action']) && $_GET['action'] !== '') {
         if ($_GET['action'] === 'subscribe') {
-            headerNav();
-            sidebar(1);
-            subscribe();
-            footer();
+            $sidebar = sidebar(1);
+            $content = subscribe();
         }
         elseif ($_GET['action'] === 'submit-subscribe') {
             if (isset($_POST['name'], $_POST['email'], $_POST['password'], $_POST['confirm-password']))
@@ -24,10 +24,8 @@ try {
 
                 $subscribe_succes = addUser($name, $email, $_POST['password'], $_POST['confirm-password']);
 
-                headerNav();
-                sidebar(1);
-                subscribe($subscribe_succes);
-                footer();
+                $sidebar = sidebar(1);
+                $content = subscribe($subscribe_succes);
             }
             else {
                 throw new Exception("Une erreur s'est produite. S'il vous plait envoyer un mail au webmaster : a.paillaud75@gmail.com pour qu'il
@@ -35,10 +33,8 @@ try {
             }
         }
         elseif ($_GET['action'] === 'log-in') {
-            headerNav();
-            sidebar(1);
-            log_in();
-            footer();
+            $sidebar = sidebar(1);
+            $content = log_in();
         }
         elseif ($_GET['action'] === 'submit-log-in')
         {
@@ -84,18 +80,17 @@ try {
         }
     }
     else {
-        $header = headerNav();
         $sidebar = sidebar(1);
         $content = homepage();
-        $footer = footer();
-        require('templates/layout.php');
     }
+    require_once('templates/layout.php');
 
 } catch (Exception $e) {
     $errorMsg = $e->getMessage();
     $bad = true;
-    headerNav();
-    sidebar(1);
-    homepage($errorMsg, $bad);
-    footer();
+    $header = headerNav();
+    $sidebar = sidebar(1);
+    $content = homepage($errorMsg, $bad);
+    $footer = footer();
+    require_once('templates/layout.php');
 }

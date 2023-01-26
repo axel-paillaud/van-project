@@ -4,6 +4,7 @@ require_once('src/model/user.php');
 
 function subscribe($subscribe_succes = false) {
     require('templates/log/subscribe.php');
+    return $content;
 }
 
 function addUser($name, $email, $password, $confirm_password) {
@@ -27,6 +28,7 @@ function addUser($name, $email, $password, $confirm_password) {
 
 function log_in() {
     require('templates/log/log-in.php');
+    return $content;
 }
 
 function log_in_attempt($name, $email, $password) {
