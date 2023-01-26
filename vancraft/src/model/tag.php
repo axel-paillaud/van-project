@@ -34,6 +34,31 @@ class TagRepository
         return $tags;
     }
 
+    public function computeTags(string $tags) : array {
+        $tags = trim($tags, ',');
+        $tags = strtolower($tags);
+        $arr_tags = explode(',', $tags);
+        if (count($arr_tags) > 5) {
+            throw new Exception("Erreur : Il faut indiquer 5 mots-clefs maximum.");
+        }
+        foreach ($arr_tags as $tag) {
+            trim($tag);
+            htmlspecialchars($tag);
+        }
+        return $arr_tags;
+    }
+
+    public function addTags(array $tags) {
+        $this->dbConnect();
+
+        $statement = $this->database->query(
+            "SELECT title FROM tags"
+        );
+
+        $dbTags = $statement->fetchAll(PDO::FETCH_COLUMN);
+        print_r($dbTags);
+    }
+
     public function dbConnect() {
         try {
             if ($this->database == null) {

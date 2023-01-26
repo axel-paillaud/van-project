@@ -69,6 +69,19 @@ try {
             post();
             footer();
         }
+        elseif ($_GET['action'] === "submit-post") {
+            if (isset($_POST['title'], $_POST['content'], $_POST['tags'])) {
+                $message = submit_post($_POST['title'], $_POST['content'], $_POST['tags']);
+                header_nav();
+                sidebar(1);
+                homepage($message);
+                footer();
+            }
+            else {
+                throw new Exception("Une erreur s'est produite. S'il vous plait envoyer un mail au webmaster : a.paillaud75@gmail.com pour qu'il
+                corrige le problème au plus vite.");
+            }
+        }
     }
     else {
         header_nav();
