@@ -1,6 +1,6 @@
+<?php ob_start(); ?>
 <?php $title = "VanCraft - Page d'accueil"; ?>
 
-<?php ob_start(); ?>
 <div class="main">
     <?php if (isset($message) && !empty($message)) : ?>
         <?php if ($bad) : ?>
@@ -67,4 +67,3 @@
     </div>
 </div>
 <?php $content = ob_get_clean(); ?>
-<?php require('templates/layout.php'); ?>

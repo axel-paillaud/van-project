@@ -29,4 +29,5 @@ function homepage(string $message = null, bool $bad = false) {
     }
 
     require('templates/home/homepage.php');
+    return $content;
 }

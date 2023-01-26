@@ -11,7 +11,7 @@ require_once('src/controllers/post.php');
 try {
     if (isset($_GET['action']) && $_GET['action'] !== '') {
         if ($_GET['action'] === 'subscribe') {
-            header_nav();
+            headerNav();
             sidebar(1);
             subscribe();
             footer();
@@ -24,7 +24,7 @@ try {
 
                 $subscribe_succes = addUser($name, $email, $_POST['password'], $_POST['confirm-password']);
 
-                header_nav();
+                headerNav();
                 sidebar(1);
                 subscribe($subscribe_succes);
                 footer();
@@ -35,7 +35,7 @@ try {
             }
         }
         elseif ($_GET['action'] === 'log-in') {
-            header_nav();
+            headerNav();
             sidebar(1);
             log_in();
             footer();
@@ -49,7 +49,7 @@ try {
 
                 $message = log_in_attempt($name, $email, $_POST['password']);
 
-                header_nav();
+                headerNav();
                 sidebar(1);
                 homepage($message);
                 footer();
@@ -58,13 +58,13 @@ try {
         elseif ($_GET['action'] === "log-out") {
             session_destroy();
             session_start();
-            header_nav();
+            headerNav();
             sidebar(1);
             homepage();
             footer();
         }
         elseif ($_GET['action'] === "post-article") {
-            header_nav();
+            headerNav();
             sidebar();
             post();
             footer();
@@ -72,7 +72,7 @@ try {
         elseif ($_GET['action'] === "submit-post") {
             if (isset($_POST['title'], $_POST['content'], $_POST['tags'])) {
                 $message = submit_post($_POST['title'], $_POST['content'], $_POST['tags']);
-                header_nav();
+                headerNav();
                 sidebar(1);
                 homepage($message);
                 footer();
@@ -84,16 +84,17 @@ try {
         }
     }
     else {
-        header_nav();
-        sidebar(1);
-        homepage();
-        footer();
+        $header = headerNav();
+        $sidebar = sidebar(1);
+        $content = homepage();
+        $footer = footer();
+        require('templates/layout.php');
     }
 
 } catch (Exception $e) {
     $errorMsg = $e->getMessage();
     $bad = true;
-    header_nav();
+    headerNav();
     sidebar(1);
     homepage($errorMsg, $bad);
     footer();

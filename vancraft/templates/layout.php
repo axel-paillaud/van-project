@@ -10,8 +10,12 @@
     <title><?= $title ?></title>
 </head>
 <body>
+    <?= $header ?>
+
+    <?= $sidebar ?>
 
     <?= $content ?>
 
+    <?= $footer ?>
 </body>
 </html>
