@@ -7,6 +7,10 @@ require_once('src/controllers/sidebar.php');
 require_once('src/controllers/footer.php');
 require_once('src/controllers/log.php');
 require_once('src/controllers/post.php');
+require('src/model/functions.php');
+
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
+
 
 try {
     $header = headerNav();
