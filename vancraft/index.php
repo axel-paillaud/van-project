@@ -11,76 +11,71 @@ require('src/model/functions.php');
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
-
 try {
     $header = headerNav();
     $footer = footer();
-    if (isset($_GET['action']) && $_GET['action'] !== '') {
-        if ($_GET['action'] === 'subscribe') {
-            $sidebar = sidebar(1);
-            $content = subscribe();
-        }
-        elseif ($_GET['action'] === 'submit-subscribe') {
-            if (isset($_POST['name'], $_POST['email'], $_POST['password'], $_POST['confirm-password']))
-            {
-                $name = htmlspecialchars($_POST['name']);
-                $email = htmlspecialchars($_POST['email']);
-
-                $subscribe_succes = addUser($name, $email, $_POST['password'], $_POST['confirm-password']);
-
-                $sidebar = sidebar(1);
-                $content = subscribe($subscribe_succes);
-            }
-            else {
-                throw new Exception("Une erreur s'est produite. S'il vous plait envoyer un mail au webmaster : a.paillaud75@gmail.com pour qu'il
-                corrige le problème au plus vite.");
-            }
-        }
-        elseif ($_GET['action'] === 'log-in') {
-            $sidebar = sidebar(1);
-            $content = log_in();
-        }
-        elseif ($_GET['action'] === 'submit-log-in')
+    if ($uri === '/subscribe') {
+        $sidebar = sidebar(1);
+        $content = subscribe();
+    }
+    elseif ($uri === '/submit-subscribe') {
+        if (isset($_POST['name'], $_POST['email'], $_POST['password'], $_POST['confirm-password']))
         {
-            if (isset($_POST['name'], $_POST['email'], $_POST['password']))
-            {
-                $name = htmlspecialchars($_POST['name']);
-                $email = htmlspecialchars($_POST['email']);
+            $name = htmlspecialchars($_POST['name']);
+            $email = htmlspecialchars($_POST['email']);
 
-                $message = log_in_attempt($name, $email, $_POST['password']);
+            $subscribe_succes = addUser($name, $email, $_POST['password'], $_POST['confirm-password']);
 
-                headerNav();
-                sidebar(1);
-                homepage($message);
-                footer();
-            }
+            $sidebar = sidebar(1);
+            $content = subscribe($subscribe_succes);
         }
-        elseif ($_GET['action'] === "log-out") {
-            session_destroy();
-            session_start();
+        else {
+            throw new Exception("Une erreur s'est produite. S'il vous plait envoyer un mail au webmaster : a.paillaud75@gmail.com pour qu'il
+            corrige le problème au plus vite.");
+        }
+    }
+    elseif ($uri === '/log-in') {
+        $sidebar = sidebar(1);
+        $content = log_in();
+    }
+    elseif ($uri === '/submit-log-in')
+    {
+        if (isset($_POST['name'], $_POST['email'], $_POST['password']))
+        {
+            $name = htmlspecialchars($_POST['name']);
+            $email = htmlspecialchars($_POST['email']);
+
+            $message = log_in_attempt($name, $email, $_POST['password']);
+
+            sidebar(1);
+            homepage($message);
+        }
+    }
+    elseif ($_GET['action'] === "log-out") {
+        session_destroy();
+        session_start();
+        headerNav();
+        sidebar(1);
+        homepage();
+        footer();
+    }
+    elseif ($_GET['action'] === "post-article") {
+        headerNav();
+        sidebar();
+        post();
+        footer();
+    }
+    elseif ($_GET['action'] === "submit-post") {
+        if (isset($_POST['title'], $_POST['content'], $_POST['tags'])) {
+            $message = submit_post($_POST['title'], $_POST['content'], $_POST['tags']);
             headerNav();
             sidebar(1);
-            homepage();
+            homepage($message);
             footer();
         }
-        elseif ($_GET['action'] === "post-article") {
-            headerNav();
-            sidebar();
-            post();
-            footer();
-        }
-        elseif ($_GET['action'] === "submit-post") {
-            if (isset($_POST['title'], $_POST['content'], $_POST['tags'])) {
-                $message = submit_post($_POST['title'], $_POST['content'], $_POST['tags']);
-                headerNav();
-                sidebar(1);
-                homepage($message);
-                footer();
-            }
-            else {
-                throw new Exception("Une erreur s'est produite. S'il vous plait envoyer un mail au webmaster : a.paillaud75@gmail.com pour qu'il
-                corrige le problème au plus vite.");
-            }
+        else {
+            throw new Exception("Une erreur s'est produite. S'il vous plait envoyer un mail au webmaster : a.paillaud75@gmail.com pour qu'il
+            corrige le problème au plus vite.");
         }
     }
     else {

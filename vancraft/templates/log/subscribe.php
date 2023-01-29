@@ -3,7 +3,7 @@
 
 <div class="main">
     <div class="subscribe-container">
-        <form action="index.php?action=submit-subscribe" method="post">
+        <form action="/submit-subscribe" method="post">
             <div><label for="name"><b>Nom d'utilisateur</b></label></div>
             <div><input class="subscribe-field" type="text" name="name"></div>
             <div><label for="email"><b>E-mail</b></label></div>
