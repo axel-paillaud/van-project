@@ -26,7 +26,7 @@
     <div class="content-post-container">
         <div class="title-btn-post-container">
             <h3 class="header-title-post">Questions populaires</h3>
-            <a href="index.php?action=post-article"><button class="btn-orange"><b>Poser une question</b></button></a>
+            <a href="/post-article"><button class="btn-orange"><b>Poser une question</b></button></a>
         </div>
         <hr class="horizontal-rule">
 

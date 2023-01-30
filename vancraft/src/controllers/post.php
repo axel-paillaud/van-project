@@ -6,6 +6,7 @@ require_once('src/model/tag.php');
 
 function post() {
     require('templates/article/post.php');
+    return $content;
 }
 
 function submit_post(string $title, string $content, string $tags) {
@@ -23,5 +24,4 @@ function submit_post(string $title, string $content, string $tags) {
         $message = "Votre question à bien été publiée.";
         return $message;
     }
-
 }

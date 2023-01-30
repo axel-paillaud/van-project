@@ -47,23 +47,20 @@ try {
 
             $message = log_in_attempt($name, $email, $_POST['password']);
 
-            sidebar(1);
-            homepage($message);
+            $sidebar = sidebar(1);
+            $content = homepage($message);
         }
     }
     elseif ($_GET['action'] === "log-out") {
         session_destroy();
         session_start();
-        headerNav();
-        sidebar(1);
-        homepage();
-        footer();
+        $sidebar = sidebar(1);
+        $content = homepage();
     }
-    elseif ($_GET['action'] === "post-article") {
-        headerNav();
-        sidebar();
-        post();
-        footer();
+    elseif ($uri === "/post-article") {
+        $sidebar = sidebar();
+        $content = post();
+        require 'templates/layout.php';
     }
     elseif ($_GET['action'] === "submit-post") {
         if (isset($_POST['title'], $_POST['content'], $_POST['tags'])) {
