@@ -1,7 +1,7 @@
 <?php
 
 function footer() {
-    require('templates/footer/footer.php');
+    require view('footer/footer.php');
 
     return $footer;
 }

@@ -1,11 +1,11 @@
 <?php
 
-require_once('src/model/post.php');
-require_once('src/model/user.php');
-require_once('src/model/tag.php');
+require_once base_path('src/model/post.php');
+require_once base_path('src/model/user.php');
+require_once base_path('src/model/tag.php');
 
 function post() {
-    require('templates/article/post.php');
+    require view('article/post.php');
     return $content;
 }
 
@@ -31,7 +31,7 @@ if ($uri === "/post-article") {
 $content = post();
 $sidebar = sidebar();
 $footer=  footer();
-include 'templates/layout.php';
+include view('layout.php');
 }
 else if ($uri === "/submit-post") {
     if (isset($_POST['title'], $_POST['content'], $_POST['tags'])) {

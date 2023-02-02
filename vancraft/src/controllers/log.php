@@ -1,9 +1,9 @@
 <?php
 
-require_once 'src/model/user.php';
+require_once base_path('src/model/user.php');
 
 function subscribe($subscribe_succes = false) {
-    require('templates/log/subscribe.php');
+    require base_path('templates/log/subscribe.php');
     return $content;
 }
 
@@ -27,7 +27,7 @@ function addUser($name, $email, $password, $confirm_password) {
 }
 
 function logIn() {
-    require('templates/log/log-in.php');
+    require base_path('templates/log/log-in.php');
     return $content;
 }
 
@@ -69,7 +69,7 @@ if ($uri === '/log-in') {
     $header = headerNav();
     $sidebar = sidebar();
     $footer = footer();
-    require 'templates/layout.php';
+    require view('layout.php');
 }
 else if ($uri === '/submit-log-in') {
     if (isset($_POST['name'], $_POST['email'], $_POST['password']))
@@ -83,7 +83,7 @@ else if ($uri === '/submit-log-in') {
         $sidebar = sidebar(1);
         $content = homepage($message);
         $footer = footer();
-        require 'templates/layout.php';
+        require view('layout.php');
     }
 }
 else if ($uri === '/subscribe') {
@@ -91,7 +91,7 @@ else if ($uri === '/subscribe') {
     $sidebar = sidebar(1);
     $content = subscribe();
     $footer = footer();
-    require 'templates/layout.php';
+    require view('layout.php');
 }
 else if ($uri === '/submit-subscribe') {
     if (isset($_POST['name'], $_POST['email'], $_POST['password'], $_POST['confirm-password']))
@@ -105,7 +105,7 @@ else if ($uri === '/submit-subscribe') {
         $sidebar = sidebar(1);
         $content = subscribe($subscribe_succes);
         $footer = footer();
-        require 'templates/layout.php';
+        require view('layout.php');
     }
     else {
         throw new Exception("Un problème est survenu sur un des champs du formulaire.");
@@ -118,5 +118,5 @@ elseif ($uri === "/log-out") {
     $sidebar = sidebar(1);
     $content = homepage("Vous vous êtes bien déconnecté");
     $footer = footer();
-    require 'templates/layout.php';
+    require view('layout.php');
 }

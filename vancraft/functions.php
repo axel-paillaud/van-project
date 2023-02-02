@@ -1,6 +1,7 @@
 <?php
 
-function dd($value) {
+function dd($value) 
+{
     echo "<pre>";
     var_dump($value);
     echo "</pre>";
@@ -8,10 +9,20 @@ function dd($value) {
     die();
 }
 
-function abort($code = 404) {
+function abort($code = 404) 
+{
     http_response_code($code);
     $header = headerNav();
     $content = homepage("Erreur : cette page est inexistante ou introuvable", true);
     $footer = footer();
     $sidebar = sidebar();
+}
+
+function base_path($path)
+{
+    return BASE_PATH . $path;
+}
+
+function view($path) {
+    return base_path('templates/' . $path);
 }

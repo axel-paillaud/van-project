@@ -1,8 +1,8 @@
 <?php
 
-require_once 'src/model/post.php';
-require_once 'src/model/user.php';
-require_once 'src/model/tag.php';
+require_once base_path('src/model/post.php');
+require_once base_path('src/model/user.php');
+require_once base_path('src/model/tag.php');
 
 function homepage(string $message = null, bool $bad = false) {
     $limit = "LIMIT 0, 15";
@@ -27,6 +27,6 @@ function homepage(string $message = null, bool $bad = false) {
         $post->tags = $tags;
     }
 
-    require 'templates/home/homepage.php';
+    require view('home/homepage.php');
     return $content;
 }

@@ -55,6 +55,3 @@ class PostRepository
         }
     }
 }
-
-require_once('src/model/model.php');
-
