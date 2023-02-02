@@ -1,9 +1,6 @@
 <?php
 
 require_once 'src/model/user.php';
-require_once 'src/controllers/header.php';
-require_once 'src/controllers/sidebar.php';
-require_once 'src/controllers/footer.php';
 
 function subscribe($subscribe_succes = false) {
     require('templates/log/subscribe.php');
@@ -67,13 +64,59 @@ function log_in_attempt($name, $email, $password) {
     }
 }
 
-if ($uri = '/log-in') {
+if ($uri === '/log-in') {
     $content = logIn();
     $header = headerNav();
     $sidebar = sidebar();
     $footer = footer();
     require 'templates/layout.php';
 }
-else if ($uri = '/submit-log-in') {
-    echo "Vous souhaiter vous connecter";
+else if ($uri === '/submit-log-in') {
+    if (isset($_POST['name'], $_POST['email'], $_POST['password']))
+    {
+        $name = htmlspecialchars($_POST['name']);
+        $email = htmlspecialchars($_POST['email']);
+
+        $message = log_in_attempt($name, $email, $_POST['password']);
+
+        $header = headerNav();
+        $sidebar = sidebar(1);
+        $content = homepage($message);
+        $footer = footer();
+        require 'templates/layout.php';
+    }
+}
+else if ($uri === '/subscribe') {
+    $header = headerNav();
+    $sidebar = sidebar(1);
+    $content = subscribe();
+    $footer = footer();
+    require 'templates/layout.php';
+}
+else if ($uri === '/submit-subscribe') {
+    if (isset($_POST['name'], $_POST['email'], $_POST['password'], $_POST['confirm-password']))
+    {
+        $name = htmlspecialchars($_POST['name']);
+        $email = htmlspecialchars($_POST['email']);
+
+        $subscribe_succes = addUser($name, $email, $_POST['password'], $_POST['confirm-password']);
+
+        $header = headerNav();
+        $sidebar = sidebar(1);
+        $content = subscribe($subscribe_succes);
+        $footer = footer();
+        require 'templates/layout.php';
+    }
+    else {
+        throw new Exception("Un problème est survenu sur un des champs du formulaire.");
+    }
+}
+elseif ($uri === "/log-out") {
+    session_destroy();
+    session_start();
+    $header = headerNav();
+    $sidebar = sidebar(1);
+    $content = homepage("Vous vous êtes bien déconnecté");
+    $footer = footer();
+    require 'templates/layout.php';
 }

@@ -21,7 +21,27 @@ function submit_post(string $title, string $content, string $tags) {
 
         $tagRepository->addTags($arr_tags);
 
-        $message = "Votre question à bien été publiée.";
+        $message = "Votre question a bien été publiée.";
         return $message;
+    }
+}
+
+if ($uri === "/post-article") {
+    $header = headerNav();
+$content = post();
+$sidebar = sidebar();
+$footer=  footer();
+include 'templates/layout.php';
+}
+else if ($uri === "/submit-post") {
+    if (isset($_POST['title'], $_POST['content'], $_POST['tags'])) {
+        $message = submit_post($_POST['title'], $_POST['content'], $_POST['tags']);
+        headerNav();
+        sidebar(1);
+        homepage($message);
+        footer();
+    }
+    else {
+        throw new Exception("Un problème est survenu sur l'un des champs du formulaire.");
     }
 }

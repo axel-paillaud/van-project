@@ -3,10 +3,6 @@
 require_once 'src/model/post.php';
 require_once 'src/model/user.php';
 require_once 'src/model/tag.php';
-require_once 'src/controllers/header.php';
-require_once 'src/controllers/sidebar.php';
-require_once 'src/controllers/footer.php';
-
 
 function homepage(string $message = null, bool $bad = false) {
     $limit = "LIMIT 0, 15";
@@ -34,9 +30,3 @@ function homepage(string $message = null, bool $bad = false) {
     require 'templates/home/homepage.php';
     return $content;
 }
-
-$content = homepage();
-$header = headerNav();
-$sidebar = sidebar(1);
-$footer = footer();
-require 'templates/layout.php';
