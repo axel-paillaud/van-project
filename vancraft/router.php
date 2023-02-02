@@ -3,8 +3,8 @@
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $routes = [
-    '/home' => 'src/controllers/load_homepage.php',
-    '/' => 'src/controllers/load_homepage.php',
+    '/home' => 'src/controllers/home/index.php',
+    '/' => 'src/controllers/home/index.php',
     '/subscribe' => 'src/controllers/log.php',
     '/submit-subscribe' => 'src/controllers/log.php',
     '/log-in' => 'src/controllers/log.php',
