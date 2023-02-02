@@ -2,7 +2,7 @@
 <?php $title = "Vancraft - Poser une question" ?>
 <div class="main">
     <div class="send-post-container">
-        <form action="index.php?action=submit-post" method="post">
+        <form action="/submit-post" method="post">
             <div><label for="title"><b>Titre</b></label></div>
             <div><input autocomplete="off" class="post-field" type="text" name="title" placeholder="Soyez spécifique et faites comme si vous posez la question à vous-même."></div>
             <div><label for="content"><b>Contenu</b></label></div>

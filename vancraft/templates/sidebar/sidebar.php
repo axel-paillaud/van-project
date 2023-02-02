@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 <div class="sidenav">
-    <a href="index.php"<?php if ($which_page == 1) {echo $here;}; ?>>Accueil</a>
+    <a href="/home"<?php if ($which_page == 1) {echo $here;}; ?>>Accueil</a>
     <a href="#">Questions</a>
     <a href="#">Mots-clés</a>
     <a href="#">Utilisateurs</a>

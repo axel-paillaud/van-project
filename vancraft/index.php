@@ -1,19 +1,19 @@
 <?php
 session_start();
 
-require_once('src/controllers/header.php');
-require_once('src/controllers/homepage.php');
-require_once('src/controllers/sidebar.php');
-require_once('src/controllers/footer.php');
-require_once('src/controllers/log.php');
-require_once('src/controllers/post.php');
-require('src/model/functions.php');
+require_once 'src/controllers/footer.php';
+require_once 'src/controllers/log.php';
+require_once 'src/controllers/post.php';
+require 'src/model/functions.php';
 
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
+$router = [
+    '/accueil' => 'src/controllers/homepage.php',
+    '/' => 'src/controllers/homepage.php',
+];
+
 try {
-    $header = headerNav();
-    $footer = footer();
     if ($uri === '/subscribe') {
         $sidebar = sidebar(1);
         $content = subscribe();
@@ -51,7 +51,7 @@ try {
             $content = homepage($message);
         }
     }
-    elseif ($_GET['action'] === "log-out") {
+    elseif ($uri === "/log-out") {
         session_destroy();
         session_start();
         $sidebar = sidebar(1);
@@ -60,9 +60,8 @@ try {
     elseif ($uri === "/post-article") {
         $sidebar = sidebar();
         $content = post();
-        require 'templates/layout.php';
     }
-    elseif ($_GET['action'] === "submit-post") {
+    elseif ($uri === "/submit-post") {
         if (isset($_POST['title'], $_POST['content'], $_POST['tags'])) {
             $message = submit_post($_POST['title'], $_POST['content'], $_POST['tags']);
             headerNav();
@@ -76,10 +75,8 @@ try {
         }
     }
     else {
-        $sidebar = sidebar(1);
-        $content = homepage();
+        include 'src/controllers/homepage.php';
     }
-    require_once('templates/layout.php');
 
 } catch (Exception $e) {
     $errorMsg = $e->getMessage();

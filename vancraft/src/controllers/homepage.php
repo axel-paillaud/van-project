@@ -3,6 +3,8 @@
 require_once('src/model/post.php');
 require_once('src/model/user.php');
 require_once('src/model/tag.php');
+require 'src/controllers/header.php';
+require 'src/controllers/sidebar.php';
 
 
 function homepage(string $message = null, bool $bad = false) {
@@ -28,6 +30,11 @@ function homepage(string $message = null, bool $bad = false) {
         $post->tags = $tags;
     }
 
-    require('templates/home/homepage.php');
+    require 'templates/home/homepage.php';
     return $content;
 }
+
+$content = homepage();
+$header = headerNav();
+$sidebar = sidebar(1);
+require 'templates/layout.php';
