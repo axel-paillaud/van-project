@@ -5,7 +5,7 @@ require_once base_path('src/model/user.php');
 require_once base_path('src/model/tag.php');
 
 function post() {
-    require view('article/post.php');
+    require base_path('templates/article/post.php');
     return $content;
 }
 
@@ -27,19 +27,22 @@ function submit_post(string $title, string $content, string $tags) {
 }
 
 if ($uri === "/post-article") {
-    $header = headerNav();
-$content = post();
-$sidebar = sidebar();
-$footer=  footer();
-include view('layout.php');
+    view('layout.php', [
+        'header' => headerNav(),
+        'sidebar' => sidebar(),
+        'content' => post(),
+        'footer' => footer(),
+    ]);
 }
 else if ($uri === "/submit-post") {
     if (isset($_POST['title'], $_POST['content'], $_POST['tags'])) {
         $message = submit_post($_POST['title'], $_POST['content'], $_POST['tags']);
-        headerNav();
-        sidebar(1);
-        homepage($message);
-        footer();
+        view('layout.php', [
+            'header' => headerNav(),
+            'sidebar' => sidebar(),
+            'content' => homepage($message),
+            'footer' => footer(),
+        ]);
     }
     else {
         throw new Exception("Un problème est survenu sur l'un des champs du formulaire.");

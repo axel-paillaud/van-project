@@ -65,11 +65,12 @@ function log_in_attempt($name, $email, $password) {
 }
 
 if ($uri === '/log-in') {
-    $content = logIn();
-    $header = headerNav();
-    $sidebar = sidebar();
-    $footer = footer();
-    require view('layout.php');
+    view('layout.php', [
+        'header' => headerNav(),
+        'sidebar' => sidebar(),
+        'content' => logIn(),
+        'footer' => footer(),
+    ]);
 }
 else if ($uri === '/submit-log-in') {
     if (isset($_POST['name'], $_POST['email'], $_POST['password']))
@@ -79,19 +80,21 @@ else if ($uri === '/submit-log-in') {
 
         $message = log_in_attempt($name, $email, $_POST['password']);
 
-        $header = headerNav();
-        $sidebar = sidebar(1);
-        $content = homepage($message);
-        $footer = footer();
-        require view('layout.php');
+        view('layout.php', [
+            'header' => headerNav(),
+            'sidebar' => sidebar(1),
+            'content' => homepage($message),
+            'footer' => footer(),
+        ]);
     }
 }
 else if ($uri === '/subscribe') {
-    $header = headerNav();
-    $sidebar = sidebar(1);
-    $content = subscribe();
-    $footer = footer();
-    require view('layout.php');
+    view('layout.php', [
+        'header' => headerNav(),
+        'sidebar' => sidebar(1),
+        'content' => subscribe(),
+        'footer' => footer(),
+    ]);
 }
 else if ($uri === '/submit-subscribe') {
     if (isset($_POST['name'], $_POST['email'], $_POST['password'], $_POST['confirm-password']))
@@ -101,11 +104,12 @@ else if ($uri === '/submit-subscribe') {
 
         $subscribe_succes = addUser($name, $email, $_POST['password'], $_POST['confirm-password']);
 
-        $header = headerNav();
-        $sidebar = sidebar(1);
-        $content = subscribe($subscribe_succes);
-        $footer = footer();
-        require view('layout.php');
+        view('layout.php', [
+            'header' => headerNav(),
+            'sidebar' => sidebar(1),
+            'content' => subscribe($subscribe_succes),
+            'footer' => footer(),
+        ]);
     }
     else {
         throw new Exception("Un problème est survenu sur un des champs du formulaire.");
@@ -114,9 +118,10 @@ else if ($uri === '/submit-subscribe') {
 elseif ($uri === "/log-out") {
     session_destroy();
     session_start();
-    $header = headerNav();
-    $sidebar = sidebar(1);
-    $content = homepage("Vous vous êtes bien déconnecté");
-    $footer = footer();
-    require view('layout.php');
+    view('layout.php', [
+        'header' => headerNav(),
+        'sidebar' => sidebar(1),
+        'content' => homepage("Vous vous êtes bien déconnecté", true),
+        'footer' => footer(),
+    ]);
 }
