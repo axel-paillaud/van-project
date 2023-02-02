@@ -1,5 +1,4 @@
 <?php ob_start(); ?>
-<?php $title = "VanCraft - Page d'accueil"; ?>
 
 <div class="main">
     <?php if (isset($message) && !empty($message)) : ?>

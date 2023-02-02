@@ -27,6 +27,6 @@ function homepage(string $message = null, bool $bad = false) {
         $post->tags = $tags;
     }
 
-    require view('home/homepage.php');
+    $content = view('home/homepage.php');
     return $content;
 }
