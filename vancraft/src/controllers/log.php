@@ -1,6 +1,9 @@
 <?php
 
-require_once('src/model/user.php');
+require_once 'src/model/user.php';
+require_once 'src/controllers/header.php';
+require_once 'src/controllers/sidebar.php';
+require_once 'src/controllers/footer.php';
 
 function subscribe($subscribe_succes = false) {
     require('templates/log/subscribe.php');
@@ -13,7 +16,7 @@ function addUser($name, $email, $password, $confirm_password) {
     $userRepository = new UserRepository();
 
     $check = $userRepository->checkIfExist($name, $email);
-    if($check['name_check'] === false && $check['email_check'] === false) {
+    if ($check['name_check'] === false && $check['email_check'] === false) {
         if (!mkdir("images/users/" . $name . "/profile_pictures", 0733, true) ||
         !mkdir("images/users/" . $name . "/posts_pictures", 0733, true)) {
             throw new Exception("Impossible de créer les dossiers de l'utilisateur sur le serveur");
@@ -26,7 +29,7 @@ function addUser($name, $email, $password, $confirm_password) {
     }
 }
 
-function log_in() {
+function logIn() {
     require('templates/log/log-in.php');
     return $content;
 }
@@ -62,5 +65,15 @@ function log_in_attempt($name, $email, $password) {
     else {
         throw new Exception("L'email ou le nom d'utilisateur est incorrect.");
     }
+}
 
+if ($uri = '/log-in') {
+    $content = logIn();
+    $header = headerNav();
+    $sidebar = sidebar();
+    $footer = footer();
+    require 'templates/layout.php';
+}
+else if ($uri = '/submit-log-in') {
+    echo "Vous souhaiter vous connecter";
 }

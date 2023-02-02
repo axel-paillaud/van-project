@@ -1,10 +1,11 @@
 <?php
 
-require_once('src/model/post.php');
-require_once('src/model/user.php');
-require_once('src/model/tag.php');
-require 'src/controllers/header.php';
-require 'src/controllers/sidebar.php';
+require_once 'src/model/post.php';
+require_once 'src/model/user.php';
+require_once 'src/model/tag.php';
+require_once 'src/controllers/header.php';
+require_once 'src/controllers/sidebar.php';
+require_once 'src/controllers/footer.php';
 
 
 function homepage(string $message = null, bool $bad = false) {
@@ -37,4 +38,5 @@ function homepage(string $message = null, bool $bad = false) {
 $content = homepage();
 $header = headerNav();
 $sidebar = sidebar(1);
+$footer = footer();
 require 'templates/layout.php';

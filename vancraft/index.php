@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-require_once 'src/controllers/footer.php';
-require_once 'src/controllers/log.php';
 require_once 'src/controllers/post.php';
 require 'src/model/functions.php';
 
@@ -35,8 +33,7 @@ try {
         }
     }
     elseif ($uri === '/log-in') {
-        $sidebar = sidebar(1);
-        $content = log_in();
+        include 'src/controllers/log.php';
     }
     elseif ($uri === '/submit-log-in')
     {
