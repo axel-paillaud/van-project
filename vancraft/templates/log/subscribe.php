@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 <?php $title = "VanCraft - S'inscrire"; ?>
 
-<div class="main">
+<main class="main">
     <div class="subscribe-container">
         <form action="/submit-subscribe" method="post">
             <div><label for="name"><b>Nom d'utilisateur</b></label></div>
@@ -20,5 +20,5 @@
             Votre inscription a bien été pris en compte.<div class="check-icon"></div>
         </div>
     <?php endif; ?>
-</div>
+</main>
 <?php $content = ob_get_clean(); 

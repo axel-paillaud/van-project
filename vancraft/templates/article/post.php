@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 <?php $title = "Vancraft - Poser une question" ?>
-<div class="main">
+<main class="main">
     <div class="send-post-container">
         <form action="/submit-post" method="post">
             <div><label for="title"><b>Titre</b></label></div>
@@ -12,5 +12,5 @@
             <div><input class="btn-orange" type="submit" value="Envoyer la question" style="margin-left: 0;"></div>
         </form>
     </div>
-</div>
+</main>
 <?php $content = ob_get_clean(); ?>

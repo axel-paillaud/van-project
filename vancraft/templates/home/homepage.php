@@ -1,6 +1,6 @@
 <?php ob_start(); ?>
 
-<div class="main">
+<main class="main">
     <?php if (isset($message) && !empty($message)) : ?>
         <?php if ($bad) : ?>
             <div class="message-container error">
@@ -64,5 +64,5 @@
         <?php endforeach; ?>
         </div>   
     </div>
-</div>
+</main>
 <?php $content = ob_get_clean(); ?>

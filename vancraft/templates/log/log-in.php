@@ -1,7 +1,7 @@
 <?php ob_start(); ?>
 <?php $title = "VanCraft - Se connecter"; ?>
 
-<div class="main">
+<main class="main">
     <div class="subscribe-container">
         <form action="/submit-log-in" method="post">
             <div><label for="name"><b>Nom d'utilisateur</b></label></div>
@@ -13,5 +13,5 @@
             <div><input class="btn-orange" style="margin-left:0;" type="submit" value="Se connecter"></div>
         </form>
     </div>
-</div>
+</main>
 <?php $content = ob_get_clean(); 
