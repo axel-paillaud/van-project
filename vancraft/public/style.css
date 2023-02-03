@@ -129,7 +129,7 @@ changer aussi le focus des boutons
 .sidenav a {
     display: block;
     font-weight: bold;
-    font-size: 20;
+    font-size: 20px;
     text-decoration: none;
     color: black;
     padding: 16px 8px;
@@ -174,7 +174,7 @@ changer aussi le focus des boutons
 }
 
 .title-title {
-    font-size: 72;
+    font-size: 72px;
     margin: 16px;
     margin-top: 0;
     font-weight: normal;
@@ -182,7 +182,7 @@ changer aussi le focus des boutons
 }
 
 .title-subtitle {
-    font-size: 24;
+    font-size: 24px;
     margin: 16px;
     font-weight: normal;
     text-align: center;
@@ -198,7 +198,7 @@ changer aussi le focus des boutons
 }
 
 .header-title-post {
-    font-size: 24;
+    font-size: 24px;
     margin: 10px 0;
 }
 
@@ -270,7 +270,7 @@ changer aussi le focus des boutons
     justify-content: flex-start;
     align-content: center;
     margin: 8px 0 0 94px;
-    font-size: 14;
+    font-size: 14px;
 }
 
 .tag-container div {
