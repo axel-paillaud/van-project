@@ -70,6 +70,7 @@ if ($uri === '/log-in') {
         'sidebar' => sidebar(),
         'content' => logIn(),
         'footer' => footer(),
+        'title' => "Vancraft - Se connecter"
     ]);
 }
 else if ($uri === '/submit-log-in') {
@@ -85,6 +86,7 @@ else if ($uri === '/submit-log-in') {
             'sidebar' => sidebar(1),
             'content' => homepage($message),
             'footer' => footer(),
+            'title' => "Vancraft - Se connecter",
         ]);
     }
 }
@@ -94,6 +96,7 @@ else if ($uri === '/subscribe') {
         'sidebar' => sidebar(1),
         'content' => subscribe(),
         'footer' => footer(),
+        'title' => "Vancraft - S'inscrire"
     ]);
 }
 else if ($uri === '/submit-subscribe') {
@@ -109,6 +112,7 @@ else if ($uri === '/submit-subscribe') {
             'sidebar' => sidebar(1),
             'content' => subscribe($subscribe_succes),
             'footer' => footer(),
+            'title' => "Vancraft - S'inscrire"
         ]);
     }
     else {
@@ -123,5 +127,6 @@ elseif ($uri === "/log-out") {
         'sidebar' => sidebar(1),
         'content' => homepage("Vous vous êtes bien déconnecté", true),
         'footer' => footer(),
+        'title' => "Vancraft - Page d'accueil"
     ]);
 }

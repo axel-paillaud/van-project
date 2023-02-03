@@ -32,6 +32,7 @@ if ($uri === "/post-article") {
         'sidebar' => sidebar(),
         'content' => post(),
         'footer' => footer(),
+        'title' => "Vancraft - Poser une question"
     ]);
 }
 else if ($uri === "/submit-post") {
@@ -42,6 +43,7 @@ else if ($uri === "/submit-post") {
             'sidebar' => sidebar(),
             'content' => homepage($message),
             'footer' => footer(),
+            'title' => "Vancraft - Page d'accueil"
         ]);
     }
     else {
