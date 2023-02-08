@@ -12,6 +12,14 @@ h1 {
     font-family: nova_mono;
 }
 
+.margin-8 {
+    margin: 8px;
+}
+
+.margin-8-0 {
+    margin: 8px 0;
+}
+
 .main {
     padding-top: 52px;
     margin-right: 208px;
@@ -49,7 +57,6 @@ h1 {
     background-color: #D96C06;
     color: white;
     padding: 0.7em 1.3em;
-    margin: 8px;
     border-radius: 3px;
     border: none;
     transition: background-color 0.2s;
@@ -195,6 +202,7 @@ changer aussi le focus des boutons
 .title-btn-post-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .header-title-post {

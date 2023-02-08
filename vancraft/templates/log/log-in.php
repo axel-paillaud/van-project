@@ -11,7 +11,7 @@
             <input class="subscribe-field" type="email" name="email">
             <label for="password"><b>Mot de passe</b></label>
             <input class="subscribe-field" type="password" name="password">
-            <input class="btn-orange" style="margin-left:0;" type="submit" value="Se connecter">
+            <input class="btn-orange margin-8-0" type="submit" value="Se connecter">
         </form>
     </div>
 </main>
