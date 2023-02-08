@@ -1,6 +1,5 @@
-<?php
-
-ob_start(); ?>
+{% extends "layout.php" %}
+{% block content %}
 <main class="main">
     <?php if (isset($message) && !empty($message)) : ?>
         <?php if ($bad) : ?>
@@ -66,4 +65,4 @@ ob_start(); ?>
         </div>   
     </div>
 </main>
-<?php $content = ob_get_clean(); ?>
+{% endblock %}

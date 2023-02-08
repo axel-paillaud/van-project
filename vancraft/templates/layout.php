@@ -7,15 +7,15 @@
     <link href="fonts.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
     <link href="icons.css" rel="stylesheet">
-    <title><?= $title ?></title>
+    <title>{% block title %}Vancraft{% endblock %}</title>
 </head>
 <body>
-    <?= $header ?>
+    {% block header %}{% include 'header/header.php' %}{% endblock %}
 
-    <?= $sidebar ?>
+    {% block sidebar %}{% include 'sidebar/sidebar.php' %}{% endblock %}
 
-    <?= $content ?>
+    {% block content %}{% include 'sidebar/sidebar.php' %}{% endblock %}
 
-    <?= $footer ?>
+    {% block footer %}{% include 'footer/footer.php' %}{% endblock %}
 </body>
 </html>

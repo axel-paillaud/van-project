@@ -4,7 +4,7 @@ require_once base_path('src/model/post.php');
 require_once base_path('src/model/user.php');
 require_once base_path('src/model/tag.php');
 
-function homepage(string $message = null, bool $bad = false) {
+function homepage(bool $bad = false) {
     $limit = "LIMIT 0, 15";
     $orderBy = "votes";
     //for the moment, the variable limit and orderBy aren't used in model/post.php
@@ -27,6 +27,21 @@ function homepage(string $message = null, bool $bad = false) {
         $post->tags = $tags;
     }
 
-    require base_path('templates/home/homepage.php');
-    return $content;
+    return $posts;
 }
+
+if (!isset($message)) {
+    $message = "";
+}
+
+if (!isset($bad_message)) {
+    $bad_message = false;
+}
+
+$posts = homepage();
+
+echo $twig->render('home/homepage.php', [
+    'posts' => $posts,
+    'messsage' => $message,
+    'bad_message' => $bad_message,
+]);

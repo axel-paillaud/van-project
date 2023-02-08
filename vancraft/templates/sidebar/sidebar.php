@@ -1,4 +1,3 @@
-<?php ob_start(); ?>
 <aside class="sidenav">
     <nav>
         <a href="/home"<?php if ($which_page == 1) {echo $here;}; ?>>Accueil</a>
@@ -7,4 +6,3 @@
         <a href="#">Utilisateurs</a>
     </nav>
 </aside>
-<?php $sidebar = ob_get_clean(); ?>

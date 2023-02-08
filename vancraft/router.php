@@ -3,8 +3,8 @@
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $routes = [
-    '/home'             => 'src/controllers/home/index.php',
-    '/'                 => 'src/controllers/home/index.php',
+    '/home'             => 'src/controllers/home/homepage.php',
+    '/'                 => 'src/controllers/home/homepage.php',
     '/subscribe'        => 'src/controllers/log.php',
     '/submit-subscribe' => 'src/controllers/log.php',
     '/log-in'           => 'src/controllers/log.php',
@@ -16,15 +16,16 @@ $routes = [
 
 function routeToControllers($uri, $routes) {
     if (array_key_exists($uri, $routes)) {
-        require $routes[$uri];
+        return $routes[$uri];
     }
     else {
         abort();
+        return 'src/controllers/home/homepage.php';
     }
 }
 
 try {
-    routeToControllers($uri, $routes);
+    require routeToControllers($uri, $routes);
 }
 catch (Exception $e) {
     $errorMsg = $e->getMessage();

@@ -12,10 +12,6 @@ function dd($value)
 function abort($code = 404) 
 {
     http_response_code($code);
-    $header = headerNav();
-    $content = homepage("Erreur : cette page est inexistante ou introuvable", true);
-    $footer = footer();
-    $sidebar = sidebar();
 }
 
 function base_path($path)

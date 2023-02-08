@@ -1,5 +1,3 @@
-<?php ob_start(); ?>
-
 <footer>
     <div class="footer-container">
         <div class="text-footer-container">
@@ -15,4 +13,3 @@
         </div>
     </div>
 </footer>
-<?php $footer = ob_get_clean(); ?>

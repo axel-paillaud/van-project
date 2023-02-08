@@ -9,7 +9,6 @@ require BASE_PATH . 'functions.php';
 require_once base_path('vendor/autoload.php');
 $loader = new \Twig\Loader\FilesystemLoader(base_path('templates'));
 $twig = new \Twig\Environment($loader); //add cache option here to compile template and load faster
-//testerer
 
 require base_path('src/controllers/header.php');
 require base_path('src/controllers/footer.php');
