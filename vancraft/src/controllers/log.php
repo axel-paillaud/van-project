@@ -91,12 +91,12 @@ else if ($uri === '/submit-log-in') {
     }
 }
 else if ($uri === '/subscribe') {
-    view('layout.php', [
-        'header' => headerNav(),
-        'sidebar' => sidebar(1),
-        'content' => subscribe(),
-        'footer' => footer(),
-        'title' => "Vancraft - S'inscrire"
+    if (!isset($subscribe_succes)) {
+        $subscribe_succes = false;
+    };
+
+    echo $twig->render('log/subscribe.php', [
+        'subscribe_succes' => $subscribe_succes,
     ]);
 }
 else if ($uri === '/submit-subscribe') {
@@ -107,12 +107,8 @@ else if ($uri === '/submit-subscribe') {
 
         $subscribe_succes = addUser($name, $email, $_POST['password'], $_POST['confirm-password']);
 
-        view('layout.php', [
-            'header' => headerNav(),
-            'sidebar' => sidebar(1),
-            'content' => subscribe($subscribe_succes),
-            'footer' => footer(),
-            'title' => "Vancraft - S'inscrire"
+        echo $twig->render('log/subscribe.php', [
+            'subscribe_succes' => $subscribe_succes,
         ]);
     }
     else {

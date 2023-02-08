@@ -363,9 +363,8 @@ changer aussi le focus des boutons
     background-color: rgba(74, 124, 89, 0.7);
     margin: 0 296px;
     color: white;
-    height: 32px;
     font-size: 20px;
-    padding: 8px;
+    padding: 16px 24px;
 }
 
 .message-container {

@@ -1,4 +1,5 @@
 {% extends "layout.php" %}
+{% block title %}Vancraft - Page d'accueil{% endblock %}
 {% block content %}
 <main class="main">
     {% if bad_message %}

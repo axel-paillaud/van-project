@@ -1,6 +1,8 @@
-<?php ob_start(); ?>
-<?php $title = "VanCraft - S'inscrire"; ?>
+{% extends "layout.php" %}
 
+{% block title %}VanCraft - S'inscrire{% endblock %}
+
+{% block content %}
 <main class="main">
     <div class="subscribe-container">
         <form action="/submit-subscribe" method="post">
@@ -15,10 +17,10 @@
             <input class="btn-orange" style="margin-left:0;" type="submit" value="S'inscrire">
         </form>
     </div>
-    <?php if ($subscribe_succes === true) : ?>
+    {% if subscribe_succes %}
         <div class="subscribe-succes-container">
             Votre inscription a bien été pris en compte.<div class="check-icon"></div>
         </div>
-    <?php endif; ?>
+    {% endif %}
 </main>
-<?php $content = ob_get_clean(); 
+{% endblock %}
