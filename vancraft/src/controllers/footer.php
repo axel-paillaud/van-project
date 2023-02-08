@@ -1,7 +1,7 @@
 <?php
 
 function footer() {
-    $footer = view('footer/footer.php');
+    require base_path('templates/footer/footer.php');
 
     return $footer;
 }

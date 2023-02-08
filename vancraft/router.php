@@ -23,8 +23,6 @@ function routeToControllers($uri, $routes) {
     }
 }
 
-$axel = "hello";
-
 try {
     routeToControllers($uri, $routes);
 }
