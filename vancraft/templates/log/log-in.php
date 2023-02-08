@@ -1,7 +1,7 @@
-<?php ob_start(); ?>
+{% extends "layout.php" %}
+{% block title %}Vancraft - Se connecter{% endblock %}
 
-<?php $title = "VanCraft - Se connecter"; ?>
-
+{% block content %}
 <main class="main">
     <div class="subscribe-container">
         <form action="/submit-log-in" method="post">
@@ -15,4 +15,4 @@
         </form>
     </div>
 </main>
-<?php $content = ob_get_clean(); 
+{% endblock %}

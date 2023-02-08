@@ -65,13 +65,7 @@ function log_in_attempt($name, $email, $password) {
 }
 
 if ($uri === '/log-in') {
-    view('layout.php', [
-        'header' => headerNav(),
-        'sidebar' => sidebar(),
-        'content' => logIn(),
-        'footer' => footer(),
-        'title' => "Vancraft - Se connecter"
-    ]);
+    echo $twig->render('log/log-in.php');
 }
 else if ($uri === '/submit-log-in') {
     if (isset($_POST['name'], $_POST['email'], $_POST['password']))
@@ -81,13 +75,11 @@ else if ($uri === '/submit-log-in') {
 
         $message = log_in_attempt($name, $email, $_POST['password']);
 
-        view('layout.php', [
-            'header' => headerNav(),
-            'sidebar' => sidebar(1),
-            'content' => homepage($message),
-            'footer' => footer(),
-            'title' => "Vancraft - Se connecter",
-        ]);
+        require 'home/homepage.php';
+
+    }
+    else {
+        throw new Exception("Un problème est survenu sur un des champs du formulaire.");
     }
 }
 else if ($uri === '/subscribe') {

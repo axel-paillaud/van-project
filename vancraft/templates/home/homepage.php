@@ -30,7 +30,6 @@
 
         <!-- parent's div for first child and last child -->
         <div>
-        <?php foreach ($posts as $post) : ?>
         {% for post in posts %}
             <div class="post-container">
                 <div class="row-container">
