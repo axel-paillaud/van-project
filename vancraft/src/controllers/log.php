@@ -14,8 +14,8 @@ function addUser($name, $email, $password, $confirm_password) {
 
     $check = $userRepository->checkIfExist($name, $email);
     if ($check['name_check'] === false && $check['email_check'] === false) {
-        if (!mkdir("images/users/" . $name . "/profile_pictures", 0733, true) ||
-        !mkdir("images/users/" . $name . "/posts_pictures", 0733, true)) {
+        if (!mkdir("assets/images/users/" . $name . "/profile_images", 0733, true) ||
+        !mkdir("assets/images/users/" . $name . "/posts_images", 0733, true)) {
             throw new Exception("Impossible de créer les dossiers de l'utilisateur sur le serveur");
         }
         $subscribe_succes = $userRepository->subscribeUser($name, $email, $hash_password, $password, $confirm_password);

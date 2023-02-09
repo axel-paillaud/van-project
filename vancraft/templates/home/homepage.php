@@ -17,10 +17,9 @@
             <h4 class="title-subtitle">Une aide communautaire à la réalisation de son véhicule aménagé.</h4>
         </div>
        <div class="title-logo-container">
-            <img src="images/logo/logo.svg" alt="VanCraft Logo"/>
+            <img src="assets/images/logo/logo.svg" alt="VanCraft Logo"/>
        </div>
     </div>
-
     <div class="content-post-container">
         <div class="title-btn-post-container">
             <h3 class="header-title-post">Questions populaires</h3>
@@ -55,7 +54,7 @@
                         {% endfor %}
                     </div>
                     <div class="user-container">
-                        <img class="profile-picture-small" src="{{ post.user_image_profile_url }}" alt="Photo profil">
+                        <img class="profile-picture-small" src="assets/images/users/{{ post.user_image_profile_url }}" alt="Photo profil">
                         <b style="margin-left: 8px;" >{{ post.user_name }}</b>
                     </div>
                 </div>
