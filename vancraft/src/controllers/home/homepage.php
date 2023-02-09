@@ -38,6 +38,13 @@ if (!isset($bad_message)) {
     $bad_message = false;
 }
 
+if (!isset($_SESSION) || empty($_SESSION)) {
+    $twig->addGlobal('user', "");
+}
+else {
+    $twig->addGlobal('user', $_SESSION);
+}
+
 $posts = homepage();
 
 echo $twig->render('home/homepage.php', [

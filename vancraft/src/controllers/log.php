@@ -26,11 +26,6 @@ function addUser($name, $email, $password, $confirm_password) {
     }
 }
 
-function logIn() {
-    require base_path('templates/log/log-in.php');
-    return $content;
-}
-
 function log_in_attempt($name, $email, $password) {
 
     $userRepository = new UserRepository();
@@ -75,7 +70,7 @@ else if ($uri === '/submit-log-in') {
 
         $message = log_in_attempt($name, $email, $_POST['password']);
 
-        require 'home/homepage.php';
+        require '../src/controllers/home/homepage.php';
 
     }
     else {
@@ -110,11 +105,18 @@ else if ($uri === '/submit-subscribe') {
 elseif ($uri === "/log-out") {
     session_destroy();
     session_start();
-    view('layout.php', [
+
+/*     view('layout.php', [
         'header' => headerNav(),
         'sidebar' => sidebar(1),
         'content' => homepage("Vous vous êtes bien déconnecté", true),
         'footer' => footer(),
         'title' => "Vancraft - Page d'accueil"
-    ]);
+    ]); */
+
+    $message = "Vous vous êtes bien déconnecté";
+    $bad_message = true;
+
+    require '../src/controllers/home/homepage.php';
+
 }

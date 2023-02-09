@@ -13,7 +13,13 @@
     <title>{% block title %}Vancraft{% endblock %}</title>
 </head>
 <body>
-    {% block header %}{% include 'header/header.php' %}{% endblock %}
+    {% block header %}
+        {% if user %}
+            {% include 'header/header_log.php' %}
+        {% else %}
+            {% include 'header/header.php' %}
+        {% endif %}
+    {% endblock %}
 
     {% block sidebar %}{% include 'sidebar/sidebar.php' %}{% endblock %}
 
