@@ -1,8 +1,9 @@
+{% set active = "class=active-page" %}
 <aside class="sidenav">
     <nav>
-        <a href="/home"<?php if ($which_page == 1) {echo $here;}; ?>>Accueil</a>
-        <a href="#">Questions</a>
-        <a href="#">Mots-clés</a>
-        <a href="#">Utilisateurs</a>
+        <a {% if page == 'home' %} {{ active }} {% endif %} href="/home">Accueil</a>
+        <a {% if page == 'post' %} {{ active }} {% endif %} href="/post-article">Questions</a>
+        <a {% if page == 'tag' %} {{ active }} {% endif %} href="#">Mots-clés</a>
+        <a {% if page == 'user' %} {{ active }} {% endif %} href="#">Utilisateurs</a>
     </nav>
 </aside>

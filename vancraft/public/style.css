@@ -140,6 +140,7 @@ changer aussi le focus des boutons
     text-decoration: none;
     color: black;
     padding: 16px 8px;
+    transition: 0.2s color;
 }
 
 .sidenav a:hover {
@@ -150,15 +151,16 @@ changer aussi le focus des boutons
     color: #ae5604;
 }
 
-#here {
+.sidenav .active-page {
     color: #D96C06;
+    transition: 0.2s color;
 }
 
-#here:hover {
-    color: #ae5604;
+.sidenav .active-page:hover {
+    color: #AE5604;
 }
 
-#here:active {
+.sidenav .active-page:active {
     color: #7D3E03;
 }
 

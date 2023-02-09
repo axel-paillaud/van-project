@@ -1,7 +1,8 @@
-<?php ob_start(); ?>
+{% extends "layout.php" %}
 
-<?php $title = "Vancraft - Poser une question" ?>
+{% block title %}Vancraft - Poser une question{% endblock %}
 
+{% block content %}
 <main class="main">
     <div class="send-post-container">
         <form action="/submit-post" method="post">
@@ -15,4 +16,4 @@
         </form>
     </div>
 </main>
-<?php $content = ob_get_clean(); ?>
+{% endblock %}

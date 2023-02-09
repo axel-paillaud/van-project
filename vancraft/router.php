@@ -28,11 +28,7 @@ try {
     require routeToControllers($uri, $routes);
 }
 catch (Exception $e) {
-    $errorMsg = $e->getMessage();
-    $bad = true;
-    $header = headerNav();
-    $sidebar = sidebar(1);
-    $content = homepage($errorMsg, $bad);
-    $footer = footer();
-    require_once('templates/layout.php');
+    $message = $e->getMessage();
+    $bad_message = true;
+    require 'src/controllers/home/homepage.php';
 }

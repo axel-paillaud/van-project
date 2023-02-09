@@ -56,7 +56,6 @@ class TagRepository
         );
 
         $dbTags = $statement->fetchAll(PDO::FETCH_COLUMN);
-        print_r($dbTags);
     }
 
     public function dbConnect() {

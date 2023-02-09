@@ -27,24 +27,15 @@ function submit_post(string $title, string $content, string $tags) {
 }
 
 if ($uri === "/post-article") {
-    view('layout.php', [
-        'header' => headerNav(),
-        'sidebar' => sidebar(),
-        'content' => post(),
-        'footer' => footer(),
-        'title' => "Vancraft - Poser une question"
+    echo $twig->render('article/post.php', [
+        'page' => 'post',
     ]);
 }
 else if ($uri === "/submit-post") {
     if (isset($_POST['title'], $_POST['content'], $_POST['tags'])) {
         $message = submit_post($_POST['title'], $_POST['content'], $_POST['tags']);
-        view('layout.php', [
-            'header' => headerNav(),
-            'sidebar' => sidebar(),
-            'content' => homepage($message),
-            'footer' => footer(),
-            'title' => "Vancraft - Page d'accueil"
-        ]);
+
+        require 'home/homepage.php';
     }
     else {
         throw new Exception("Un problème est survenu sur l'un des champs du formulaire.");
