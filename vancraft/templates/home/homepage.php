@@ -22,7 +22,7 @@
     </div>
     <div class="content-post-container">
         <div class="title-btn-post-container">
-            <h3 class="header-title-post">Questions populaires<i class="fa-solid fa-fan"></i></h3>
+            <h3 class="header-title-post">Questions populaires</h3>
             <a href="/post-article"><button class="btn-orange"><b>Poser une question</b></button></a>
         </div>
         <hr class="horizontal-rule">

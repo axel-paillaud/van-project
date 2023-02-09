@@ -12,12 +12,22 @@ h1 {
     font-family: nova_mono;
 }
 
+/* margin class here */
+
 .margin-8 {
     margin: 8px;
 }
 
 .margin-8-0 {
     margin: 8px 0;
+}
+
+/* icons class here */
+.icon-right {
+    color: #A4A4A4;
+    position: relative;
+    left: 33px;
+    z-index: 3;
 }
 
 .main {
