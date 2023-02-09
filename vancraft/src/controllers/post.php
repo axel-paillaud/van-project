@@ -31,8 +31,6 @@ function submit_post(string $title, string $content, string $tags) {
 $tags = json_encode(getTags());
 echo $tags;
 
-include '../public/testFetch.php';
-
 if ($uri === "/post-article") {
     echo $twig->render('article/post.php', [
         'page' => 'post',
