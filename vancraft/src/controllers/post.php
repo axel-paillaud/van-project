@@ -4,9 +4,11 @@ require_once base_path('src/model/post.php');
 require_once base_path('src/model/user.php');
 require_once base_path('src/model/tag.php');
 
-function post() {
-    require base_path('templates/article/post.php');
-    return $content;
+function getTags() {
+    $tagRepository = new TagRepository();
+
+    $tags = $tagRepository->getTags();
+    return $tags;
 }
 
 function submit_post(string $title, string $content, string $tags) {
@@ -25,6 +27,11 @@ function submit_post(string $title, string $content, string $tags) {
         return $message;
     }
 }
+
+$tags = json_encode(getTags());
+echo $tags;
+
+include '../public/testFetch.php';
 
 if ($uri === "/post-article") {
     echo $twig->render('article/post.php', [

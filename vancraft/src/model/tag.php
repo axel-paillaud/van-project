@@ -11,6 +11,17 @@ class TagRepository
 {
     public ?PDO $database = null;
 
+    public function getTags() : array {
+        $this->dbConnect();
+
+        $statement = $this->database->query(
+            "SELECT title FROM tags"
+        );
+        $tags = $statement->fetchAll(PDO::FETCH_COLUMN);
+
+        return $tags;
+    }
+
     public function getTagsPost(int $post_id) : array {
         $this->dbConnect();
 
