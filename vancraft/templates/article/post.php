@@ -16,5 +16,5 @@
         </form>
     </div>
 </main>
-<script src="assets/js/tags.js"></script>
+<script src="assets/js/addTags.js"></script>
 {% endblock %}

@@ -4,13 +4,6 @@ require_once base_path('src/model/post.php');
 require_once base_path('src/model/user.php');
 require_once base_path('src/model/tag.php');
 
-/* function getTags() {
-    $tagRepository = new TagRepository();
-
-    $tags = $tagRepository->getTags();
-    return $tags;
-} */
-
 function submit_post(string $title, string $content, string $tags) {
     if (empty($title) || empty($content) || empty($tags)) {
         throw new Exception("Erreur : Un des champs est vide.");

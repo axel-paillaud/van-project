@@ -13,7 +13,6 @@ $tags = getTags();
 
 $tags = json_encode($tags);
 
-header("Access-Control-Allow-Origin: *");
 header("Content-type: application/json");
 
 echo $tags;

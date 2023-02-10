@@ -12,7 +12,7 @@ $routes = [
     '/log-out'          => 'src/controllers/log.php',
     '/post-article'     => 'src/controllers/post.php',
     '/submit-post'      => 'src/controllers/post.php',
-    '/api/tags'         => 'src/controllers/api.php',
+    '/api/tags'         => 'src/controllers/api/tags.php',
 ];
 
 function routeToControllers($uri, $routes) {
