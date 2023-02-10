@@ -1,11 +1,15 @@
 <?php
 
-/* require_once base_path('src/model/tag.php'); */
+require_once base_path('src/model/tag.php');
 
-$tags = [
-    'value' => 'test',
-    'value2' => 'hello, there'
-];
+function getTags() {
+    $tagRepository = new TagRepository();
+
+    $tags = $tagRepository->getTags();
+    return $tags;
+}
+
+$tags = getTags();
 
 $tags = json_encode($tags);
 
