@@ -14,7 +14,4 @@ if (isset($_SESSION) && !empty($_SESSION)) {
     $twig->addGlobal('user', $_SESSION);
 }
 
-require base_path('src/controllers/header.php');
-require base_path('src/controllers/footer.php');
-require base_path('src/controllers/sidebar.php');
 require base_path('router.php');

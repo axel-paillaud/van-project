@@ -16,4 +16,5 @@
         </form>
     </div>
 </main>
+<script src="assets/js/tags.js"></script>
 {% endblock %}
