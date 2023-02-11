@@ -252,6 +252,12 @@ changer aussi le focus des boutons
     flex-direction: row;
 }
 
+.post-container {
+    background-color: #D6CE99;
+    padding: 16px;
+    border-bottom : 1px solid #bf946c;
+}
+
 .post-container:first-child {
     border-radius: 6px 6px 0 0;
 }
