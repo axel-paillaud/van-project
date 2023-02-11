@@ -361,6 +361,8 @@ changer aussi le focus des boutons
     margin: 16px 0;
 }
 
+/* post question here */
+
 .post-field {
     width: 100%;
     padding: 10px;
@@ -389,9 +391,24 @@ changer aussi le focus des boutons
     margin: 0 4px;
 }
 
-.test {
+.modal-tags {
     position: absolute;
-    background-color: brown;
+    background-color: #F6F0EA;
+    border-radius: 3px;
+    box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.25);
+    bottom: 40px;
+    padding: 16px;
+    font-size: 14px;
+    color: black;
+}
+
+.modal-tags ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
 }
 
 .input-tag-container input {

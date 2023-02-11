@@ -16,11 +16,16 @@
  #}             
                 <div class="input-tag-container">
                     <input autocomplete="off" type="text" name="tags">
-                    <div class="test">hello1</div>
+                    <div class="modal-tags">
+                        <ul>
+                            <li>armaflex</li>
+                            <li>styrodur</li>
+                            <li>laine</li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="input-tag-container">
                     <input autocomplete="off" type="text" name="tags">
-                    <div class="test">hello2</div>
                 </div>
                 <div class="input-tag-container">
                     <input autocomplete="off" type="text" name="tags">
