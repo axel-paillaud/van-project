@@ -18,6 +18,8 @@
                     <input autocomplete="off" type="text" name="tags">
                     <div class="modal-tags">
                         <ul>
+                            <li>Créer un tag "Arma"</li>
+                            <hr>
                             <li>armaflex</li>
                             <li>styrodur</li>
                             <li>laine</li>

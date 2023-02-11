@@ -399,22 +399,38 @@ changer aussi le focus des boutons
 
 .modal-tags {
     position: absolute;
+    padding: 8px 0;
     background-color: #F6F0EA;
     border-radius: 3px;
     box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.25);
     bottom: 40px;
-    padding: 16px;
     font-size: 14px;
     color: black;
+    overflow: hidden;
 }
 
 .modal-tags ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    row-gap: 16px;
+}
+
+.modal-tags hr {
+    width: 100%;
+    margin: 4px 0;
+    border: 1px solid #dbdbdb;
+    border-top: none;
+}
+
+.modal-tags li {
+    padding: 8px 16px;
+    transition: background-color 0.2s;
+
+}
+
+.modal-tags li:hover {
+    cursor: pointer;
+    background-color: #e6e6e6;
 }
 
 .input-tag-container input {
