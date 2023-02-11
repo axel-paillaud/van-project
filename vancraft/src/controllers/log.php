@@ -2,11 +2,6 @@
 
 require_once base_path('src/model/user.php');
 
-function subscribe($subscribe_succes = false) {
-    require base_path('templates/log/subscribe.php');
-    return $content;
-}
-
 function addUser($name, $email, $password, $confirm_password) {
     $hash_password = password_hash($password, PASSWORD_DEFAULT);
 

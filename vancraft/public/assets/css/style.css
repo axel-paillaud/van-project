@@ -221,7 +221,7 @@ changer aussi le focus des boutons
     margin: 10px 0;
 }
 
-.post-container {
+(()=))container {
     background-color: #D6CE99;
     padding: 32px 32px 16px 24px;
     display: flex;
@@ -239,12 +239,12 @@ changer aussi le focus des boutons
     max-width: 1000px;
 }
 
-.send-post-container div {
-    margin: 8px 0;
-}
-
 .send-post-container form {
     width: 100%;
+}
+
+.send-post-container label {
+    display: block;
 }
 
 .row-container {
@@ -363,16 +363,52 @@ changer aussi le focus des boutons
 
 .post-field {
     width: 100%;
-    height: 32px;
+    padding: 10px;
     border-radius: 3px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #545454;
+    border: 1px solid #545454;
     margin: 16px 0;
+    font-family: lato;
 }
 
-.content {
+.post-tags-container {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #545454;
+    border-radius: 3px;
+   background-color: white;
+    color: gray;
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
+
+.input-tag-container {
+    position: relative;
+    flex: 0 1 20%;
+    margin: 0 4px;
+}
+
+.test {
+    position: absolute;
+    background-color: brown;
+}
+
+.input-tag-container input {
+    border: none;
+    padding: 4px;
+    width: 100%;
+}
+
+.input-tag-container input:focus {
+    outline: 1px solid #AE5604;
+    border-radius: 3px;
+}
+
+.text-content {
     min-height: 196px;
+    max-width: 100%;
+    min-width: 30%;
 }
 
 .subscribe-succes-container {
