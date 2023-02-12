@@ -15,8 +15,7 @@
                 <span>Ajouter jusqu'à 5 mots-clefs (tags) à votre question. Séparer les mots-clefs par des virgules.</span>
                 <div class="input-tag-container">
                     <input autocomplete="off" type="text" name="tags">
-                    <div class="modal-tags">
-                    </div>
+                    <div class="modal-tags"></div>
                 </div>
             </div>
             <input autocomplete="off" class="post-field" type="text" name="tags" placeholder="Ajouter jusqu'à 5 mots-clefs (tags) à votre question. Séparer les mots-clefs par des virgules.">

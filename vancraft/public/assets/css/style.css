@@ -429,6 +429,7 @@ changer aussi le focus des boutons
 .modal-tags li {
     padding: 8px 16px;
     transition: background-color 0.2s;
+    white-space: nowrap;
 
 }
 
