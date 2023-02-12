@@ -22,6 +22,10 @@ h1 {
     margin: 8px 0;
 }
 
+.margin-right-8 {
+    margin-right: 8px;
+}
+
 /* icons class here */
 .icon-right {
     color: #A4A4A4;
