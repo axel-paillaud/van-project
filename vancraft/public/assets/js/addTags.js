@@ -1,8 +1,8 @@
 let url = "/api/tags";
 var tags;
 
-let modalContent = `<ul>
-                        <li><i class="fa-solid fa-tag margin-right-8"></i>Créer un tag "<span id=js-tag-input></span>"</li>
+let modalContent = `<ul id='js-list-tag'>
+                        <li><i class="fa-solid fa-tag margin-right-8"></i>Créer un tag "<span id='js-tag-input'></span>"</li>
                         <hr>
                     </ul>`
 
@@ -18,14 +18,32 @@ const initTags = function(e) {
 const addTags = function(e) {
     let modal = this.nextElementSibling;
     if (this.value != "" && this.value != " ") { //check if the user input tag is not an empty string, or a space
-        console.log(tags);
+        let tagStartWith = checkTags(tags, this.value);
         modal.innerHTML = modalContent;
+        let listTagsExists = document.getElementById("js-list-tag");
+        tagStartWith.forEach(tag => {
+            let li = document.createElement("li");
+            listTagsExists.appendChild(li).innerText = tag;
+        });
         let tagInput = document.getElementById("js-tag-input");
         tagInput.innerText = this.value;
     }
     else {
         modal.innerHTML = "";
     }
+}
+
+//function that check if the first input of user exists in the array of tags, and return an array of tags that begin with the same input
+function checkTags(tags, value) {
+    value = value.toLowerCase();
+    tagStartWith = [];
+    tags.forEach(tag => {
+        if (tag.startsWith(value)) {
+            tagStartWith.push(tag);
+        }
+    });
+
+    return tagStartWith;
 }
 
 fetch(url)
