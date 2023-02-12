@@ -11,7 +11,10 @@ const initTags = function(e) {
 }
 
 const addTags = function(e) {
-    console.log("hello");
+    console.log(this.value);
+    if (this.value != "" && this.value != " ") { //check if the user input tag is not an empty string, or a space
+        console.log("ok, lets go! ");
+    }
 }
 
 fetch(url)
