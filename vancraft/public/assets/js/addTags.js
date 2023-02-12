@@ -16,12 +16,15 @@ const initTags = function(e) {
 }
 
 const addTags = function(e) {
+    let modal = this.nextElementSibling;
     if (this.value != "" && this.value != " ") { //check if the user input tag is not an empty string, or a space
         console.log(tags);
-        let modal = this.nextElementSibling;
         modal.innerHTML = modalContent;
         let tagInput = document.getElementById("js-tag-input");
         tagInput.innerText = this.value;
+    }
+    else {
+        modal.innerHTML = "";
     }
 }
 
