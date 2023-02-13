@@ -24,17 +24,31 @@ const addTags = function(e) {
         if (modalTags === false) {
             modal.innerHTML = modalContener; //modalContener have to be add only once, modalContent need to be refresh on every change
             modalTags = true;
-            document.getElementById("js-list-tag").addEventListener('click', getInputTag);
+
+            let listTags = document.getElementById("js-list-tag");
+            let i = document.createElement("i");
+            let li = document.createElement("li");
+            let hr = document.createElement("hr");
+            let span = document.createElement("span");
+
+            hr.addEventListener('click', stopPropagation);
+
+            li.appendChild(i).classList.add("fa-solid", "fa-tag", "margin-right-8");
+            li.innerHTML += "Créer un tag ";
+            li.appendChild(span).id = "js-tag-input";
+            listTags.appendChild(li);
+            listTags.appendChild(hr);
+
+            listTags.addEventListener('click', getInputTag);
         }
         let listTags = document.getElementById("js-list-tag");
-        listTags.innerHTML = modalContent;
         let tagStartWith = checkTags(tags, this.value);
         tagStartWith.forEach(tag => {
             let li = document.createElement("li");
             listTags.appendChild(li).innerText = tag;
         });
         let tagInput = document.getElementById("js-tag-input");
-        tagInput.innerText = this.value;
+        tagInput.innerText = '"' + this.value + '"';
     }
     else {
         document.getElementById("js-list-tag").removeEventListener('click', getInputTag);
@@ -45,6 +59,31 @@ const addTags = function(e) {
 
 const getInputTag = function (e) {
     console.log(e.target);
+
+    checkInputTag(e);
+}
+
+function checkInputTag(element) {
+    if (element.target.lastElementChild != null) {
+        if (element.target.lastElementChild.id === "js-tag-input") {
+            console.log("Ok, get this content: ");
+            console.log(element.target.lastElementChild.textContent);
+        }
+    }
+
+    if (element.target.tagName === "SPAN") {
+        console.log("Ok, get this content: ");
+        console.log(element.target.textContent);
+    }
+
+    if (element.target.tagName === "I") {
+        console.log("Ok, get this content: ");
+        console.log(element.target.nextElementSibling.textContent);
+    }
+}
+
+const stopPropagation = function (e) {
+    e.stopPropagation();
 }
 
 //function that check if the first input of user exists in the array of tags, and return an array of tags that begin with the same input
