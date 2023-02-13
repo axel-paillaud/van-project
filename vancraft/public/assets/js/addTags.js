@@ -1,13 +1,9 @@
 let url = "/api/tags";
 var tags;
-let modalTags = false;
+let modal = document.getElementById("js-modal-tag");
 
 let modalContener = `<ul id='js-list-tag'>
                     </ul>`
-
-let modalContent = `
-                    <li><i class="fa-solid fa-tag margin-right-8"></i>Créer un tag "<span id='js-tag-input'></span>"</li>
-                    <hr>`
 
 //init tags = prepare for write tags, remove text information and set the focus on input tags
 const initTags = function(e) {
@@ -15,15 +11,17 @@ const initTags = function(e) {
     let inputTag = document.querySelector(".input-tag-container input");
     inputTag.focus();
     inputTag.addEventListener('input', addTags);
+    inputTag.addEventListener('focus', addTags);
+    inputTag.addEventListener('click', stopPropagation);
     this.removeEventListener('click', initTags);
 }
 
 const addTags = function(e) {
-    let modal = this.nextElementSibling;
+
     if (this.value != "" && this.value != " ") { //check if the user input tag is not an empty string, or a space
-        if (modalTags === false) {
+        if (modal.style.display = "none") {
             modal.innerHTML = modalContener; //modalContener have to be add only once, modalContent need to be refresh on every change
-            modalTags = true;
+            modal.style.display = null;
 
             let listTags = document.getElementById("js-list-tag");
             let i = document.createElement("i");
@@ -40,6 +38,8 @@ const addTags = function(e) {
             listTags.appendChild(hr);
 
             listTags.addEventListener('click', getInputTag);
+            li.addEventListener('click', closeModal);
+            document.querySelector("body").addEventListener('click', closeModal);
         }
 
         let listTags = document.getElementById("js-list-tag");
@@ -54,6 +54,7 @@ const addTags = function(e) {
         let tagStartWith = checkTags(tags, this.value);
         tagStartWith.forEach(tag => {
             let li = document.createElement("li");
+            li.addEventListener('click', closeModal);
             listTags.appendChild(li).innerText = tag;
         });
         let tagInput = document.getElementById("js-tag-input");
@@ -62,13 +63,14 @@ const addTags = function(e) {
     else {
         document.getElementById("js-list-tag").removeEventListener('click', getInputTag);
         modal.innerHTML = "";
-        modalTags = false;
+        modal.style.display = "none";
     }
 }
 
 const getInputTag = function (e) {
-    let value = checkInputTag(e);
-    console.log(value);
+    let tag = checkInputTag(e);
+    console.log(tag);
+
 }
 
 function checkInputTag(element) {
@@ -101,6 +103,25 @@ const stopPropagation = function (e) {
     e.stopPropagation();
 }
 
+const closeModal = function(e) {
+    if (modal.style.display === "none") return;
+
+    e.preventDefault();
+    modal.style.display = "none";
+    modal.addEventListener('click', stopPropagation);
+    removeCloseEventListener();
+}
+
+function removeCloseEventListener() {
+    let parentTagList = document.getElementById("js-list-tag");
+    let tagList = parentTagList.children;
+
+    for (let i = 0; i < tagList.length; i++) {
+        tagList[i].removeEventListener('click', closeModal);
+    }
+    document.querySelector("body").removeEventListener('click', closeModal);
+}
+
 //function that check if the first input of user exists in the array of tags, and return an array of tags that begin with the same input
 function checkTags(tags, value) {
     value = value.toLowerCase();
@@ -125,7 +146,7 @@ fetch(url)
 })
 .then(getTags => {
     tags = getTags;
-    let modalTags = document.getElementById("js-modal-tags");
+    let modalTags = document.querySelector(".post-tags-container");
     modalTags.addEventListener('click', initTags);
 })
 

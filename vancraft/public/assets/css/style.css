@@ -134,7 +134,7 @@ h1 {
     outline-color: rgba(217, 108, 6, 0.6);
 }
 /**
-changer aussi le focus des boutons
+change also focus button
 **/
 
 .sidenav {
@@ -373,6 +373,11 @@ changer aussi le focus des boutons
 
 /* post question here */
 
+@keyframes modalSlideUp {
+    from{transform: translateY(10px); opacity: 0;}
+    to{transform: translateY(0px); opacity: 1;}
+}
+
 .post-field {
     width: 100%;
     padding: 10px;
@@ -412,6 +417,7 @@ changer aussi le focus des boutons
     color: black;
     overflow-y: scroll;
     max-height: 285px;
+    animation: modalSlideUp 0.2s;
 }
 
 .modal-tags ul {
