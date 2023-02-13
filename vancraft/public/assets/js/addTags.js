@@ -58,28 +58,34 @@ const addTags = function(e) {
 }
 
 const getInputTag = function (e) {
-    console.log(e.target);
-
-    checkInputTag(e);
+    let value = checkInputTag(e);
+    console.log(value);
 }
 
 function checkInputTag(element) {
-    if (element.target.lastElementChild != null) {
-        if (element.target.lastElementChild.id === "js-tag-input") {
-            console.log("Ok, get this content: ");
-            console.log(element.target.lastElementChild.textContent);
+    if(element.target.lastElementChild === null) {
+        if (element.target.tagName === "LI") {
+            return element.target.textContent;
         }
     }
 
-    if (element.target.tagName === "SPAN") {
-        console.log("Ok, get this content: ");
-        console.log(element.target.textContent);
+    if (element.target.lastElementChild != null) {
+        if (element.target.lastElementChild.id === "js-tag-input") {
+            let tag = element.target.lastElementChild.textContent;
+            return tag.substring(1, tag.length -1); //remove quote
+        }
     }
 
     if (element.target.tagName === "I") {
-        console.log("Ok, get this content: ");
-        console.log(element.target.nextElementSibling.textContent);
+        let tag = element.target.nextElementSibling.textContent;
+        return tag.substring(1, tag.length -1);
     }
+    if (element.target.tagName === "SPAN") {
+        let tag = element.target.textContent;
+        return tag.substring(1, tag.length - 1);
+    }
+
+    return false;
 }
 
 const stopPropagation = function (e) {
