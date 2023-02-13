@@ -41,7 +41,16 @@ const addTags = function(e) {
 
             listTags.addEventListener('click', getInputTag);
         }
+
         let listTags = document.getElementById("js-list-tag");
+
+        let listElt = listTags.children;
+        for (let i = 0; i < listElt.length; i++) {
+            if (i > 1) {
+                listTags.removeChild(listElt[i])
+            }
+        }
+
         let tagStartWith = checkTags(tags, this.value);
         tagStartWith.forEach(tag => {
             let li = document.createElement("li");
