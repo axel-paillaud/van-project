@@ -1,10 +1,13 @@
 let url = "/api/tags";
 var tags;
+let modalTags = false;
 
-let modalContent = `<ul id='js-list-tag'>
-                        <li><i class="fa-solid fa-tag margin-right-8"></i>Créer un tag "<span id='js-tag-input'></span>"</li>
-                        <hr>
+let modalContener = `<ul id='js-list-tag'>
                     </ul>`
+
+let modalContent = `
+                    <li><i class="fa-solid fa-tag margin-right-8"></i>Créer un tag "<span id='js-tag-input'></span>"</li>
+                    <hr>`
 
 //init tags = prepare for write tags, remove text information and set the focus on input tags
 const initTags = function(e) {
@@ -18,19 +21,30 @@ const initTags = function(e) {
 const addTags = function(e) {
     let modal = this.nextElementSibling;
     if (this.value != "" && this.value != " ") { //check if the user input tag is not an empty string, or a space
+        if (modalTags === false) {
+            modal.innerHTML = modalContener; //modalContener have to be add only once, modalContent need to be refresh on every change
+            modalTags = true;
+            document.getElementById("js-list-tag").addEventListener('click', getInputTag);
+        }
+        let listTags = document.getElementById("js-list-tag");
+        listTags.innerHTML = modalContent;
         let tagStartWith = checkTags(tags, this.value);
-        modal.innerHTML = modalContent;
-        let listTagsExists = document.getElementById("js-list-tag");
         tagStartWith.forEach(tag => {
             let li = document.createElement("li");
-            listTagsExists.appendChild(li).innerText = tag;
+            listTags.appendChild(li).innerText = tag;
         });
         let tagInput = document.getElementById("js-tag-input");
         tagInput.innerText = this.value;
     }
     else {
+        document.getElementById("js-list-tag").removeEventListener('click', getInputTag);
         modal.innerHTML = "";
+        modalTags = false;
     }
+}
+
+const getInputTag = function (e) {
+    console.log(e.target);
 }
 
 //function that check if the first input of user exists in the array of tags, and return an array of tags that begin with the same input
