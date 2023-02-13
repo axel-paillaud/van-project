@@ -410,7 +410,8 @@ changer aussi le focus des boutons
     bottom: 40px;
     font-size: 14px;
     color: black;
-    overflow: hidden;
+    overflow-y: scroll;
+    max-height: 285px;
 }
 
 .modal-tags ul {
