@@ -1,6 +1,5 @@
 let url = "/api/tags";
 var tags;
-let modal = document.getElementById("js-modal-tag");
 
 let modalContener = `<ul id='js-list-tag'>
                     </ul>`
@@ -19,6 +18,7 @@ const initTags = function(e) {
 const addTags = function(e) {
 
     if (this.value != "" && this.value != " ") { //check if the user input tag is not an empty string, or a space
+        let modal = document.getElementById("js-modal-tag");
         if (modal.style.display = "none") {
             modal.innerHTML = modalContener; //modalContener have to be add only once, modalContent need to be refresh on every change
             modal.style.display = null;
@@ -76,25 +76,42 @@ function DOMinitCreateTags(listTags) { //add "Créer un tag xxx" to the list tag
     li.addEventListener('click', closeModal);
 }
 
+function  DOMinitNewInput() {
+    let newInput = document.createElement("input");
+    newInput.maxLength = 28;
+    newInput.autocomplete = "off";
+    newInput.name = "tags";
+    newInput.type = "text";
+    let div = document.createElement("div");
+    let divModal = document.createElement("div");
+    divModal.id = "js-modal-tag";
+    divModal.classList.add("modal-tags");
+    divModal.style.display = "none";
+    div.classList.add("input-tag-container");
+    div.appendChild(newInput);
+    div.appendChild(divModal);
+
+    document.querySelector(".post-tags-container").appendChild(div);
+    newInput.addEventListener('input', addTags);
+    newInput.focus();
+}
+
 const getInputTag = function (e) {
     let tag = checkInputTag(e);
 
     if (tag != false) {
         console.log(tag);
 
-        let input = document.querySelector(".input-tag-container input");
-        let newInput = document.createElement("input");
-        let div = document.createElement("div");
-        div.classList.add("input-tag-container");
-        div.appendChild(newInput);
+        document.getElementById("js-modal-tag").remove();
+        let allInput = document.querySelectorAll(".input-tag-container input");
+        let lastInput = allInput[allInput.length - 1];
 
-        input.value = tag;
-        input.disabled = true;
-        input.classList.add("tag-lock");
+        lastInput.value = tag;
+        lastInput.disabled = true;
+        lastInput.classList.add("tag-lock");
+
+        DOMinitNewInput();
         
-        document.querySelector(".post-tags-container").appendChild(div);
-        newInput.addEventListener('input', addTags);
-        newInput.focus();
     }
 }
 
@@ -129,6 +146,7 @@ const stopPropagation = function (e) {
 }
 
 const closeModal = function(e) {
+    let modal = document.getElementById("js-modal-tag");
     if (modal.style.display === "none") return;
 
     e.preventDefault();
