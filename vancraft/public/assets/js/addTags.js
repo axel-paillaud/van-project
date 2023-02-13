@@ -24,21 +24,9 @@ const addTags = function(e) {
             modal.style.display = null;
 
             let listTags = document.getElementById("js-list-tag");
-            let i = document.createElement("i");
-            let li = document.createElement("li");
-            let hr = document.createElement("hr");
-            let span = document.createElement("span");
 
-            hr.addEventListener('click', stopPropagation);
+            DOMinitCreateTags(listTags);
 
-            li.appendChild(i).classList.add("fa-solid", "fa-tag", "margin-right-8");
-            li.innerHTML += "Créer un tag ";
-            li.appendChild(span).id = "js-tag-input";
-            listTags.appendChild(li);
-            listTags.appendChild(hr);
-
-            listTags.addEventListener('click', getInputTag);
-            li.addEventListener('click', closeModal);
             document.querySelector("body").addEventListener('click', closeModal);
         }
 
@@ -67,10 +55,44 @@ const addTags = function(e) {
     }
 }
 
+function DOMinitCreateTags(listTags) { //add "Créer un tag xxx" to the list tags DOM
+    let i = document.createElement("i");
+    let li = document.createElement("li");
+    let hr = document.createElement("hr");
+    let span = document.createElement("span");
+
+    hr.addEventListener('click', stopPropagation);
+
+    li.appendChild(i).classList.add("fa-solid", "fa-tag", "margin-right-8");
+    li.innerHTML += "Créer un tag ";
+    li.appendChild(span).id = "js-tag-input";
+    listTags.appendChild(li);
+    listTags.appendChild(hr);
+
+    listTags.addEventListener('click', getInputTag);
+    li.addEventListener('click', closeModal);
+}
+
 const getInputTag = function (e) {
     let tag = checkInputTag(e);
-    console.log(tag);
 
+    if (tag != false) {
+        console.log(tag);
+
+        let input = document.querySelector(".input-tag-container input");
+        let newInput = document.createElement("input");
+        let div = document.createElement("div");
+        div.classList.add("input-tag-container");
+        div.appendChild(newInput);
+
+        input.value = tag;
+        input.disabled = true;
+        input.classList.add("tag-lock");
+        
+        document.querySelector(".post-tags-container").appendChild(div);
+        newInput.addEventListener('input', addTags);
+        newInput.focus();
+    }
 }
 
 function checkInputTag(element) {

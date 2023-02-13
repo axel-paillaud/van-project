@@ -456,6 +456,13 @@ change also focus button
     border-radius: 3px;
 }
 
+.tag-lock {
+    background-color: #4e1e18;
+    color: white;
+    border-radius: 3px;
+    text-align: center;
+}
+
 .text-content {
     min-height: 196px;
     max-width: 100%;
