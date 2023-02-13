@@ -40,11 +40,14 @@ const addTags = function(e) {
         }
 
         let tagStartWith = checkTags(tags, this.value);
-        tagStartWith.forEach(tag => {
+
+        for (let i = 0; i < tagStartWith.length; i++) {
+            if (i > 10) break;
             let li = document.createElement("li");
             li.addEventListener('click', closeModal);
-            listTags.appendChild(li).innerText = tag;
-        });
+            listTags.appendChild(li).innerText = tagStartWith[i];
+        }
+
         let tagInput = document.getElementById("js-tag-input");
         tagInput.innerText = '"' + this.value + '"';
     }

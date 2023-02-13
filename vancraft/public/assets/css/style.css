@@ -415,8 +415,8 @@ change also focus button
     bottom: 40px;
     font-size: 14px;
     color: black;
-    overflow-y: scroll;
-    max-height: 285px;
+    max-height: 433px;
+    overflow: hidden;
     animation: modalSlideUp 0.2s;
 }
 
