@@ -20,10 +20,9 @@ const initTags = function(e) {
 }
 
 const addTags = function(e) {
-
+    let modal = document.getElementById("js-modal-tag");
     if (this.value != "" && this.value != " ") { //check if the user input tag is not an empty string, or a space
-        let modal = document.getElementById("js-modal-tag");
-        if (modal.style.display = "none") {
+        if (modal.style.display === "none") {
             modal.innerHTML = modalContener; //modalContener have to be add only once, modalContent need to be refresh on every change
             modal.style.display = null;
 
@@ -56,7 +55,10 @@ const addTags = function(e) {
         tagInput.innerText = '"' + this.value + '"';
     }
     else {
-        document.getElementById("js-list-tag").removeEventListener('click', addInputTag);
+        let listTags = document.getElementById("js-list-tag");
+        if (listTags != null) {
+            document.getElementById("js-list-tag").removeEventListener('click', addInputTag);
+        }  
         modal.innerHTML = "";
         modal.style.display = "none";
     }
@@ -97,6 +99,9 @@ function  DOMinitNewInput() {
 
     document.querySelector(".post-tags-container").appendChild(div);
     newInput.addEventListener('input', addTags);
+    newInput.addEventListener('click', addTags);
+    newInput.addEventListener('focus', addTags);
+    newInput.addEventListener('click', stopPropagation);
     newInput.focus();
 }
 
@@ -113,6 +118,10 @@ const addInputTag = function (e) {
         lastInput.classList.add("tag-lock");
         userInputTags.push(tag);
         countUserInputTags++;
+
+        lastInput.removeEventListener('click', addTags);
+        lastInput.removeEventListener('focus', addTags);
+        lastInput.removeEventListener('input', addTags);
 
         if (countUserInputTags < 5) {
             DOMinitNewInput();
