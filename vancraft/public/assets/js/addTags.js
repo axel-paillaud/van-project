@@ -121,9 +121,10 @@ const addInputTag = function (e) {
         lastInput.parentElement.appendChild(icon);
 
         lastInput.setAttribute('value', tag);
-        //lastInput.value = tag;
         lastInput.disabled = true;
-        lastInput.classList.add("tag-lock");
+        //lastInput.classList.add("tag-lock");
+        lastInput.parentElement.classList.add("tag-lock");
+        lastInput.style.color = "white";
         userInputTags.push(tag);
         countUserInputTags++;
 
@@ -138,7 +139,7 @@ const addInputTag = function (e) {
     else { // if input tag is equal false, that's mean it's incorrect, so delete the current input and refocus
         lastInput.value = "";
         lastInput.focus();
-        inputAlreadyHere = allInput[tag];
+        inputAlreadyHere = allInput[tag].parentElement;
         resetAnimation(inputAlreadyHere, "pulseTags 0.4s");
     }
 }

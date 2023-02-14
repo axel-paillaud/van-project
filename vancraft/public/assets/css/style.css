@@ -42,9 +42,8 @@ h1 {
 }
 
 .xmark-tag-icon {
+    margin-right: 8px;
     color: #A4A4A4;
-    position: relative;
-    right: 20px;
     z-index: 3;
     transition: color 0.3s;
 }
@@ -477,6 +476,7 @@ change also focus button
     padding: 4px;
     width: 100%;
     font-family: lato;
+    background-color: unset;
 }
 
 .input-tag-container input:focus {
