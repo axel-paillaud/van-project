@@ -5,21 +5,20 @@
 {% block content %}
 <main class="main">
     <div class="send-post-container">
-        <form action="/submit-post" method="post">
+        <form id="post-form" action="/submit-post" method="post">
             <label for="title"><b>Titre</b></label>
             <input id="title" autocomplete="off" class="post-field" type="text" name="title" placeholder="Soyez spécifique et faites comme si vous posez la question à vous-même.">
             <label for="content"><b>Contenu</b></label>
             <textarea id="content" class="post-field text-content" autocomplete="off" name="content" placeholder="Quels sont les détails de votre question ? Développez le contenu de votre titre ici."></textarea>
             <label><b>Mots-clefs</b></label>
             <div class="post-tags-container">
-                <span>Ajouter jusqu'à 5 mots-clefs (tags) à votre question. Séparer les mots-clefs par des virgules.</span>
+                <span>Ajouter jusqu'à 5 mots-clefs (tags) à votre question. Appuyer sur "Entrée" ou "virgule" pour valider un tag</span>
                 <div class="input-tag-container">
                     <input autocomplete="off" type="text" name="tags" maxlength="28">
                     <div id="js-modal-tag" class="modal-tags" style="display: none;"></div>
                 </div>
             </div>
-            <input autocomplete="off" class="post-field" type="text" name="tags" placeholder="Ajouter jusqu'à 5 mots-clefs (tags) à votre question. Séparer les mots-clefs par des virgules.">
-            <input class="btn-orange" type="submit" value="Envoyer la question" style="margin-left: 0;">
+            <input id="submit-btn" class="btn-orange margin-left-0" type="submit" value="Envoyer la question">
         </form>
     </div>
 </main>

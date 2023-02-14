@@ -26,6 +26,10 @@ h1 {
     margin-right: 8px;
 }
 
+.margin-left-0 {
+    margin-left: 0;
+}
+
 /* icons class here */
 .icon-right {
     color: #A4A4A4;
@@ -472,6 +476,7 @@ change also focus button
 }
 
 .input-tag-container input {
+    outline: none;
     border: none;
     padding: 4px;
     width: 100%;

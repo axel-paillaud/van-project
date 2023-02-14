@@ -1,5 +1,17 @@
 let url = "/api/tags";
 var tags;
+let submitBtn = document.getElementById("submit-btn");
+let postForm = document.getElementById("post-form");
+
+const checkValidForm = function(e) {
+    e.preventDefault();
+
+    // do validation stuff here, then submit form
+
+    //postForm.submit();
+}
+
+submitBtn.addEventListener('click',checkValidForm);
 
 //keep track of tags added by user
 var userInputTags = [];
@@ -15,6 +27,7 @@ const initTags = function(e) {
     inputTag.focus();
     inputTag.addEventListener('input', addTags);
     inputTag.addEventListener('focus', addTags);
+    inputTag.addEventListener('keydown', addInputTag);
     inputTag.addEventListener('click', stopPropagation);
     this.removeEventListener('click', initTags);
 }
@@ -102,45 +115,51 @@ function  DOMinitNewInput() {
     newInput.addEventListener('input', addTags);
     newInput.addEventListener('click', addTags);
     newInput.addEventListener('focus', addTags);
+    newInput.addEventListener('keydown', addInputTag);
     newInput.addEventListener('click', stopPropagation);
     newInput.focus();
 }
 
 const addInputTag = function (e) {
-    let tag = checkInputTag(e, userInputTags);
-    let allInput = document.querySelectorAll(".input-tag-container input");
-    let lastInput = allInput[allInput.length - 1];
+    if (e.type === 'click' || e.key === "Enter" || e.key === ",") {
+        e.preventDefault();
+        let tag = checkInputTag(e, userInputTags);
+        let allInput = document.querySelectorAll(".input-tag-container input");
+        let lastInput = allInput[allInput.length - 1];
+    
+        if (tag === false) return;
 
-    if (!Number.isInteger(tag)) {
-        document.getElementById("js-modal-tag").remove();
-
-        let icon = document.createElement("i");
-        icon.classList.add("fa-solid", "fa-xmark", "xmark-tag-icon");
-        icon.addEventListener('click', deleteTag);
-
-        lastInput.parentElement.appendChild(icon);
-
-        lastInput.setAttribute('value', tag);
-        lastInput.disabled = true;
-        //lastInput.classList.add("tag-lock");
-        lastInput.parentElement.classList.add("tag-lock");
-        lastInput.style.color = "white";
-        userInputTags.push(tag);
-        countUserInputTags++;
-
-        lastInput.removeEventListener('click', addTags);
-        lastInput.removeEventListener('focus', addTags);
-        lastInput.removeEventListener('input', addTags);
-
-        if (countUserInputTags < 5) {
-            DOMinitNewInput();
+        if (!Number.isInteger(tag)) {
+            document.getElementById("js-modal-tag").remove();
+    
+            let icon = document.createElement("i");
+            icon.classList.add("fa-solid", "fa-xmark", "xmark-tag-icon");
+            icon.addEventListener('click', deleteTag);
+    
+            lastInput.parentElement.appendChild(icon);
+    
+            lastInput.setAttribute('value', tag);
+            lastInput.disabled = true;
+            lastInput.parentElement.classList.add("tag-lock");
+            lastInput.style.color = "white";
+            lastInput.blur();
+            userInputTags.push(tag);
+            countUserInputTags++;
+    
+            lastInput.removeEventListener('click', addTags);
+            lastInput.removeEventListener('focus', addTags);
+            lastInput.removeEventListener('input', addTags);
+    
+            if (countUserInputTags < 5) {
+                DOMinitNewInput();
+            }
         }
-    }
-    else { // if input tag is equal false, that's mean it's incorrect, so delete the current input and refocus
-        lastInput.value = "";
-        lastInput.focus();
-        inputAlreadyHere = allInput[tag].parentElement;
-        resetAnimation(inputAlreadyHere, "pulseTags 0.4s");
+        else { // if input tag is equal false, that's mean it's incorrect, so delete the current input and refocus
+            lastInput.value = "";
+            lastInput.focus();
+            inputAlreadyHere = allInput[tag].parentElement;
+            resetAnimation(inputAlreadyHere, "pulseTags 0.4s");
+        }
     }
 }
 
@@ -212,7 +231,19 @@ function checkInputTag(element, userInputTags) {
             return tag;
         }
     }
-    return false;
+    if (document.getElementById("js-tag-input") === null) {
+        return false;
+    }
+    else {
+        tag = document.getElementById("js-tag-input").textContent;
+        tag = tag.substring(1, tag.length -1);
+        if (userInputTags.indexOf(tag) != -1) {
+            return userInputTags.indexOf(tag);
+        }
+        else {
+            return tag;
+        }
+    }
 }
 
 const stopPropagation = function (e) {
@@ -221,7 +252,7 @@ const stopPropagation = function (e) {
 
 const closeModal = function(e) {
     let modal = document.getElementById("js-modal-tag");
-    if (modal.style.display === "none") return;
+    if (modal === null || modal.style.display === "none") return;
 
     e.preventDefault();
     modal.style.display = "none";
