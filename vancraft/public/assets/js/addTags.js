@@ -110,7 +110,7 @@ const addInputTag = function (e) {
     let allInput = document.querySelectorAll(".input-tag-container input");
     let lastInput = allInput[allInput.length - 1];
 
-    if (tag != false) {
+    if (!Number.isInteger(tag)) {
         document.getElementById("js-modal-tag").remove();
 
         lastInput.value = tag;
@@ -130,7 +130,7 @@ const addInputTag = function (e) {
     else { // if input tag is equal false, that's mean it's incorrect, so delete the current input and refocus
         lastInput.value = "";
         lastInput.focus();
-        inputAlreadyHere = allInput[allInput.length - 2];
+        inputAlreadyHere = allInput[tag];
         resetAnimation(inputAlreadyHere, "pulseTags 0.4s");
     }
 }
@@ -141,8 +141,8 @@ function checkInputTag(element, userInputTags) {
     if(element.target.lastElementChild === null) {
         if (element.target.tagName === "LI") {
             tag = element.target.textContent;
-            if (userInputTags.includes(tag)) {
-                return false;
+            if (userInputTags.indexOf(tag) != -1) {
+                return userInputTags.indexOf(tag);
             }
             else {
                 return tag;
@@ -154,8 +154,8 @@ function checkInputTag(element, userInputTags) {
         if (element.target.lastElementChild.id === "js-tag-input") {
             tag = element.target.lastElementChild.textContent;
             tag = tag.substring(1, tag.length -1); //remove quote
-            if (userInputTags.includes(tag)) {
-                return false;
+            if (userInputTags.indexOf(tag) != -1) {
+                return userInputTags.indexOf(tag);
             }
             else {
                 return tag;
@@ -166,8 +166,8 @@ function checkInputTag(element, userInputTags) {
     if (element.target.tagName === "I") {
         tag = element.target.nextElementSibling.textContent;
         tag = tag.substring(1, tag.length -1);
-        if (userInputTags.includes(tag)) {
-            return false;
+        if (userInputTags.indexOf(tag) != -1) {
+            return userInputTags.indexOf(tag);
         }
         else {
             return tag;
@@ -176,8 +176,8 @@ function checkInputTag(element, userInputTags) {
     if (element.target.tagName === "SPAN") {
         tag = element.target.textContent;
         tag = tag.substring(1, tag.length - 1);
-        if (userInputTags.includes(tag)) {
-            return false;
+        if (userInputTags.indexOf(tag) != -1) {
+            return userInputTags.indexOf(tag);
         }
         else {
             return tag;
