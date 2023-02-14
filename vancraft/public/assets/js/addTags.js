@@ -33,7 +33,7 @@ const addTags = function(e) {
         let listTags = document.getElementById("js-list-tag");
 
         let listElt = listTags.children;
-        for (let i = 0; i < listElt.length; i++) {
+        for (let i = 0; i < listElt.length; i++) {// clear list on every change, except for "Créer un tag ..." element
             if (i > 1) {
                 listTags.removeChild(listElt[i])
             }
