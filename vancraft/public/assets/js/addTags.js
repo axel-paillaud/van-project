@@ -139,6 +139,7 @@ const addInputTag = function (e) {
             lastInput.parentElement.appendChild(icon);
     
             lastInput.setAttribute('value', tag);
+            lastInput.value = tag;
             lastInput.disabled = true;
             lastInput.parentElement.classList.add("tag-lock");
             lastInput.style.color = "white";
