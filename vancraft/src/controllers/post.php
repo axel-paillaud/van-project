@@ -28,6 +28,7 @@ if ($uri === "/post-article") {
 
 }
 else if ($uri === "/submit-post") {
+    dd($_POST);
     if (isset($_POST['title'], $_POST['content'], $_POST['tags'])) {
         $message = submit_post($_POST['title'], $_POST['content'], $_POST['tags']);
 

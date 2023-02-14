@@ -9,11 +9,12 @@ var countUserInputTags = 0;
 
 const checkValidForm = function(e) {
     e.preventDefault();
+    postForm.submit();
     let errorMsg = document.getElementById("js-error-msg");
 
     let title = postForm["title"];
     let content = postForm["content"];
-    let tags = postForm["tags"];
+    let userTags = postForm["tag"];
     let tagsContainer = document.querySelector(".post-tags-container");
 
     if (title.value === "") {
@@ -31,18 +32,20 @@ const checkValidForm = function(e) {
         setOutlineRed(tagsContainer);
         return;
     }
-    else if (tags.length > 5) {
+    else if (userTags.length > 5) {
         displayErrorMsg(errorMsg, "Erreur : Seul un maximum de 5 mots-clefs est autorisé");
         return;
     }
 
-    tags.forEach(tag => {
-        console.log(tag.value.length);
-        if (tag.value.length > 26) {
-            displayErrorMsg(errorMsg, "Erreur : Un mot-clef peut contenir un maximum de 26 caractères");
-            return;
-        }
-    });
+    if (countUserInputTags > 1) {
+        userTags.forEach(tag => {
+            console.log(tag.value.length);
+            if (tag.value.length > 26) {
+                displayErrorMsg(errorMsg, "Erreur : Un mot-clef peut contenir un maximum de 26 caractères");
+                return;
+            }
+        });
+    }
 
     postForm.submit();
 }
@@ -147,7 +150,7 @@ function  DOMinitNewInput() {
     let icon = document.createElement("i");
     newInput.maxLength = 26;
     newInput.autocomplete = "off";
-    newInput.name = "tags";
+    newInput.name = "tag[]";
     newInput.type = "text";
     let div = document.createElement("div");
     let divModal = document.createElement("div");
@@ -187,7 +190,7 @@ const addInputTag = function (e) {
     
             lastInput.setAttribute('value', tag);
             lastInput.value = tag;
-            lastInput.disabled = true;
+            //lastInput.disabled = true;
             lastInput.parentElement.classList.add("tag-lock");
             lastInput.style.color = "white";
             lastInput.style.textAlign = "center";

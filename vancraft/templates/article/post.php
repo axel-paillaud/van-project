@@ -14,7 +14,7 @@
             <div class="post-tags-container">
                 <span>Ajouter jusqu'à 5 mots-clefs (tags) à votre question.</span>
                 <div class="input-tag-container">
-                    <input autocomplete="off" type="text" name="tags" maxlength="26">
+                    <input autocomplete="off" type="text" name="tag[]" maxlength="26">
                     <div id="js-modal-tag" class="modal-tags" style="display: none;"></div>
                 </div>
             </div>
@@ -22,7 +22,6 @@
         </form>
     </div>
     <div id="js-error-msg"></div>
-    <!--<div id="js-error-msg" class="message-container error">Message d'erreur</div>-->
 </main>
 <script src="assets/js/addTags.js"></script>
 {% endblock %}
