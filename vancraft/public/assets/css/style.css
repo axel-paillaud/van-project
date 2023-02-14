@@ -34,6 +34,26 @@ h1 {
     z-index: 3;
 }
 
+.icon-left {
+    color: #A4A4A4;
+    position: relative;
+    right: 33px;
+    z-index: 3;
+}
+
+.xmark-tag-icon {
+    color: #A4A4A4;
+    position: relative;
+    right: 20px;
+    z-index: 3;
+    transition: color 0.3s;
+}
+
+.xmark-tag-icon:hover {
+    color: #e2e2e2;
+    cursor: pointer;
+}
+
 .main {
     padding-top: 52px;
     margin-right: 208px;
@@ -409,6 +429,8 @@ change also focus button
     position: relative;
     flex: 0 1 20%;
     margin: 0 4px;
+    display: flex;
+    align-items: center;
 }
 
 .modal-tags {

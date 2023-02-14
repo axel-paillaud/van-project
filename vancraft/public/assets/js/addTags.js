@@ -84,6 +84,7 @@ function DOMinitCreateTags(listTags) { //add "Créer un tag xxx" to the list tag
 
 function  DOMinitNewInput() {
     let newInput = document.createElement("input");
+    let icon = document.createElement("i");
     newInput.maxLength = 28;
     newInput.autocomplete = "off";
     newInput.name = "tags";
@@ -113,6 +114,11 @@ const addInputTag = function (e) {
     if (!Number.isInteger(tag)) {
         document.getElementById("js-modal-tag").remove();
 
+        let icon = document.createElement("i");
+        icon.classList.add("fa-solid", "fa-xmark", "xmark-tag-icon");
+
+        lastInput.parentElement.appendChild(icon);
+
         lastInput.value = tag;
         lastInput.disabled = true;
         lastInput.classList.add("tag-lock");
@@ -135,7 +141,7 @@ const addInputTag = function (e) {
     }
 }
 
-// little  complicated here, surely there is a better solution
+// bad code here, surely there is a better solution
 function checkInputTag(element, userInputTags) {
     let tag;
     if(element.target.lastElementChild === null) {
