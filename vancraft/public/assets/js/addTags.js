@@ -1,6 +1,10 @@
 let url = "/api/tags";
 var tags;
 
+//keep
+var userInputTags = [];
+var countUserInputTags = 0;
+
 let modalContener = `<ul id='js-list-tag'>
                     </ul>`
 
@@ -52,7 +56,7 @@ const addTags = function(e) {
         tagInput.innerText = '"' + this.value + '"';
     }
     else {
-        document.getElementById("js-list-tag").removeEventListener('click', getInputTag);
+        document.getElementById("js-list-tag").removeEventListener('click', addInputTag);
         modal.innerHTML = "";
         modal.style.display = "none";
     }
@@ -72,7 +76,7 @@ function DOMinitCreateTags(listTags) { //add "Créer un tag xxx" to the list tag
     listTags.appendChild(li);
     listTags.appendChild(hr);
 
-    listTags.addEventListener('click', getInputTag);
+    listTags.addEventListener('click', addInputTag);
     li.addEventListener('click', closeModal);
 }
 
@@ -96,12 +100,10 @@ function  DOMinitNewInput() {
     newInput.focus();
 }
 
-const getInputTag = function (e) {
-    let tag = checkInputTag(e);
+const addInputTag = function (e) {
+    let tag = checkInputTag(e, userInputTags);
 
     if (tag != false) {
-        console.log(tag);
-
         document.getElementById("js-modal-tag").remove();
         let allInput = document.querySelectorAll(".input-tag-container input");
         let lastInput = allInput[allInput.length - 1];
@@ -109,35 +111,63 @@ const getInputTag = function (e) {
         lastInput.value = tag;
         lastInput.disabled = true;
         lastInput.classList.add("tag-lock");
+        userInputTags.push(tag);
+        countUserInputTags++;
 
-        DOMinitNewInput();
-        
+        if (countUserInputTags < 5) {
+            DOMinitNewInput();
+        }
     }
 }
 
-function checkInputTag(element) {
+// little  complicated here, surely there is a better solution
+function checkInputTag(element, userInputTags) {
+    let tag;
     if(element.target.lastElementChild === null) {
         if (element.target.tagName === "LI") {
-            return element.target.textContent;
+            tag = element.target.textContent;
+            if (userInputTags.includes(tag)) {
+                return false;
+            }
+            else {
+                return tag;
+            }
         }
     }
 
     if (element.target.lastElementChild != null) {
         if (element.target.lastElementChild.id === "js-tag-input") {
-            let tag = element.target.lastElementChild.textContent;
-            return tag.substring(1, tag.length -1); //remove quote
+            tag = element.target.lastElementChild.textContent;
+            tag = tag.substring(1, tag.length -1); //remove quote
+            if (userInputTags.includes(tag)) {
+                return false;
+            }
+            else {
+                return tag;
+            }
         }
     }
 
     if (element.target.tagName === "I") {
-        let tag = element.target.nextElementSibling.textContent;
-        return tag.substring(1, tag.length -1);
+        tag = element.target.nextElementSibling.textContent;
+        tag = tag.substring(1, tag.length -1);
+        if (userInputTags.includes(tag)) {
+            return false;
+        }
+        else {
+            return tag;
+        }
     }
     if (element.target.tagName === "SPAN") {
-        let tag = element.target.textContent;
-        return tag.substring(1, tag.length - 1);
+        tag = element.target.textContent;
+        tag = tag.substring(1, tag.length - 1);
+        if (userInputTags.includes(tag)) {
+            return false;
+        }
+        else {
+            return tag;
+        }
     }
-
     return false;
 }
 
