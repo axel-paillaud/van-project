@@ -1,7 +1,7 @@
 let url = "/api/tags";
 var tags;
 
-//keep
+//keep track of tags added by user
 var userInputTags = [];
 var countUserInputTags = 0;
 
@@ -116,10 +116,12 @@ const addInputTag = function (e) {
 
         let icon = document.createElement("i");
         icon.classList.add("fa-solid", "fa-xmark", "xmark-tag-icon");
+        icon.addEventListener('click', deleteTag);
 
         lastInput.parentElement.appendChild(icon);
 
-        lastInput.value = tag;
+        lastInput.setAttribute('value', tag);
+        //lastInput.value = tag;
         lastInput.disabled = true;
         lastInput.classList.add("tag-lock");
         userInputTags.push(tag);
@@ -139,6 +141,26 @@ const addInputTag = function (e) {
         inputAlreadyHere = allInput[tag];
         resetAnimation(inputAlreadyHere, "pulseTags 0.4s");
     }
+}
+
+const deleteTag = function (e) {
+    let contenerInput = e.target.parentElement;
+    let input = contenerInput.firstElementChild;
+
+    e.target.removeEventListener('click', deleteTag);
+    
+    let indexOfDeleteUserTag = userInputTags.indexOf(input.value); // delete the tag also from the global array userInputTags
+    userInputTags.splice(indexOfDeleteUserTag, 1);
+
+    if (countUserInputTags != 5) {
+        contenerInput.nextElementSibling.firstElementChild.focus(); //set the focus on the next target input
+    }
+    else {
+        DOMinitNewInput();
+    }
+
+    contenerInput.remove();
+    countUserInputTags--;
 }
 
 // bad code here, surely there is a better solution
