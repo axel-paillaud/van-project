@@ -130,6 +130,8 @@ const addInputTag = function (e) {
     else { // if input tag is equal false, that's mean it's incorrect, so delete the current input and refocus
         lastInput.value = "";
         lastInput.focus();
+        inputAlreadyHere = allInput[allInput.length - 2];
+        resetAnimation(inputAlreadyHere, "pulseTags 0.4s");
     }
 }
 
@@ -219,6 +221,12 @@ function checkTags(tags, value) {
     });
 
     return tagStartWith;
+}
+
+function resetAnimation(element, animation) {
+    element.style.animation = "none";
+    void element.offsetWidth;
+    element.style.animation = animation;
 }
 
 fetch(url)

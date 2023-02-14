@@ -378,6 +378,11 @@ change also focus button
     to{transform: translateY(0px); opacity: 1;}
 }
 
+@keyframes pulseTags {
+    from{background-color: #864138;opacity: 0.3;}
+    to{background-color: #4e1e18;opacity: 1;}
+}
+
 .post-field {
     width: 100%;
     padding: 10px;
@@ -449,6 +454,7 @@ change also focus button
     border: none;
     padding: 4px;
     width: 100%;
+    font-family: lato;
 }
 
 .input-tag-container input:focus {
@@ -461,6 +467,7 @@ change also focus button
     color: white;
     border-radius: 3px;
     text-align: center;
+    animation: pulseTags 0.4s;
 }
 
 .text-content {
