@@ -3,19 +3,66 @@ var tags;
 let submitBtn = document.getElementById("submit-btn");
 let postForm = document.getElementById("post-form");
 
-const checkValidForm = function(e) {
-    e.preventDefault();
-
-    // do validation stuff here, then submit form
-
-    //postForm.submit();
-}
-
-submitBtn.addEventListener('click',checkValidForm);
-
 //keep track of tags added by user
 var userInputTags = [];
 var countUserInputTags = 0;
+
+const checkValidForm = function(e) {
+    e.preventDefault();
+    let errorMsg = document.getElementById("js-error-msg");
+
+    let title = postForm["title"];
+    let content = postForm["content"];
+    let tags = postForm["tags"];
+    let tagsContainer = document.querySelector(".post-tags-container");
+
+    if (title.value === "") {
+        displayErrorMsg(errorMsg, "Erreur : Un titre est obligatoire");
+        setOutlineRed(title);
+        return;
+    }
+    else if (content.value === "") {
+        displayErrorMsg(errorMsg, "Erreur : Un contenu est obligatoire pour décrire votre question");
+        setOutlineRed(content);
+        return;
+    }
+    else if (countUserInputTags === 0) {
+        displayErrorMsg(errorMsg, "Erreur : Vous devez spécifier au moins un mot-clef associé à votre question");
+        setOutlineRed(tagsContainer);
+        return;
+    }
+    else if (tags.length > 5) {
+        displayErrorMsg(errorMsg, "Erreur : Seul un maximum de 5 mots-clefs est autorisé");
+        return;
+    }
+
+    tags.forEach(tag => {
+        console.log(tag.value.length);
+        if (tag.value.length > 26) {
+            displayErrorMsg(errorMsg, "Erreur : Un mot-clef peut contenir un maximum de 26 caractères");
+            return;
+        }
+    });
+
+    postForm.submit();
+}
+
+function displayErrorMsg(errorMsg, content) {
+    errorMsg.classList.add("message-container", "error");
+    errorMsg.textContent = content;
+    setTimeout(() => {
+        errorMsg.classList.remove("message-container", "error");
+        errorMsg.textContent = "";
+    }, 3000);
+}
+
+function setOutlineRed(element) {
+    element.style.outlineColor = "#d35452";
+    element.style.outlineWidth = "3px";
+    element.style.outlineStyle = "solid";
+}
+
+submitBtn.addEventListener('click',checkValidForm);
 
 let modalContener = `<ul id='js-list-tag'>
                     </ul>`
@@ -98,7 +145,7 @@ function DOMinitCreateTags(listTags) { //add "Créer un tag xxx" to the list tag
 function  DOMinitNewInput() {
     let newInput = document.createElement("input");
     let icon = document.createElement("i");
-    newInput.maxLength = 28;
+    newInput.maxLength = 26;
     newInput.autocomplete = "off";
     newInput.name = "tags";
     newInput.type = "text";
@@ -143,6 +190,7 @@ const addInputTag = function (e) {
             lastInput.disabled = true;
             lastInput.parentElement.classList.add("tag-lock");
             lastInput.style.color = "white";
+            lastInput.style.textAlign = "center";
             lastInput.blur();
             userInputTags.push(tag);
             countUserInputTags++;
@@ -159,7 +207,7 @@ const addInputTag = function (e) {
             lastInput.value = "";
             lastInput.focus();
             inputAlreadyHere = allInput[tag].parentElement;
-            resetAnimation(inputAlreadyHere, "pulseTags 0.4s");
+            resetAnimation(inputAlreadyHere, "pulseTags 0.5s");
         }
     }
 }

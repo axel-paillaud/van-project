@@ -22,6 +22,10 @@ h1 {
     margin: 8px 0;
 }
 
+.margin-16-0-0-0 {
+    margin: 16px 0 0 0;
+}
+
 .margin-right-8 {
     margin-right: 8px;
 }
@@ -264,6 +268,7 @@ change also focus button
     margin: 64px auto;
     padding: 32px;
     max-width: 1000px;
+    border-radius: 3px;
 }
 
 .send-post-container form {
@@ -396,7 +401,7 @@ change also focus button
 
 /* post question here */
 
-@keyframes modalSlideUp {
+@keyframes slideUp {
     from{transform: translateY(10px); opacity: 0;}
     to{transform: translateY(0px); opacity: 1;}
 }
@@ -413,6 +418,7 @@ change also focus button
     border: 1px solid #545454;
     margin: 16px 0;
     font-family: lato;
+    font-size: 16px;
 }
 
 .post-tags-container {
@@ -447,7 +453,7 @@ change also focus button
     color: black;
     max-height: 433px;
     overflow: hidden;
-    animation: modalSlideUp 0.2s;
+    animation: slideUp 0.2s;
 }
 
 .modal-tags ul {
@@ -491,10 +497,9 @@ change also focus button
 
 .tag-lock {
     background-color: #4e1e18;
-    color: white;
     border-radius: 3px;
     text-align: center;
-    animation: pulseTags 0.4s;
+    animation: pulseTags 0.5s;
 }
 
 .text-content {
@@ -515,16 +520,18 @@ change also focus button
 }
 
 .message-container {
+    border-radius: 3px;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 408px;
+    min-width: 350px;
     background-color: rgba(74, 124, 89, 0.7);
-    margin: 16px 296px;
+    margin: 8px auto;
     color: white;
-    min-height: 32px;
     font-size: 20px;
     padding: 8px;
+    max-width: 1000px;
+    animation: slideUp 0.3s;
 }
 
 .error {
