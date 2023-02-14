@@ -25,7 +25,6 @@ if ($uri === "/post-article") {
     echo $twig->render('article/post.php', [
         'page' => 'post',
     ]);
-
 }
 else if ($uri === "/submit-post") {
     dd($_POST);
