@@ -9,12 +9,12 @@ var countUserInputTags = 0;
 
 const checkValidForm = function(e) {
     e.preventDefault();
-    postForm.submit();
     let errorMsg = document.getElementById("js-error-msg");
 
     let title = postForm["title"];
     let content = postForm["content"];
-    let userTags = postForm["tag"];
+    let userTags = postForm["tag[]"];
+    console.log(userTags);
     let tagsContainer = document.querySelector(".post-tags-container");
 
     if (title.value === "") {
@@ -72,14 +72,15 @@ let modalContener = `<ul id='js-list-tag'>
 
 //init tags = prepare for write tags, remove text information and set the focus on input tags
 const initTags = function(e) {
-    this.firstElementChild.innerText = "";
+    document.querySelector(".post-tags-container").firstElementChild.innerText = "";
     let inputTag = document.querySelector(".input-tag-container input");
     inputTag.focus();
     inputTag.addEventListener('input', addTags);
     inputTag.addEventListener('focus', addTags);
     inputTag.addEventListener('keydown', addInputTag);
     inputTag.addEventListener('click', stopPropagation);
-    this.removeEventListener('click', initTags);
+    document.querySelector(".post-tags-container").removeEventListener('click', initTags);
+    inputTag.removeEventListener('focus', initTags);
 }
 
 const addTags = function(e) {
@@ -190,7 +191,7 @@ const addInputTag = function (e) {
     
             lastInput.setAttribute('value', tag);
             lastInput.value = tag;
-            //lastInput.disabled = true;
+            lastInput.readOnly = true;
             lastInput.parentElement.classList.add("tag-lock");
             lastInput.style.color = "white";
             lastInput.style.textAlign = "center";
@@ -353,6 +354,8 @@ fetch(url)
 .then(getTags => {
     tags = getTags;
     let modalTags = document.querySelector(".post-tags-container");
+    let input = document.querySelector(".input-tag-container input");
     modalTags.addEventListener('click', initTags);
+    input.addEventListener('focus', initTags);
 })
 
