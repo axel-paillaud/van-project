@@ -107,11 +107,11 @@ function  DOMinitNewInput() {
 
 const addInputTag = function (e) {
     let tag = checkInputTag(e, userInputTags);
+    let allInput = document.querySelectorAll(".input-tag-container input");
+    let lastInput = allInput[allInput.length - 1];
 
     if (tag != false) {
         document.getElementById("js-modal-tag").remove();
-        let allInput = document.querySelectorAll(".input-tag-container input");
-        let lastInput = allInput[allInput.length - 1];
 
         lastInput.value = tag;
         lastInput.disabled = true;
@@ -126,6 +126,10 @@ const addInputTag = function (e) {
         if (countUserInputTags < 5) {
             DOMinitNewInput();
         }
+    }
+    else { // if input tag is equal false, that's mean it's incorrect, so delete the current input and refocus
+        lastInput.value = "";
+        lastInput.focus();
     }
 }
 
