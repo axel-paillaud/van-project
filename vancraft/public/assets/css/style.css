@@ -1,3 +1,8 @@
+:root {
+    --secondary-color: rgb(78, 43, 24);
+    --light-secondary-color: rgba(78, 43, 24, 0.8);
+}
+
 * {
     box-sizing: border-box;
 }
@@ -10,6 +15,10 @@ body {
 
 h1 {
     font-family: nova_mono;
+}
+
+.display-none {
+    display: none;
 }
 
 /* margin class here */
@@ -32,6 +41,10 @@ h1 {
 
 .margin-left-0 {
     margin-left: 0;
+}
+
+.margin-left-8 {
+    margin-left: 8px;
 }
 
 /* icons class here */
@@ -133,6 +146,19 @@ h1 {
     border: none;
     transition: background-color 0.2s;
     white-space: nowrap;
+}
+
+.btn-brown-light {
+    background-color: var(--light-secondary-color);
+    border-radius: 20px;
+    color: white;
+    padding: 0.7em 1.3em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-brown-light:hover {
+    background-color: var(--secondary-color);
 }
 
 .btn-orange-log-in:hover {
@@ -262,6 +288,8 @@ change also focus button
     flex-direction: column;
 }
 
+/* post style here */
+
 .send-post-container {
     background-color: #D6CE99;
     display: flex;
@@ -340,6 +368,24 @@ change also focus button
 .tag-container div:hover {
     background-color: #ac631f99;
     color: #311b06;
+}
+
+.add-img {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0 32px 0px;
+    gap: 8px;
+}
+
+.add-img label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.img-thumbnails {
+    max-height: 65px;
+    border-radius: 3px;
 }
 
 .user-container {

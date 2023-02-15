@@ -10,12 +10,16 @@
             <input id="title" maxlength="496" autocomplete="off" required class="post-field" type="text" name="title" placeholder="Soyez spécifique et faites comme si vous posez la question à vous-même.">
             <label for="content"><b>Contenu</b></label>
             <textarea id="content" required class="post-field text-content" autocomplete="off" name="content" placeholder="Quels sont les détails de votre question ? Développez le contenu de votre titre ici."></textarea>
-            <div id="add-img">
+            <div id="add-img" class="add-img">
                 <label for="image">
-                    <b>+ Ajouter une photo</b><br>
-                    <input id="image" type="file" name="image" accept="image/png, image/jpeg, image/gif" multiple max="5">
+                    <b class="btn-brown-light">+ Ajouter des photos</b>
+                    <input class="display-none" id="image" type="file" name="image" accept="image/png, image/jpeg, image/gif" multiple max="3">
+                    <img class="img-thumbnails" src="assets/images/002.png">
+                    <img class="img-thumbnails" src="assets/images/002.png">
+                    <img class="img-thumbnails" src="assets/images/002.png">
+                    {# <img src="assets/images/icons/pictures-brown.svg" alt="Ajouter une photo"> #}
                 </label>
-                <small>jpg, png, gif : 2mo max</small>
+                <small class="margin-left-8">jpg, png, gif : 2mo max</small>
             </div>
             <label><b>Mots-clefs</b></label>
             <div class="post-tags-container">
