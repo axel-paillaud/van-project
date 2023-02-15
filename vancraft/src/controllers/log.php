@@ -1,5 +1,6 @@
 <?php
 
+use Model\User\UserRepository;
 require_once base_path('src/model/user.php');
 
 function addUser($name, $email, $password, $confirm_password) {
@@ -65,7 +66,7 @@ else if ($uri === '/submit-log-in') {
 
         $message = log_in_attempt($name, $email, $_POST['password']);
 
-        require '../src/controllers/home/homepage.php';
+        require '../src/controllers/homepage.php';
 
     }
     else {
@@ -112,6 +113,6 @@ elseif ($uri === "/log-out") {
     $message = "Vous vous êtes bien déconnecté";
     $bad_message = true;
 
-    require '../src/controllers/home/homepage.php';
+    require '../src/controllers/homepage.php';
 
 }

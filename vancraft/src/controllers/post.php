@@ -20,16 +20,13 @@ else if ($uri === "/submit-post") {
     $postLib = new postLib();
 
     $images = $postLib->sortFiles($_FILES["image"]);
+
+    $postValidator->userValidator($_SESSION);
     $postValidator->imageValidator($images);
 
-    echo "<pre>";
-    print_r($_SESSION);
-    echo "</pre>";
-    echo "<pre>";
-    print_r($_POST);
-    echo "</pre>";
-    dd($_FILES["image"]);
+    $postLib->addImgToServer($_FILES["image"], $_SESSION);
 
+    dd($_FILES);
     if (isset($_POST['title'], $_POST['content'], $_POST['tags'])) {
         echo "hello";
 

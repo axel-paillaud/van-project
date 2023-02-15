@@ -36,6 +36,23 @@ class postLib {
         }
         return $images;
     }
+
+    public function addImgToServer($images, $user) {
+        $targetDir = "assets/images/users/" . $user["user_name"] . "/posts_pictures/";
+
+        for ($i = 0; $i < count($images["name"]); $i++)
+        {
+            $imageType = exif_imagetype($images["tmp_name"][$i]);
+            $extension = image_type_to_extension($imageType, true);
+            $filename = uniqid() . $extension;
+
+            while (file_exists($targetDir . $filename)) { // While the filename exists (little chance), generate new name
+                $filename = uniqid() . $extension;
+              }
+
+            move_uploaded_file($images["tmp_name"][$i], $targetDir . $filename); // move the file to the user directory
+        }
+    }
 }
 
 function submit_post(string $title, string $content, string $tags) {

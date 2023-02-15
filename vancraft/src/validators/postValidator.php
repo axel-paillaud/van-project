@@ -24,4 +24,13 @@ class postValidator {
             }
         }
     }
+
+    public function userValidator($user) {
+        if (empty($user) || !isset($user)) {
+            throw new Exception("Erreur : Vous devez être connecté pour pouvoir poster une question");
+        }
+        else {
+            return true;
+        }
+    }
 }
