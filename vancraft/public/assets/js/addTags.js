@@ -368,6 +368,11 @@ function checkInputImg(imageInput) {
 function updateThumbnails(elt, userInput) {
     let files = userInput.files;
 
+    let oldImg = document.querySelectorAll("#add-img img");
+    for (let i = 0; i < oldImg.length; i++) {
+        oldImg[i].remove(); //remove old images
+    }
+
     for (let i = 0; i < files.length; i++) {
         let img = document.createElement("img");
         img.classList.add("img-thumbnails");
@@ -382,7 +387,7 @@ function updateThumbnails(elt, userInput) {
 
 const addImage = function() {
     if (!checkInputImg(imageInput)) {
-        displayErrorMsg(errorMsg, "Erreur avec le fichier téléversé, il doit être de type png/jpeg/gif et ne pas dépasser 2mo.");
+        displayErrorMsg(errorMsg, "Erreur avec le( fichier téléversé, il doit être de type png/jpeg/gif et ne pas dépasser 2mo");
     }
     else {
         let imgContainer = document.querySelector("#add-img label");
