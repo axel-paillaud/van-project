@@ -1,0 +1,7 @@
+:root {
+    --main-color: rgb(217, 108, 6);
+    --light-main-color: #e1812699;
+    --secondary-color: rgb(78, 43, 24);
+    --light-secondary-color: rgba(78, 43, 24, 0.8);
+    --background-window-color: rgb(214, 206, 153);
+}

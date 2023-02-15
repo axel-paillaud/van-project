@@ -1,0 +1,26 @@
+/* icons class here */
+.icon-right {
+    color: #A4A4A4;
+    position: relative;
+    left: 33px;
+    z-index: 3;
+}
+
+.icon-left {
+    color: #A4A4A4;
+    position: relative;
+    right: 33px;
+    z-index: 3;
+}
+
+.xmark-tag-icon {
+    margin-right: 8px;
+    color: #A4A4A4;
+    z-index: 3;
+    transition: color 0.3s;
+}
+
+.xmark-tag-icon:hover {
+    color: #e2e2e2;
+    cursor: pointer;
+}

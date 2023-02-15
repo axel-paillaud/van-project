@@ -1,81 +1,8 @@
-:root {
-    --main-color: rgb(217, 108, 6);
-    --light-main-color: #e1812699;
-    --secondary-color: rgb(78, 43, 24);
-    --light-secondary-color: rgba(78, 43, 24, 0.8);
-    --background-window-color: rgb(214, 206, 153);
-}
-
-* {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-    background: #E5E1DC;
-    font-family: lato;
-}
-
-h1 {
-    font-family: nova_mono;
-}
-
-.display-none {
-    display: none;
-}
-
-/* margin class here */
-
-.margin-8 {
-    margin: 8px;
-}
-
-.margin-8-0 {
-    margin: 8px 0;
-}
-
-.margin-16-0-0-0 {
-    margin: 16px 0 0 0;
-}
-
-.margin-right-8 {
-    margin-right: 8px;
-}
-
-.margin-left-0 {
-    margin-left: 0;
-}
-
-.margin-left-8 {
-    margin-left: 8px;
-}
-
-/* icons class here */
-.icon-right {
-    color: #A4A4A4;
-    position: relative;
-    left: 33px;
-    z-index: 3;
-}
-
-.icon-left {
-    color: #A4A4A4;
-    position: relative;
-    right: 33px;
-    z-index: 3;
-}
-
-.xmark-tag-icon {
-    margin-right: 8px;
-    color: #A4A4A4;
-    z-index: 3;
-    transition: color 0.3s;
-}
-
-.xmark-tag-icon:hover {
-    color: #e2e2e2;
-    cursor: pointer;
-}
+@import url("variable.css");
+@import url("margin.css");
+@import url("general.css");
+@import url("icon.css");
+@import url("btn.css");
 
 .main {
     padding-top: 52px;
@@ -108,65 +35,6 @@ h1 {
 .logo-xs {
     display: flex;
     margin: 0 70px 0;
-}
-
-.btn-orange {
-    background-color: var(--main-color);
-    color: white;
-    padding: 0.7em 1.3em;
-    border-radius: 3px;
-    border: none;
-    transition: background-color 0.2s;
-}
-
-.btn-orange-alpha {
-    background-color: rgba(217, 108, 6, 0.70);
-    color: white;
-    padding: 0.7em 1.3em;
-    margin: 8px;
-    border-radius: 3px;
-    border: none;
-    transition: background-color 0.2s;
-}
-
-.btn-orange-alpha:hover {
-    background-color: rgba(174, 86, 4, 0.70);
-    cursor: pointer;
-}
-
-.btn-orange:hover {
-    background-color: #ae5604;
-    cursor: pointer;
-
-}
-
-.btn-orange-log-in {
-    background-color: #C99C72;
-    color: white;
-    padding: 0.7em 1.3em;
-    margin: 8px;;
-    border-radius: 3px;
-    border: none;
-    transition: background-color 0.2s;
-    white-space: nowrap;
-}
-
-.btn-brown-light {
-    background-color: var(--light-secondary-color);
-    border-radius: 20px;
-    color: white;
-    padding: 0.7em 1.3em;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.btn-brown-light:hover {
-    background-color: var(--secondary-color);
-}
-
-.btn-orange-log-in:hover {
-    background-color: #B97E46;
-    cursor: pointer;
 }
 
 .search-bar-primary {

@@ -1,0 +1,17 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #E5E1DC;
+    font-family: lato;
+}
+
+h1 {
+    font-family: nova_mono;
+}
+
+.display-none {
+    display: none;
+}
