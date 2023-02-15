@@ -1,4 +1,6 @@
 :root {
+    --main-color: rgb(217, 108, 6);
+    --light-main-color: #e1812699;
     --secondary-color: rgb(78, 43, 24);
     --light-secondary-color: rgba(78, 43, 24, 0.8);
     --background-window-color: rgb(214, 206, 153);
@@ -109,7 +111,7 @@ h1 {
 }
 
 .btn-orange {
-    background-color: #D96C06;
+    background-color: var(--main-color);
     color: white;
     padding: 0.7em 1.3em;
     border-radius: 3px;
@@ -211,7 +213,7 @@ change also focus button
 }
 
 .sidenav a:hover {
-    color: #D96C06;
+    color: var(--main-color);
 }
 
 .sidenav a:active {
@@ -219,7 +221,7 @@ change also focus button
 }
 
 .sidenav .active-page {
-    color: #D96C06;
+    color: var(--main-color);
     transition: 0.2s color;
 }
 
@@ -360,7 +362,7 @@ change also focus button
 }
 
 .tag-container div {
-    background-color: #e1812699;
+    background-color: var(--light-main-color);
     color: #4e2b0a;
     padding: 0.4em 0.8em;
     margin: 4px;
@@ -392,7 +394,7 @@ change also focus button
 .user-container {
     display: flex;
     align-items: center;
-    background-color: #4E1E18C7;
+    background-color: var(--light-secondary-color);
     border-radius: 6px;
     text-align: center;
     color: white;
@@ -406,7 +408,7 @@ change also focus button
 }
 
 .user-container:hover {
-    background-color: #351410C7;
+    background-color: var(--secondary-color);
 
 }
 
