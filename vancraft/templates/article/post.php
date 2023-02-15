@@ -22,7 +22,7 @@
             <div class="post-tags-container">
                 <span>Ajouter jusqu'à 5 mots-clefs (tags) à votre question.</span>
                 <div class="input-tag-container">
-                    <input autocomplete="off" type="text" name="tag[]" maxlength="26">
+                    <input autocomplete="off" type="text" name="tag[]" maxlength="64">
                     <div id="js-modal-tag" class="modal-tags" style="display: none;"></div>
                 </div>
             </div>

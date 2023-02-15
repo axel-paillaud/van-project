@@ -20,14 +20,18 @@ else if ($uri === "/submit-post") {
     $postLib = new postLib();
 
     $images = $postLib->sortFiles($_FILES["image"]);
-
     $postValidator->userValidator($_SESSION);
-    $postValidator->imageValidator($images);
+    $images = $postValidator->imageValidator($images);
+    $title = $postValidator->titleValidator($_POST["title"]);
+    $content = $postValidator->contentValidator($_POST["content"]);
+    $tags = $postValidator->tagsValidator($_POST["tag"]);
 
-    $postLib->addImgToServer($_FILES["image"], $_SESSION);
+    if($images) {
+        $postLib->addImgToServer($_FILES["image"], $_SESSION);
+    }
 
-    dd($_FILES);
-    if (isset($_POST['title'], $_POST['content'], $_POST['tags'])) {
+    dd($_POST);
+    if (isset($_POST['title'], $_POST['content'], $_POST['tag'])) {
         echo "hello";
 
         require 'home/homepage.php';

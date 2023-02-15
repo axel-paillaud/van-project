@@ -151,7 +151,7 @@ function DOMinitCreateTags(listTags) { //add "Créer un tag xxx" to the list tag
 function  DOMinitNewInput() {
     let newInput = document.createElement("input");
     let icon = document.createElement("i");
-    newInput.maxLength = 26;
+    newInput.maxLength = 64;
     newInput.autocomplete = "off";
     newInput.name = "tag[]";
     newInput.type = "text";
@@ -354,7 +354,7 @@ function checkInputImg(imageInput) {
 
     for (let i = 0; i < files.length; i++) {
         if (files[i].size > 2000000) {
-            return true;
+            return false;
         }
         if (files[i].type === "image/png" || files[i].type === "image/jpeg" || files[i].type === "image/gif") {
             return true;
