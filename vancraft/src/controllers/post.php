@@ -27,8 +27,8 @@ else if ($uri === "/submit-post") {
     $tags = $postValidator->tagsValidator($_POST["tag"]);
 
     if($images) {
-        $postLib->addImgToServer($_FILES["image"], $_SESSION);
-        $postLib->addImgToDb($_FILES["image"], $_SESSION). //TODO
+        $postLib->addImgToServer($_FILES["image"], $_SESSION); //TODO : if user dir doesn't exist, create it
+        $postLib->addImgToDb($_FILES["image"], $_SESSION); //TODO
     }
     $postLib->addPost($title, $content, $tags); //TODO
 
