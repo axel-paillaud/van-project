@@ -12,12 +12,10 @@
             <textarea id="content" required class="post-field text-content" autocomplete="off" name="content" placeholder="Quels sont les détails de votre question ? Développez le contenu de votre titre ici."></textarea>
             <div id="add-img" class="add-img">
                 <label for="image">
-                    <b class="btn-brown-light">+ Ajouter des photos</b>
+                    <p class="btn-brown-light">+ Ajouter des photos</p>
                     <input class="display-none" id="image" type="file" name="image" accept="image/png, image/jpeg, image/gif" multiple max="3">
                     <img class="img-thumbnails" src="assets/images/002.png">
-                    <img class="img-thumbnails" src="assets/images/002.png">
-                    <img class="img-thumbnails" src="assets/images/002.png">
-                    {# <img src="assets/images/icons/pictures-brown.svg" alt="Ajouter une photo"> #}
+                    <img src="assets/images/icons/pictures-brown.svg" alt="Ajouter une photo">
                 </label>
                 <small class="margin-left-8">jpg, png, gif : 2mo max</small>
             </div>

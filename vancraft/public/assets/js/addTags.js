@@ -2,6 +2,9 @@ let url = "/api/tags";
 var tags;
 let submitBtn = document.getElementById("submit-btn");
 let postForm = document.getElementById("post-form");
+let errorMsg = document.getElementById("js-error-msg");
+let imageInput = document.getElementById("image");
+let image = false;
 
 //keep track of tags added by user
 var userInputTags = [];
@@ -9,7 +12,6 @@ var countUserInputTags = 0;
 
 const checkValidForm = function(e) {
     e.preventDefault();
-    let errorMsg = document.getElementById("js-error-msg");
 
     let title = postForm["title"];
     let content = postForm["content"];
@@ -56,7 +58,7 @@ function displayErrorMsg(errorMsg, content) {
     setTimeout(() => {
         errorMsg.classList.remove("message-container", "error");
         errorMsg.textContent = "";
-    }, 3000);
+    }, 5000);
 }
 
 function setOutlineRed(element) {
@@ -341,6 +343,54 @@ function resetAnimation(element, animation) {
     void element.offsetWidth;
     element.style.animation = animation;
 }
+
+//add images
+function checkInputImg(imageInput) {
+    let files = imageInput.files;
+
+    if (files.length > 3) {
+        return false;
+    }
+
+    for (let i = 0; i < files.length; i++) {
+        if (files[i].size > 2000000) {
+            return false;
+        }
+        if (files[i].type === "image/png" || files[i].type === "image/jpeg" || files[i].type === "image/gif") {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+}
+
+function updateThumbnails(elt, userInput) {
+    let files = userInput.files;
+
+    for (let i = 0; i < files.length; i++) {
+        let img = document.createElement("img");
+        img.classList.add("img-thumbnails");
+
+        elt.appendChild(img);
+
+        const reader = new FileReader();
+        reader.onload = (e) => {img.src = e.target.result};
+        reader.readAsDataURL(files[i]);
+    }
+}
+
+const addImage = function() {
+    if (!checkInputImg(imageInput)) {
+        displayErrorMsg(errorMsg, "Erreur avec le fichier téléversé, il doit être de type png/jpeg/gif et ne pas dépasser 2mo.");
+    }
+    else {
+        let imgContainer = document.querySelector("#add-img label");
+        updateThumbnails(imgContainer, imageInput);
+    }
+}
+
+imageInput.addEventListener('change', addImage);
 
 fetch(url)
 .then(response => {
