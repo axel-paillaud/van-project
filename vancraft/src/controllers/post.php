@@ -1,9 +1,11 @@
 <?php
 
 use Model\Tag\TagRepository;
+use Validator\Post\postValidator;
 require_once base_path('src/model/post.php');
 require_once base_path('src/model/user.php');
 require_once base_path('src/model/tag.php');
+require_once base_path('src/validators/postValidator.php');
 
 class Post {
     public string $title;
@@ -28,19 +30,22 @@ function submit_post(string $title, string $content, string $tags) {
     }
 }
 
+$postValidator = new postValidator();
+
 if ($uri === "/post-article") {
     echo $twig->render('article/post.php', [
         'page' => 'post',
     ]);
 }
 else if ($uri === "/submit-post") {
+    $postValidator->fileValidator($_FILES);
     echo "<pre>";
     print_r($_SESSION);
     echo "</pre>";
     echo "<pre>";
     print_r($_POST);
     echo "</pre>";
-    dd($_FILES);
+    dd($_FILES["image"]);
     if (isset($_POST['title'], $_POST['content'], $_POST['tags'])) {
         $message = submit_post($_POST['title'], $_POST['content'], $_POST['tags']);
 

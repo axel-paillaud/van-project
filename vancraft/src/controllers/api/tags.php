@@ -1,5 +1,6 @@
 <?php
 
+use \Model\Tag\TagRepository;
 require_once base_path('src/model/tag.php');
 
 function getTags() {
