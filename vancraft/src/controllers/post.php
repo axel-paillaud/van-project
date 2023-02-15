@@ -1,8 +1,15 @@
 <?php
 
+use Model\Tag\TagRepository;
 require_once base_path('src/model/post.php');
 require_once base_path('src/model/user.php');
 require_once base_path('src/model/tag.php');
+
+class Post {
+    public string $title;
+    public string $content;
+    public array $tags;
+}
 
 function submit_post(string $title, string $content, string $tags) {
     if (empty($title) || empty($content) || empty($tags)) {
@@ -27,7 +34,13 @@ if ($uri === "/post-article") {
     ]);
 }
 else if ($uri === "/submit-post") {
-    dd($_POST);
+    echo "<pre>";
+    print_r($_SESSION);
+    echo "</pre>";
+    echo "<pre>";
+    print_r($_POST);
+    echo "</pre>";
+    dd($_FILES);
     if (isset($_POST['title'], $_POST['content'], $_POST['tags'])) {
         $message = submit_post($_POST['title'], $_POST['content'], $_POST['tags']);
 

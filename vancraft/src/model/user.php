@@ -1,5 +1,9 @@
 <?php
 
+namespace Model\User;
+use PDO;
+use Exception;
+
 class User
 {
     public int $id;

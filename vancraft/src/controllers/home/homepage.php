@@ -1,5 +1,8 @@
 <?php
 
+use Model\Post\PostRepository;
+use Model\Tag\TagRepository;
+use Model\User\UserRepository;
 require_once base_path('src/model/post.php');
 require_once base_path('src/model/user.php');
 require_once base_path('src/model/tag.php');

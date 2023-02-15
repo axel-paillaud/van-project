@@ -1,5 +1,9 @@
 <?php
 
+namespace Model\Post;
+use PDO;
+use Exception;
+
 class Post 
 {
     public int $id;

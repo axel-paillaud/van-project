@@ -1,5 +1,9 @@
 <?php
 
+namespace Model\Tag;
+use PDO;
+use Exception;
+
 class Tag
 {
     public int $tag_id;
