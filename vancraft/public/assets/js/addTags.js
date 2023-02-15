@@ -354,7 +354,7 @@ function checkInputImg(imageInput) {
 
     for (let i = 0; i < files.length; i++) {
         if (files[i].size > 2000000) {
-            return false;
+            return true;
         }
         if (files[i].type === "image/png" || files[i].type === "image/jpeg" || files[i].type === "image/gif") {
             return true;
@@ -387,7 +387,7 @@ function updateThumbnails(elt, userInput) {
 
 const addImage = function() {
     if (!checkInputImg(imageInput)) {
-        displayErrorMsg(errorMsg, "Erreur avec le( fichier téléversé, il doit être de type png/jpeg/gif et ne pas dépasser 2mo");
+        displayErrorMsg(errorMsg, "Erreur avec le fichier téléversé, il doit être de type png/jpeg/gif et ne pas dépasser 2mo");
     }
     else {
         let imgContainer = document.querySelector("#add-img label");

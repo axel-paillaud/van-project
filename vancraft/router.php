@@ -31,5 +31,5 @@ try {
 catch (Exception $e) {
     $message = $e->getMessage();
     $bad_message = true;
-    require 'src/controllers/home/homepage.php';
+    require 'src/controllers/homepage.php';
 }
