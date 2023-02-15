@@ -69,14 +69,13 @@ class postValidator {
                     array_splice($tags, $i, 1);
                 }
                 else {
+                    $tags[$i] = trim($tags[$i]);
                     $tags[$i] = strtolower($tags[$i]);
-                    echo ($tags[$i]);
-                    $tags[$i] = strtr($tags[$i], 'ÀÁÂÃÄÅàáâãäåÒÓÔÕÖØòóôõöøÈÉÊËèéêëÇçÌÍÎÏìíîïÙÚÛÜùúûüÿÑñ', 'AAAAAAaaaaaaOOOOOOooooooEEEEeeeeCcIIIIiiiiUUUUuuuuyNn');
-                    echo ($tags[$i]);
-                    $tags[$i] = preg_replace('/[^A-Za-z0-9\-]/', '', $tags[$i]);
+                    $tags[$i] = iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $tags[$i]); // if string is set to utf-8, preg_replace dont work properly because one char take more than one byte
+                    $tags[$i] = preg_replace('/[^A-Za-z0-9\s]/', '', $tags[$i]);
                 }
             }
-            dd($tags);
+            return $tags;
         }
     }
 }

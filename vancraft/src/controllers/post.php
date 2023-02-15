@@ -28,7 +28,9 @@ else if ($uri === "/submit-post") {
 
     if($images) {
         $postLib->addImgToServer($_FILES["image"], $_SESSION);
+        $postLib->addImgToDb($_FILES["image"], $_SESSION). //TODO
     }
+    $postLib->addPost($title, $content, $tags); //TODO
 
     dd($_POST);
     if (isset($_POST['title'], $_POST['content'], $_POST['tag'])) {

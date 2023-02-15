@@ -53,6 +53,14 @@ class postLib {
             move_uploaded_file($images["tmp_name"][$i], $targetDir . $filename); // move the file to the user directory
         }
     }
+
+    public function addPost(string $title, string $content, array $tags) {
+        print_r($title);
+        echo "\n";
+        print_r($content);
+        echo "\n";
+        print_r($tags);
+    }
 }
 
 function submit_post(string $title, string $content, string $tags) {
