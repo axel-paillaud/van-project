@@ -1,0 +1,25 @@
+/* margin class here */
+
+.margin-8 {
+    margin: 8px;
+}
+
+.margin-8-0 {
+    margin: 8px 0;
+}
+
+.margin-16-0-0-0 {
+    margin: 16px 0 0 0;
+}
+
+.margin-right-8 {
+    margin-right: 8px;
+}
+
+.margin-left-0 {
+    margin-left: 0;
+}
+
+.margin-left-8 {
+    margin-left: 8px;
+}

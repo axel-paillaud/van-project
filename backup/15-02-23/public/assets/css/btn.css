@@ -1,0 +1,58 @@
+.btn-orange {
+    background-color: var(--main-color);
+    color: white;
+    padding: 0.7em 1.3em;
+    border-radius: 3px;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-orange-alpha {
+    background-color: rgba(217, 108, 6, 0.70);
+    color: white;
+    padding: 0.7em 1.3em;
+    margin: 8px;
+    border-radius: 3px;
+    border: none;
+    transition: background-color 0.2s;
+}
+
+.btn-orange-alpha:hover {
+    background-color: rgba(174, 86, 4, 0.70);
+    cursor: pointer;
+}
+
+.btn-orange:hover {
+    background-color: #ae5604;
+    cursor: pointer;
+
+}
+
+.btn-orange-log-in {
+    background-color: #C99C72;
+    color: white;
+    padding: 0.7em 1.3em;
+    margin: 8px;;
+    border-radius: 3px;
+    border: none;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.btn-brown-light {
+    background-color: var(--light-secondary-color);
+    border-radius: 20px;
+    color: white;
+    padding: 0.7em 1.3em;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-brown-light:hover {
+    background-color: var(--secondary-color);
+}
+
+.btn-orange-log-in:hover {
+    background-color: #B97E46;
+    cursor: pointer;
+}

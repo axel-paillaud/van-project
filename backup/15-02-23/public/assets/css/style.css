@@ -1,0 +1,432 @@
+@import url("variable.css");
+@import url("margin.css");
+@import url("general.css");
+@import url("icon.css");
+@import url("btn.css");
+@import url("header.css");
+
+.main {
+    padding-top: 52px;
+    margin-right: 208px;
+    margin-left: 416px;
+    min-height: 100vh;
+}
+
+.horizontal-rule {
+    color: #9F9F9F;
+    margin: 8px 0 40px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 208px;
+    position: fixed;
+    background-color: var(--background-window-color);
+    z-index: 2;
+    padding: 80px 24px;
+}
+
+.sidenav a {
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+    color: black;
+    padding: 16px 8px;
+    transition: 0.2s color;
+}
+
+.sidenav a:hover {
+    color: var(--main-color);
+}
+
+.sidenav a:active {
+    color: #ae5604;
+}
+
+.sidenav .active-page {
+    color: var(--main-color);
+    transition: 0.2s color;
+}
+
+.sidenav .active-page:hover {
+    color: #AE5604;
+}
+
+.sidenav .active-page:active {
+    color: #7D3E03;
+}
+
+.title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 84px;
+    padding-bottom: 68px;
+}
+
+.title-text-container {
+    position: relative;
+    right: 24px;
+}
+
+.title-logo-container {
+    position: relative;
+    left: 24px;
+}
+
+.title-title {
+    font-size: 72px;
+    margin: 16px;
+    margin-top: 0;
+    font-weight: normal;
+    text-align: center;
+}
+
+.title-subtitle {
+    font-size: 24px;
+    margin: 16px;
+    font-weight: normal;
+    text-align: center;
+}
+
+.content-post-container {
+    padding: 0 80px 80px;
+}
+
+.title-btn-post-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-title-post {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.container {
+    background-color: var(--background-window-color);
+    padding: 32px 32px 16px 24px;
+    display: flex;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-color: #BF956C;
+    flex-direction: column;
+}
+
+/* post style here */
+
+.send-post-container {
+    background-color: var(--background-window-color);
+    display: flex;
+    margin: 64px auto;
+    padding: 32px;
+    max-width: 1000px;
+    border-radius: 3px;
+}
+
+.send-post-container form {
+    width: 100%;
+}
+
+.send-post-container label {
+    display: block;
+}
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.post-container {
+    background-color: var(--background-window-color);
+    padding: 16px;
+    border-bottom : 1px solid #bf946c;
+}
+
+.post-container:first-child {
+    border-radius: 6px 6px 0 0;
+}
+
+.post-container:last-child {
+    border-radius: 0 0 6px 6px;
+    border-bottom-style: none;
+}
+
+.post-title {
+    font-size: 20px;
+    order: 2;
+}
+
+.post-title:hover {
+    cursor: pointer;
+    color: rgb(66, 66, 66);
+}
+
+.views-votes-container {
+    order: 1;
+    margin-right: 24px;
+    white-space: nowrap;
+    height: 24px;
+    /*width: 400px;*/ /*try here a padding for all the post-container exept for this class ?*/
+}
+
+.post-stat {
+    margin-bottom: 16px;
+}
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+    margin: 8px 0 0 94px;
+    font-size: 14px;
+}
+
+.tag-container div {
+    background-color: var(--light-main-color);
+    color: #4e2b0a;
+    padding: 0.4em 0.8em;
+    margin: 4px;
+}
+
+.tag-container div:hover {
+    background-color: #ac631f99;
+    color: #311b06;
+}
+
+.add-img {
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0 32px 0px;
+    gap: 8px;
+}
+
+.add-img label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.img-thumbnails {
+    max-height: 65px;
+    border-radius: 3px;
+}
+
+.user-container {
+    display: flex;
+    align-items: center;
+    background-color: var(--light-secondary-color);
+    border-radius: 6px;
+    text-align: center;
+    color: white;
+    margin-left: auto;
+    margin-top: 16px;
+    padding: 8px;
+    max-height: 54px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    /* see if a min-width is necessary but I thinks yes to prevent shrink */
+}
+
+.user-container:hover {
+    background-color: var(--secondary-color);
+
+}
+
+.profile-picture-small {
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 8px;
+    width: 48px;
+    height: 48px;
+}
+
+.profile-picture-header {
+    border-style: none;
+    border-radius: 8px;
+    margin: 8px;
+    width: 40px;
+    height: 40px;
+    transition: border 0.2s;
+}
+
+.subscribe-container {
+    display: flex;
+    justify-content: center;
+    max-width: 432px;
+    background-color: var(--background-window-color);
+    margin: 64px auto;
+    padding: 32px 64px;
+}
+
+.subscribe-field {
+    width: 100%;
+    height: 32px;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #545454;
+    margin: 16px 0;
+}
+
+/* post question here */
+
+@keyframes slideUp {
+    from{transform: translateY(10px); opacity: 0;}
+    to{transform: translateY(0px); opacity: 1;}
+}
+
+@keyframes pulseTags {
+    from{background-color: #864138;opacity: 0.3;}
+    to{background-color: #4e1e18;opacity: 1;}
+}
+
+.post-field {
+    width: 100%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #545454;
+    margin: 16px 0;
+    font-family: lato;
+    font-size: 16px;
+}
+
+.post-tags-container {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #545454;
+    border-radius: 3px;
+   background-color: white;
+    color: gray;
+    margin: 16px 0;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+}
+
+.input-tag-container {
+    position: relative;
+    flex: 0 1 20%;
+    margin: 0 4px;
+    display: flex;
+    align-items: center;
+}
+
+.modal-tags {
+    position: absolute;
+    padding: 8px 0;
+    background-color: #F6F0EA;
+    border-radius: 3px;
+    box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.25);
+    bottom: 40px;
+    font-size: 14px;
+    color: black;
+    max-height: 433px;
+    overflow: hidden;
+    animation: slideUp 0.2s;
+}
+
+.modal-tags ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.modal-tags hr {
+    width: 100%;
+    margin: 4px 0;
+    border: 1px solid #dbdbdb;
+    border-top: none;
+}
+
+.modal-tags li {
+    padding: 8px 16px;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+
+}
+
+.modal-tags li:hover {
+    cursor: pointer;
+    background-color: #e6e6e6;
+}
+
+.input-tag-container input {
+    outline: none;
+    border: none;
+    padding: 4px;
+    width: 100%;
+    font-family: lato;
+    background-color: unset;
+}
+
+.input-tag-container input:focus {
+    outline: 1px solid #AE5604;
+    border-radius: 3px;
+}
+
+.tag-lock {
+    background-color: #4e1e18;
+    border-radius: 3px;
+    text-align: center;
+    animation: pulseTags 0.5s;
+}
+
+.text-content {
+    min-height: 196px;
+    max-width: 100%;
+    min-width: 30%;
+}
+
+.subscribe-succes-container {
+    display: flex;
+    align-items: center;
+    min-width: 408px;
+    background-color: rgba(74, 124, 89, 0.7);
+    margin: 0 296px;
+    color: white;
+    font-size: 20px;
+    padding: 16px 24px;
+}
+
+.message-container {
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 350px;
+    background-color: rgba(74, 124, 89, 0.7);
+    margin: 8px auto;
+    color: white;
+    font-size: 20px;
+    padding: 8px;
+    max-width: 1000px;
+    animation: slideUp 0.3s;
+}
+
+.error {
+    background-color: rgba(204, 25, 25, 0.7);
+}
+
+/*element below at the end of the file style.css */
+
+.footer-container {
+    display: flex;
+    position: relative; /* for windows fullscreen, maybe put some javascript condition */
+    z-index: 3;
+    background-color: #071013;
+    color: white;
+    padding-left: 208px;
+    padding-right: 208px;
+}
+
+.text-footer-container div:first-child {
+    margin-bottom: 8px;
+}
+
+.text-footer-container {
+    margin: 16px 24px;
+}
