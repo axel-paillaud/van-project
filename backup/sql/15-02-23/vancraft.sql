@@ -105,7 +105,7 @@ DROP TABLE IF EXISTS `images_posts`;
 CREATE TABLE `images_posts` (
   `image_id` int(11) NOT NULL AUTO_INCREMENT,
   `post_id` int(11) NOT NULL,
-  `name` varchar(48) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
   `image_url` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`image_id`),
   KEY `post_id` (`post_id`),
@@ -388,4 +388,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-15 14:36:12
+-- Dump completed on 2023-02-15 14:40:25
