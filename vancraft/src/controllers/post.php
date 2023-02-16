@@ -29,16 +29,10 @@ else if ($uri === "/submit-post") {
 
     if($images) {
         $imageDb = $postLib->addImgToServer($_FILES["image"], $_SESSION);
-        $postRepository->sendPost($_SESSION, $title, $content, $tags, $imageDb); //TODO
-    }
-    $postRepository->sendPost($_SESSION, $title, $content, $tags); //TODO
-
-    if (isset($_POST['title'], $_POST['content'], $_POST['tag'])) {
-        echo "hello";
-
-        require 'home/homepage.php';
+        $postRepository->sendPost($_SESSION, $title, $content, $tags, $imageDb);
     }
     else {
-        throw new Exception("Un problème est survenu sur l'un des champs du formulaire.");
+        $postRepository->sendPost($_SESSION, $title, $content, $tags);
     }
+    require base_path('src/controllers/homepage.php');
 }

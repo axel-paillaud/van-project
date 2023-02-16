@@ -88,28 +88,26 @@ const initTags = function(e) {
 const addTags = function(e) {
     let modal = document.getElementById("js-modal-tag");
     if (this.value != "" && this.value != " ") { //check if the user input tag is not an empty string, or a space
-        if (modal.style.display === "none") {
-            modal.innerHTML = modalContener; //modalContener have to be add only once, modalContent need to be refresh on every change
-            modal.style.display = null;
 
-            let listTags = document.getElementById("js-list-tag");
-
-            DOMinitCreateTags(listTags);
-
-            document.querySelector("body").addEventListener('click', closeModal);
-        }
+        modal.innerHTML = modalContener; //modalContener have to be add only once, modalContent need to be refresh on every change
+        modal.style.display = null;
 
         let listTags = document.getElementById("js-list-tag");
 
+        DOMinitCreateTags(listTags);
+
+        document.querySelector("body").addEventListener('click', closeModal);
+
         let listElt = listTags.children;
+
         for (let i = 0; i < listElt.length; i++) {// clear list on every change, except for "Créer un tag ..." element
             if (i > 1) {
-                listTags.removeChild(listElt[i])
+                listElt[i].removeEventListener('click', closeModal);
+                listElt[i].remove();
             }
         }
 
         let tagStartWith = checkTags(tags, this.value);
-
         for (let i = 0; i < tagStartWith.length; i++) {
             if (i > 10) break;
             let li = document.createElement("li");
