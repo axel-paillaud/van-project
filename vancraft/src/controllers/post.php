@@ -10,8 +10,13 @@ require_once base_path('src/model/tag.php');
 require_once base_path('src/controllers/lib/post.php');
 require_once base_path('src/validators/postValidator.php');
 
-if ($uri === "/post-article") {
-    echo $twig->render('article/post.php', [
+if ($uri === "/post-10") {
+    echo $twig->render("article/post.php", [
+
+    ]);
+}
+else if ($uri === "/post-article") {
+    echo $twig->render('article/send_post.php', [
         'page' => 'post',
     ]);
 }

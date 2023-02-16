@@ -14,7 +14,7 @@
     <div class="title-container">
         <div class="title-text-container">
             <h1 class="title-title">VanCraft</h1>
-            <h4 class="title-subtitle">Une aide communautaire à la réalisation de son véhicule aménagé.</h4>
+            <h2 class="title-subtitle">Une aide communautaire à la réalisation de son véhicule aménagé.</h2>
         </div>
        <div class="title-logo-container">
             <img src="assets/images/logo/logo.svg" alt="VanCraft Logo"/>
@@ -22,7 +22,7 @@
     </div>
     <div class="content-post-container">
         <div class="title-btn-post-container">
-            <h3 class="header-title-post">Questions populaires</h3>
+            <p class="header-title-post">Questions populaires</p>
             <a href="/post-article"><button class="btn-orange"><b>Poser une question</b></button></a>
         </div>
         <hr class="horizontal-rule">
@@ -32,9 +32,9 @@
         {% for post in posts %}
             <div class="post-container">
                 <div class="row-container">
-                    <div class="post-title">
+                    <a href="/post-10" class="post-title">
                         {{ post.title }}
-                    </div>
+                    </a>
                     <div class="views-votes-container">
                         <div class="post-stat">
                             {{ post.votes }} votes

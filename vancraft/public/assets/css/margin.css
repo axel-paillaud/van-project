@@ -4,6 +4,14 @@
     margin: 8px;
 }
 
+.margin-16 {
+    margin: 16px;
+}
+
+.margin-16-0 {
+    margin: 16px 0;
+}
+
 .margin-8-0 {
     margin: 8px 0;
 }

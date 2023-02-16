@@ -103,6 +103,7 @@
 .header-title-post {
     font-size: 24px;
     margin: 10px 0;
+    font-weight: bold;
 }
 
 .container {
@@ -145,6 +146,14 @@
     border-bottom : 1px solid #bf946c;
 }
 
+/* article is for entire article page, with question and answer. */
+.article-container {
+    background-color: var(--background-window-color);
+    border-radius: 3px;
+    margin: 64px auto;
+    padding: 32px;
+}
+
 .post-container:first-child {
     border-radius: 6px 6px 0 0;
 }
@@ -155,6 +164,8 @@
 }
 
 .post-title {
+    color: black;
+    text-decoration: none;
     font-size: 20px;
     order: 2;
 }

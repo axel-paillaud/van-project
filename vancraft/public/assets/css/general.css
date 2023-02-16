@@ -12,6 +12,14 @@ h1 {
     font-family: nova_mono;
 }
 
+h2 {
+    margin: 0;
+}
+
 .display-none {
     display: none;
+}
+
+.font-normal {
+    font-weight: normal;
 }

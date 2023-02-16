@@ -10,6 +10,7 @@ $routes = [
     '/log-in'           => 'src/controllers/log.php',
     '/submit-log-in'    => 'src/controllers/log.php',
     '/log-out'          => 'src/controllers/log.php',
+    '/post-10'          => 'src/controllers/post.php',
     '/post-article'     => 'src/controllers/post.php',
     '/submit-post'      => 'src/controllers/post.php',
     '/api/tags'         => 'src/controllers/api/tags.php',
@@ -21,7 +22,7 @@ function routeToControllers($uri, $routes) {
     }
     else {
         abort();
-        return 'src/controllers/home/homepage.php';
+        return 'src/controllers/homepage.php';
     }
 }
 
