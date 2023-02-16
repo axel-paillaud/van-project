@@ -12,7 +12,7 @@ h1 {
     font-family: nova_mono;
 }
 
-h2 {
+h2, hr, p {
     margin: 0;
 }
 
@@ -20,6 +20,51 @@ h2 {
     display: none;
 }
 
+/* font */
 .font-normal {
     font-weight: normal;
+}
+
+.font-size-27 {
+    font-size: 27px;
+}
+
+.font-size-24 {
+    font-size: 24px;
+}
+
+
+/* flex */
+.flex {
+    display: flex;
+}
+
+.flex-space-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.gap-16 {
+    gap: 16px;
+}
+.light-hr {
+    border-bottom: 1px;
+}
+
+/* color */
+.light-mid-gray {
+    color: #9F9F9F;
+}
+
+.color-di-sierra {
+    color: #D79251;
+}
+
+.color-laser {
+    color: #C6A26D;
 }

@@ -154,6 +154,10 @@
     padding: 32px;
 }
 
+.circle-vote {
+    border-radius: 60px;
+}
+
 .post-container:first-child {
     border-radius: 6px 6px 0 0;
 }
