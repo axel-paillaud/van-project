@@ -11,7 +11,7 @@
             <a class="btn-orange">Poser une question</a>
         </div>
         <small class="flex align-center gap-16">
-            <time>Date : Aujourd'hui</time><p>Nombre de vue : 12</p>
+            <p>Date : <time>Aujourd'hui</time></p><p>Nombre de vue : 12</p><p>Dernière modification : <time>Aujourd'hui</time></p>
         </small>
         <hr class="margin-16--32-64--32 light-mid-gray light-hr">
         <div class="flex">
@@ -28,14 +28,17 @@
                 <div class="flex space-between flex-wrap">
                     <div>
                         <div class="flex gap-32 flex-wrap">
-                            <figure>
-                                <img src="assets/images/tmp/img-1.png" alt="Image utilisateur 1">
+                            <figure class="img-post">
+                                <img class="full-size cover" src="assets/images/tmp/img-3.jpg" alt="Image utilisateur 1">
                             </figure>
-                            <figure>
-                                <img src="assets/images/tmp/img-1.png" alt="Image utilisateur 1">
+                            <figure class="img-post">
+                                <img class="full-size cover" src="assets/images/tmp/img-2.JPG" alt="Image utilisateur 1">
                             </figure>
-                            <figure>
-                                <img src="assets/images/tmp/img-1.png" alt="Image utilisateur 1">
+                            <figure class="img-post">
+                                <img class="full-size cover" src="assets/images/tmp/img-3.jpg" alt="Image utilisateur 1">
+                            </figure>
+                            <figure class="img-post">
+                                <img class="full-size cover" src="assets/images/tmp/img-3.jpg" alt="Image utilisateur 1">
                             </figure>
                         </div>
                         <ul class="flex padding-0">
@@ -44,7 +47,7 @@
                             <li class="tag">laine de verre</li>
                         </ul>
                     </div>
-                    <div class="flex align-items-end">
+                    <div class="flex align-items-end width-100">
                         <div class="user-container">
                             <img class="profile-picture-small" src="assets/images/users/default/profile_images/1.jpg" alt="Photo profil">
                             <b style="margin-left: 8px;" >Jean-luc</b>

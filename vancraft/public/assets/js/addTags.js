@@ -346,7 +346,7 @@ function resetAnimation(element, animation) {
 function checkInputImg(imageInput) {
     let files = imageInput.files;
 
-    if (files.length > 3) {
+    if (files.length > 4) {
         return false;
     }
 
@@ -385,7 +385,7 @@ function updateThumbnails(elt, userInput) {
 
 const addImage = function() {
     if (!checkInputImg(imageInput)) {
-        displayErrorMsg(errorMsg, "Erreur avec le fichier téléversé, il doit être de type png/jpeg/gif et ne pas dépasser 2mo");
+        displayErrorMsg(errorMsg, "Erreur avec le fichier téléversé, il doit être de type png/jpeg/gif, ne pas dépasser 2mo, moins de 4 fichiers");
     }
     else {
         let imgContainer = document.querySelector("#add-img label");

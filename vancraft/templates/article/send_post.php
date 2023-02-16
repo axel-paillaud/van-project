@@ -13,10 +13,10 @@
             <div id="add-img" class="add-img">
                 <label for="image">
                     <p class="btn-brown-light">+ Ajouter des photos</p>
-                    <input class="display-none" id="image" type="file" name="image[]" accept="image/png, image/jpeg, image/gif" multiple max="3">
+                    <input class="display-none" id="image" type="file" name="image[]" accept="image/png, image/jpeg, image/gif" multiple max="4">
                     <img src="assets/images/icons/pictures-brown.svg" alt="Ajouter une photo">
                 </label>
-                <small class="margin-left-8">Jusqu'à 3 photos, jpg, png, gif : 2mo max</small>
+                <small class="margin-left-8">Jusqu'à 4 photos, jpg, png, gif : 2mo max</small>
             </div>
             <label><b>Mots-clefs</b></label>
             <div class="post-tags-container">

@@ -49,7 +49,7 @@ class PostRepository
         return $posts;
     }
 
-    public function sendPost(array $user, string $title, string $content, array $tags, mixed $imageDb = false) {
+    public function sendPost(array $user, string $title, string $content, array $tags, $imageDb = null) {
         $this->dbConnect();
 
         $statement = $this->database->prepare(
@@ -74,7 +74,7 @@ class PostRepository
             'user_id' => $user["user_id"],
         ]);
 
-        if ($imageDb !== false) {
+        if ($imageDb !== null) {
             for ($i = 0; $i < count($imageDb); $i++)
             {
                 $statement = $this->database->prepare(

@@ -20,6 +20,19 @@ h2, hr, p, figure {
     display: none;
 }
 
+.full-size {
+    width: 100%;
+    height: 100%;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.cover {
+    object-fit: cover;
+}
+
 /* padding */
 .padding-0-32 {
     padding: 0 32px;

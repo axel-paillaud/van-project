@@ -254,6 +254,15 @@
     border-radius: 3px;
 }
 
+.img-post {
+    flex-basis: 45%;
+    max-height: 400px;
+}
+
+.img-post img {
+    border-radius: 8px;
+}
+
 .user-container {
     display: flex;
     align-items: center;

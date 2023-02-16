@@ -5,11 +5,14 @@ use Exception;
 
 class PostValidator {
     public function imageValidator($files) {
+        if (count($files) === 0) {
+            return false; //no image is add by user, its not a problem
+        }
+        else if (count($files) > 4) {
+            throw new Exception("Erreur avec le téléversement des fichiers : seul un maximum de 4 images est autorisée");
+        }
         for ($i = 0; $i < count($files); $i++)
         {
-            if ($files[$i]->error === 4) {
-                return false; //no image is add by user, its not a problem
-            }
             if ($files[$i]->error != 0) {
                 throw new Exception("Erreur avec le téléversement du fichier sur le serveur, code erreur " . $files[$i]->error);
             }
