@@ -37,8 +37,23 @@ class postLib {
         return $images;
     }
 
+    public function createPostDirIfNotExist($targetDir, $user) {
+        if (!is_dir($targetDir)) {
+            if (!is_dir("assets/images/users/" . $user["user_name"])) {
+                mkdir("assets/images/users/" . $user["user_name"], 0700);
+            }
+            mkdir("assets/images/users/" . $user["user_name"]  . "/posts_images", 0700);
+        }
+    }
+
     public function addImgToServer($images, $user) {
-        $targetDir = "assets/images/users/" . $user["user_name"] . "/posts_pictures/";
+        $targetDir = "assets/images/users/" . $user["user_name"] . "/posts_images/";
+        $this->createPostDirIfNotExist($targetDir, $user);
+        die();
+
+        if (!is_dir($targetDir)) {
+            echo "problem with folder";
+        }
 
         for ($i = 0; $i < count($images["name"]); $i++)
         {
@@ -55,11 +70,7 @@ class postLib {
     }
 
     public function addPost(string $title, string $content, array $tags) {
-        print_r($title);
-        echo "\n";
-        print_r($content);
-        echo "\n";
-        print_r($tags);
+        echo "add post here, input are ok";
     }
 }
 

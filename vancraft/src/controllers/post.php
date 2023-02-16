@@ -28,6 +28,7 @@ else if ($uri === "/submit-post") {
 
     if($images) {
         $postLib->addImgToServer($_FILES["image"], $_SESSION); //TODO : if user dir doesn't exist, create it
+        die();
         $postLib->addImgToDb($_FILES["image"], $_SESSION); //TODO
     }
     $postLib->addPost($title, $content, $tags); //TODO

@@ -102,14 +102,6 @@ elseif ($uri === "/log-out") {
     session_destroy();
     session_start();
 
-/*     view('layout.php', [
-        'header' => headerNav(),
-        'sidebar' => sidebar(1),
-        'content' => homepage("Vous vous êtes bien déconnecté", true),
-        'footer' => footer(),
-        'title' => "Vancraft - Page d'accueil"
-    ]); */
-
     $message = "Vous vous êtes bien déconnecté";
     $bad_message = true;
 
