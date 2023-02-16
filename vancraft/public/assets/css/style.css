@@ -156,6 +156,14 @@
 
 .circle-vote {
     border-radius: 60px;
+    font-size: 20px;
+    padding: 12px;
+    transition: scale 0.2s;
+}
+
+.circle-vote:hover {
+    cursor: pointer;
+    scale: 1.1;
 }
 
 .post-container:first-child {

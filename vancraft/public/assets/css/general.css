@@ -33,10 +33,22 @@ h2, hr, p {
     font-size: 24px;
 }
 
+.font-size-20 {
+    font-size: 20px;
+}
+
 
 /* flex */
 .flex {
     display: flex;
+}
+
+.flex-direction-column {
+    flex-direction: column;
+}
+
+.flex-direction-row {
+    flex-direction: row;
 }
 
 .flex-space-between {
@@ -49,9 +61,22 @@ h2, hr, p {
     align-items: center;
 }
 
+.flex-basis-10 {
+    flex-basis: 10%;
+}
+
+.flex-basis-90 {
+    flex-basis: 90%;
+}
+
+.gap-8 {
+    gap: 8px;
+}
+
 .gap-16 {
     gap: 16px;
 }
+
 .light-hr {
     border-bottom: 1px;
 }
@@ -61,10 +86,10 @@ h2, hr, p {
     color: #9F9F9F;
 }
 
-.color-di-sierra {
-    color: #D79251;
+.background-color-di-sierra {
+    background-color: #D79251;
 }
 
-.color-laser {
-    color: #C6A26D;
+.background-color-laser {
+    background-color: #C6A26D;
 }

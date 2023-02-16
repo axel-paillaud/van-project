@@ -13,18 +13,18 @@
         <small class="flex align-center gap-16">
             <time>Date: Aujourd'hui</time><p>Nombre de vue: 12</p>
         </small>
-        <hr class="margin-16--32 light-mid-gray light-hr">
+        <hr class="margin-16--32-64--32 light-mid-gray light-hr">
         <div class="flex">
-            <div>
-                <div class="circle-vote color-di-sierra"><i class="fa-regular fa-thumbs-up"></i></div>
+            <div class="flex flex-direction-column align-center gap-8 flex-basis-10">
+                <div class="circle-vote background-color-di-sierra"><i class="fa-regular fa-thumbs-up"></i></div>
                 <p class="font-size-24">-2</p>
-                <div class="circle-vote color-laser"><i class="fa-solid fa-thumbs-down"></i></div>
+                <div class="circle-vote background-color-laser"><i class="fa-solid fa-thumbs-down"></i></div>
             </div>
-            <div>
-                <pre>
+            <div class="flex-basis-90">
+                <p>
                     Est-ce qu'il y a vraiment un gain de performance d'isolation en partant sur de l'armaflex plutôt que de la laine de verre ?
                     J'ai des difficultées à positionner la laine de verre par endroit (voir photo) et je pense partir sur de l'armaflex pour mon prochain véhicule.
-                </pre>
+                </p>
                 <div>
                     <div>
                         <figure>
