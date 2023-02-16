@@ -11,7 +11,7 @@
             <a class="btn-orange">Poser une question</a>
         </div>
         <small class="flex align-center gap-16">
-            <time>Date: Aujourd'hui</time><p>Nombre de vue: 12</p>
+            <time>Date : Aujourd'hui</time><p>Nombre de vue : 12</p>
         </small>
         <hr class="margin-16--32-64--32 light-mid-gray light-hr">
         <div class="flex">
@@ -20,23 +20,31 @@
                 <p class="font-size-24">-2</p>
                 <div class="circle-vote background-color-laser"><i class="fa-solid fa-thumbs-down"></i></div>
             </div>
-            <div class="flex-basis-90">
-                <p>
+            <div class="flex-basis-90 padding-0-32">
+                <p class="margin-0-0-32-0">
                     Est-ce qu'il y a vraiment un gain de performance d'isolation en partant sur de l'armaflex plutôt que de la laine de verre ?
                     J'ai des difficultées à positionner la laine de verre par endroit (voir photo) et je pense partir sur de l'armaflex pour mon prochain véhicule.
                 </p>
-                <div>
+                <div class="flex space-between flex-wrap">
                     <div>
-                        <figure>
-                            <img src="assets/images/tmp/img-1.png" alt="Image utilisateur 1">
-                        </figure>
-                        <ul>
-                            <li>isolation</li>
-                            <li>armaflex</i>
-                            <li>laine de verre</li>
+                        <div class="flex gap-32 flex-wrap">
+                            <figure>
+                                <img src="assets/images/tmp/img-1.png" alt="Image utilisateur 1">
+                            </figure>
+                            <figure>
+                                <img src="assets/images/tmp/img-1.png" alt="Image utilisateur 1">
+                            </figure>
+                            <figure>
+                                <img src="assets/images/tmp/img-1.png" alt="Image utilisateur 1">
+                            </figure>
+                        </div>
+                        <ul class="flex padding-0">
+                            <li class="tag">isolation</li>
+                            <li class="tag">armaflex</i>
+                            <li class="tag">laine de verre</li>
                         </ul>
                     </div>
-                    <div>
+                    <div class="flex align-items-end">
                         <div class="user-container">
                             <img class="profile-picture-small" src="assets/images/users/default/profile_images/1.jpg" alt="Photo profil">
                             <b style="margin-left: 8px;" >Jean-luc</b>

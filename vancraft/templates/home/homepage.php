@@ -50,7 +50,7 @@
                 <div class="row-container">
                     <div class="tag-container">
                         {% for tag in post.tags %}
-                            <div class="btn-orange">{{ tag.title }}</div>
+                            <div class="tag">{{ tag.title }}</div>
                         {% endfor %}
                     </div>
                     <div class="user-container">

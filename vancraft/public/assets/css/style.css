@@ -208,6 +208,22 @@
     font-size: 14px;
 }
 
+.tag {
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: var(--light-main-color);
+    color: #4e2b0a;
+    padding: 0.4em 0.8em;
+    margin: 4px;
+    transition: background-color 0.2s;
+    list-style-type: none;
+}
+
+.tag:hover {
+    background-color: #ac631f99;
+    color: #311b06;
+}
+
 .tag-container div {
     background-color: var(--light-main-color);
     color: #4e2b0a;
