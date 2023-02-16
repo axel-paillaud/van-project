@@ -3,6 +3,8 @@
 namespace Lib\Post;
 use Exception;
 use Model\Tag\TagRepository;
+use Model\Image\ImageRepository;
+require_once base_path('src/model/image.php');
 
 class Image {
     public string $name;
@@ -12,6 +14,11 @@ class Image {
     public int $size;
 }
 
+// To insert image in database, we only need name and image url;
+class ImageDb {
+    public string $name;
+    public string $imgUrl;
+}
 
 class Post {
     public string $title;
@@ -19,7 +26,7 @@ class Post {
     public array $tags;
 }
 
-class postLib {
+class PostLib {
     public function sortFiles($files) {
         $images = [];
 
@@ -46,31 +53,29 @@ class postLib {
         }
     }
 
-    public function addImgToServer($images, $user) {
+    public function addImgToServer($images, $user) : array {
         $targetDir = "assets/images/users/" . $user["user_name"] . "/posts_images/";
         $this->createPostDirIfNotExist($targetDir, $user);
-        die();
 
-        if (!is_dir($targetDir)) {
-            echo "problem with folder";
-        }
-
+        $imagesDb = [];
+        
         for ($i = 0; $i < count($images["name"]); $i++)
         {
+            $image = new ImageDb();
             $imageType = exif_imagetype($images["tmp_name"][$i]);
             $extension = image_type_to_extension($imageType, true);
-            $filename = uniqid() . $extension;
+            $filename = $user["user_name"] . uniqid() . $extension;
 
             while (file_exists($targetDir . $filename)) { // While the filename exists (little chance), generate new name
-                $filename = uniqid() . $extension;
+                $filename = $user["user_name"] . uniqid() . $extension;
               }
 
+            $image->name = $filename;
+            $image->imgUrl = $targetDir . $filename;
+            $imagesDb[] = $image;
             move_uploaded_file($images["tmp_name"][$i], $targetDir . $filename); // move the file to the user directory
         }
-    }
-
-    public function addPost(string $title, string $content, array $tags) {
-        echo "add post here, input are ok";
+        return $imagesDb;
     }
 }
 

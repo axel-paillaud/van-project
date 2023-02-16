@@ -3,7 +3,7 @@
 namespace Validator\Post;
 use Exception;
 
-class postValidator {
+class PostValidator {
     public function imageValidator($files) {
         for ($i = 0; $i < count($files); $i++)
         {

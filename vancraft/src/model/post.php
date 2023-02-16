@@ -49,6 +49,91 @@ class PostRepository
         return $posts;
     }
 
+    public function sendPost(array $user, string $title, string $content, array $tags, mixed $imageDb = false) {
+        $this->dbConnect();
+
+        $statement = $this->database->prepare(
+            "INSERT INTO posts (title, creation_date, views, votes, content, last_modification, answers)
+            VALUE (:title, NOW(), DEFAULT, DEFAULT, :content, NOW(), DEFAULT)"
+        );
+
+        $statement->execute([
+            'title' => $title,
+            'content' => $content,
+        ]);
+
+        $postId = $this->database->lastInsertId();
+
+        $statement = $this->database->prepare(
+            "INSERT INTO posts_users(post_id, user_id)
+            VALUE(:post_id, :user_id)"
+        );
+
+        $statement->execute([
+            'post_id' => $postId,
+            'user_id' => $user["user_id"],
+        ]);
+
+        if ($imageDb !== false) {
+            for ($i = 0; $i < count($imageDb); $i++)
+            {
+                $statement = $this->database->prepare(
+                    "INSERT INTO images_posts (post_id, name, image_url)
+                    VALUE(:post_id, :name, :image_url)"
+                );
+    
+                $statement->execute([
+                    'post_id' => $postId,
+                    'name' => $imageDb[$i]->name,
+                    'image_url' => $imageDb[$i]->imgUrl,
+                ]);
+            }
+        }
+
+        for ($i = 0; $i < count($tags); $i++)
+        {
+            // first check if tag already exist in the table. if no, add it, if yes, get his id
+            $statement = $this->database->prepare(
+                "SELECT tag_id FROM tags WHERE title = :tag"
+            );
+            $statement->execute([
+                'tag' =>$tags[$i],
+            ]);
+            $tagAlreadyExist = $statement->fetchColumn();
+            print_r($tagAlreadyExist);
+
+            if (empty($tagAlreadyExist)) {
+                $statement = $this->database->prepare(
+                    "INSERT INTO tags (title)
+                    VALUE (:tag)"
+                );
+    
+                $statement->execute([
+                    'tag' => $tags[$i],
+                ]);
+
+                $tagId = $this->database->lastInsertId();
+
+                $statement = $this->database->prepare(
+                    "INSERT INTO posts_tags (post_id, tag_id) VALUE (:post_id, :tag_id)"
+                );
+                $statement->execute([
+                    'post_id' => $postId,
+                    'tag_id' => $tagId,
+                ]);
+            }
+            else {
+                $statement = $this->database->prepare(
+                    "INSERT INTO posts_tags (post_id, tag_id) VALUE (:post_id, :tag_id)"
+                );
+                $statement->execute([
+                    'post_id' => $postId,
+                    'tag_id' => $tagAlreadyExist,
+                ]);
+            }
+        }
+    }
+
     private function dbConnect() {
         try {
             if ($this->database == null) {

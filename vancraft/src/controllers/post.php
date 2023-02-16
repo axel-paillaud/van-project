@@ -2,8 +2,8 @@
 
 use Model\Tag\TagRepository;
 use Model\Post\PostRepository;
-use Validator\Post\postValidator;
-use Lib\Post\postLib;
+use Validator\Post\PostValidator;
+use Lib\Post\PostLib;
 require_once base_path('src/model/post.php');
 require_once base_path('src/model/user.php');
 require_once base_path('src/model/tag.php');
@@ -16,8 +16,9 @@ if ($uri === "/post-article") {
     ]);
 }
 else if ($uri === "/submit-post") {
-    $postValidator = new postValidator();
-    $postLib = new postLib();
+    $postValidator = new PostValidator();
+    $postLib = new PostLib();
+    $postRepository = new PostRepository();
 
     $images = $postLib->sortFiles($_FILES["image"]);
     $postValidator->userValidator($_SESSION);
@@ -27,13 +28,11 @@ else if ($uri === "/submit-post") {
     $tags = $postValidator->tagsValidator($_POST["tag"]);
 
     if($images) {
-        $postLib->addImgToServer($_FILES["image"], $_SESSION); //TODO : if user dir doesn't exist, create it
-        die();
-        $postLib->addImgToDb($_FILES["image"], $_SESSION); //TODO
+        $imageDb = $postLib->addImgToServer($_FILES["image"], $_SESSION);
+        $postRepository->sendPost($_SESSION, $title, $content, $tags, $imageDb); //TODO
     }
-    $postLib->addPost($title, $content, $tags); //TODO
+    $postRepository->sendPost($_SESSION, $title, $content, $tags); //TODO
 
-    dd($_POST);
     if (isset($_POST['title'], $_POST['content'], $_POST['tag'])) {
         echo "hello";
 
