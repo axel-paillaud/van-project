@@ -1,5 +1,6 @@
 .btn-orange {
     background-color: var(--main-color);
+    white-space: nowrap;
     color: white;
     padding: 0.7em 1.3em;
     border-radius: 3px;
@@ -41,7 +42,7 @@
 
 .btn-brown-light {
     background-color: var(--light-secondary-color);
-    border-radius: 20px;
+    border-radius: 3px;
     color: white;
     padding: 0.7em 1.3em;
     cursor: pointer;
