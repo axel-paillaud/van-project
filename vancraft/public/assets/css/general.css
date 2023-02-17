@@ -95,6 +95,10 @@ h2, hr, p, figure {
     align-items: flex-end;
 }
 
+.justify-content-end {
+    justify-content: end;
+}
+
 .flex-basis-10 {
     flex-basis: 10%;
 }

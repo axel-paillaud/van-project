@@ -269,10 +269,7 @@
     border-radius: 6px;
     text-align: center;
     color: white;
-    margin-left: auto;
-    margin-top: 16px;
     padding: 8px;
-    max-height: 54px;
     transition: background-color 0.2s;
     cursor: pointer;
     /* see if a min-width is necessary but I thinks yes to prevent shrink */
