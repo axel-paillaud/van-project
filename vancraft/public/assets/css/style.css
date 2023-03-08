@@ -386,7 +386,7 @@
     border-top: none;
 }
 
-.modal-tags li {
+.modal-tags li, .modal-tags div {
     padding: 8px 16px;
     transition: background-color 0.2s;
     white-space: nowrap;

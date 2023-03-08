@@ -69,7 +69,14 @@ function setOutlineRed(element) {
 
 submitBtn.addEventListener('click',checkValidForm);
 
-let modalContener = `<ul id='js-list-tag'>
+let modalContener = `
+                    <div>
+                        <i class="fa-solid fa-tag margin-right-8"></i>
+                        Créer un tag 
+                        <span id="js-tag-input"></span>
+                    </div>
+                    <hr>
+                    <ul id='js-list-tag'>
                     </ul>`
 
 //init tags = prepare for write tags, remove text information and set the focus on input tags
@@ -93,8 +100,6 @@ const addTags = function(e) {
         modal.style.display = null;
 
         let listTags = document.getElementById("js-list-tag");
-
-        DOMinitCreateTags(listTags);
 
         document.querySelector("body").addEventListener('click', closeModal);
 
