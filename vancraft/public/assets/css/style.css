@@ -393,7 +393,7 @@
 
 }
 
-.modal-tags li:hover {
+.modal-tags li:hover, .modal-tags div:hover {
     cursor: pointer;
     background-color: #e6e6e6;
 }

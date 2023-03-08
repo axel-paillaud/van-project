@@ -70,10 +70,10 @@ function setOutlineRed(element) {
 submitBtn.addEventListener('click',checkValidForm);
 
 let modalContener = `
-                    <div>
-                        <i class="fa-solid fa-tag margin-right-8"></i>
+                    <div id="js-create-tag">
+                        <i class="fa-solid fa-tag margin-right-8" style="pointer-events: none;"></i>
                         Créer un tag 
-                        <span id="js-tag-input"></span>
+                        <span id="js-update-input"></span>
                     </div>
                     <hr>
                     <ul id='js-list-tag'>
@@ -100,6 +100,8 @@ const addTags = function(e) {
         modal.style.display = null;
 
         let listTags = document.getElementById("js-list-tag");
+        listTags.addEventListener('click', addInputTag);
+        document.getElementById("js-create-tag").addEventListener('click', addInputTag);
 
         document.querySelector("body").addEventListener('click', closeModal);
 
@@ -120,7 +122,7 @@ const addTags = function(e) {
             listTags.appendChild(li).innerText = tagStartWith[i];
         }
 
-        let tagInput = document.getElementById("js-tag-input");
+        let tagInput = document.getElementById("js-update-input");
         tagInput.innerText = '"' + this.value + '"';
     }
     else {
@@ -133,7 +135,8 @@ const addTags = function(e) {
     }
 }
 
-function DOMinitCreateTags(listTags) { //add "Créer un tag xxx" to the list tags DOM
+// delete here after test
+/* function DOMinitCreateTags(listTags) { //add "Créer un tag xxx" to the list tags DOM
     let i = document.createElement("i");
     let li = document.createElement("li");
     let hr = document.createElement("hr");
@@ -143,13 +146,13 @@ function DOMinitCreateTags(listTags) { //add "Créer un tag xxx" to the list tag
 
     li.appendChild(i).classList.add("fa-solid", "fa-tag", "margin-right-8");
     li.innerHTML += "Créer un tag ";
-    li.appendChild(span).id = "js-tag-input";
+    li.appendChild(span).id = "js-update-input";
     listTags.appendChild(li);
     listTags.appendChild(hr);
 
     listTags.addEventListener('click', addInputTag);
     li.addEventListener('click', closeModal);
-}
+} */
 
 function  DOMinitNewInput() {
     let newInput = document.createElement("input");
@@ -243,6 +246,7 @@ const deleteTag = function (e) {
 
 // bad code here, surely there is a better solution
 function checkInputTag(element, userInputTags) {
+    console.log(element);
     let tag;
     if(element.target.lastElementChild === null) {
         if (element.target.tagName === "LI") {
@@ -257,7 +261,7 @@ function checkInputTag(element, userInputTags) {
     }
 
     if (element.target.lastElementChild != null) {
-        if (element.target.lastElementChild.id === "js-tag-input") {
+        if (element.target.lastElementChild.id === "js-update-input") {
             tag = element.target.lastElementChild.textContent;
             tag = tag.substring(1, tag.length -1); //remove quote
             if (userInputTags.indexOf(tag) != -1) {
@@ -289,11 +293,11 @@ function checkInputTag(element, userInputTags) {
             return tag;
         }
     }
-    if (document.getElementById("js-tag-input") === null) {
+    if (document.getElementById("js-update-input") === null) {
         return false;
     }
     else {
-        tag = document.getElementById("js-tag-input").textContent;
+        tag = document.getElementById("js-update-input").textContent;
         tag = tag.substring(1, tag.length -1);
         if (userInputTags.indexOf(tag) != -1) {
             return userInputTags.indexOf(tag);
