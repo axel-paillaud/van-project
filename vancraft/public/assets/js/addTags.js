@@ -73,7 +73,7 @@ let modalContener = `
                     <div id="js-create-tag">
                         <i class="fa-solid fa-tag margin-right-8" style="pointer-events: none;"></i>
                         Créer un tag 
-                        <span id="js-update-input"></span>
+                        <span id="js-update-input" style="pointer-events: none;"></span>
                     </div>
                     <hr>
                     <ul id='js-list-tag'>
@@ -135,25 +135,6 @@ const addTags = function(e) {
     }
 }
 
-// delete here after test
-/* function DOMinitCreateTags(listTags) { //add "Créer un tag xxx" to the list tags DOM
-    let i = document.createElement("i");
-    let li = document.createElement("li");
-    let hr = document.createElement("hr");
-    let span = document.createElement("span");
-
-    hr.addEventListener('click', stopPropagation);
-
-    li.appendChild(i).classList.add("fa-solid", "fa-tag", "margin-right-8");
-    li.innerHTML += "Créer un tag ";
-    li.appendChild(span).id = "js-update-input";
-    listTags.appendChild(li);
-    listTags.appendChild(hr);
-
-    listTags.addEventListener('click', addInputTag);
-    li.addEventListener('click', closeModal);
-} */
-
 function  DOMinitNewInput() {
     let newInput = document.createElement("input");
     let icon = document.createElement("i");
@@ -185,9 +166,8 @@ const addInputTag = function (e) {
         let tag = checkInputTag(e, userInputTags);
         let allInput = document.querySelectorAll(".input-tag-container input");
         let lastInput = allInput[allInput.length - 1];
-    
-        if (tag === false) return;
 
+        // if tag is not equal to number, that's mean its a valid string tag
         if (!Number.isInteger(tag)) {
             document.getElementById("js-modal-tag").remove();
     
@@ -215,7 +195,8 @@ const addInputTag = function (e) {
                 DOMinitNewInput();
             }
         }
-        else { // if input tag is equal false, that's mean it's incorrect, so delete the current input and refocus
+        // if input tag is equal to number, that's mean it's incorrect, so delete the current input and refocus
+        else {
             lastInput.value = "";
             lastInput.focus();
             inputAlreadyHere = allInput[tag].parentElement;
@@ -245,83 +226,27 @@ const deleteTag = function (e) {
 }
 
 function checkInputTag(element, userInputTags) {
-    console.log(element);
     let tag;
+    console.log(element.target);
+    console.log(userInputTags);
 
+    // if user click on "Create tag" div, get this tag and remove quote, else, get list tag
     if (element.target.id === "js-create-tag") {
         tag = document.getElementById("js-update-input").textContent;
         tag = tag.substring(1, tag.length -1); // remove quote
-        return tag;
     }
     else {
         tag = element.target.textContent;
-        return tag;
     }
+
+    // check if tag is already present in input form, and if, return index array
+    for (let i = 0; i < userInputTags.length; i++) {
+        if (userInputTags[i] == tag) {
+            return i;
+        }
+    }
+    return tag;
 }
-
-// bad code here, surely there is a better solution
-/* function checkInputTag(element, userInputTags) {
-    console.log(element);
-    let tag;
-    if(element.target.lastElementChild === null) {
-        if (element.target.tagName === "LI") {
-            tag = element.target.textContent;
-            if (userInputTags.indexOf(tag) != -1) {
-                return userInputTags.indexOf(tag);
-            }
-            else {
-                return tag;
-            }
-        }
-    }
-
-    if (element.target.lastElementChild != null) {
-        if (element.target.lastElementChild.id === "js-update-input") {
-            tag = element.target.lastElementChild.textContent;
-            tag = tag.substring(1, tag.length -1); //remove quote
-            if (userInputTags.indexOf(tag) != -1) {
-                return userInputTags.indexOf(tag);
-            }
-            else {
-                return tag;
-            }
-        }
-    }
-
-    if (element.target.tagName === "I") {
-        tag = element.target.nextElementSibling.textContent;
-        tag = tag.substring(1, tag.length -1);
-        if (userInputTags.indexOf(tag) != -1) {
-            return userInputTags.indexOf(tag);
-        }
-        else {
-            return tag;
-        }
-    }
-    if (element.target.tagName === "SPAN") {
-        tag = element.target.textContent;
-        tag = tag.substring(1, tag.length - 1);
-        if (userInputTags.indexOf(tag) != -1) {
-            return userInputTags.indexOf(tag);
-        }
-        else {
-            return tag;
-        }
-    }
-    if (document.getElementById("js-update-input") === null) {
-        return false;
-    }
-    else {
-        tag = document.getElementById("js-update-input").textContent;
-        tag = tag.substring(1, tag.length -1);
-        if (userInputTags.indexOf(tag) != -1) {
-            return userInputTags.indexOf(tag);
-        }
-        else {
-            return tag;
-        }
-    }
-} */
 
 const stopPropagation = function (e) {
     e.stopPropagation();
