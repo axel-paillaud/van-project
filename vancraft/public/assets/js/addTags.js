@@ -244,8 +244,23 @@ const deleteTag = function (e) {
     countUserInputTags--;
 }
 
-// bad code here, surely there is a better solution
 function checkInputTag(element, userInputTags) {
+    console.log(element);
+    let tag;
+
+    if (element.target.id === "js-create-tag") {
+        tag = document.getElementById("js-update-input").textContent;
+        tag = tag.substring(1, tag.length -1); // remove quote
+        return tag;
+    }
+    else {
+        tag = element.target.textContent;
+        return tag;
+    }
+}
+
+// bad code here, surely there is a better solution
+/* function checkInputTag(element, userInputTags) {
     console.log(element);
     let tag;
     if(element.target.lastElementChild === null) {
@@ -306,7 +321,7 @@ function checkInputTag(element, userInputTags) {
             return tag;
         }
     }
-}
+} */
 
 const stopPropagation = function (e) {
     e.stopPropagation();
