@@ -10,7 +10,8 @@ require_once base_path('src/model/tag.php');
 require_once base_path('src/controllers/lib/post.php');
 require_once base_path('src/validators/postValidator.php');
 
-if ($uri === "/post-10") {
+if ($uri === "/post") {
+    echo parse_url($_SERVER['REQUEST_URI'])["query"];
     echo $twig->render("article/post.php", [
 
     ]);

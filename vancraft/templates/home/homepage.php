@@ -43,7 +43,7 @@
                     </p>
                 </div>
                 <div class="flex flex-direction-column w-full">
-                    <a href="/post-10" class="post-title mb-8">
+                    <a href="/post?id=10" class="post-title mb-8">
                         {{ post.title }}
                     </a>
                 <div class="row-container justify-between">
