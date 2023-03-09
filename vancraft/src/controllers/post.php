@@ -26,7 +26,6 @@ else if ($uri === "/submit-post") {
     $postValidator = new PostValidator();
     $postLib = new PostLib();
     $postRepository = new PostRepository();
-
     $images = $postLib->sortFiles($_FILES["image"]);
     $postValidator->userValidator($_SESSION);
     $images = $postValidator->imageValidator($images);

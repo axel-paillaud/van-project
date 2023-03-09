@@ -100,7 +100,6 @@ class PostRepository
                 'tag' =>$tags[$i],
             ]);
             $tagAlreadyExist = $statement->fetchColumn();
-            print_r($tagAlreadyExist);
 
             if (empty($tagAlreadyExist)) {
                 $statement = $this->database->prepare(

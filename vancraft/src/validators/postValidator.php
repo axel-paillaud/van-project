@@ -5,7 +5,7 @@ use Exception;
 
 class PostValidator {
     public function imageValidator($files) {
-        if (count($files) === 0) {
+        if ($files[0]->error === 4) {
             return false; //no image is add by user, its not a problem
         }
         else if (count($files) > 4) {
