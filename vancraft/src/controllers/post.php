@@ -12,6 +12,7 @@ require_once base_path('src/validators/postValidator.php');
 
 if ($uri === "/post") {
     echo parse_url($_SERVER['REQUEST_URI'])["query"];
+    echo $_SERVER['REQUEST_METHOD'];
     echo $twig->render("article/post.php", [
 
     ]);
