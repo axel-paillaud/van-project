@@ -30,24 +30,23 @@
         <!-- parent's div for first child and last child -->
         <div>
         {% for post in posts %}
-            <div class="post-container">
-                <div class="row-container">
-                    <a href="/post-10" class="post-title">
+            <article class="post-container flex">
+                <div class="views-votes-container">
+                    <p class="post-stat">
+                        {{ post.votes }} votes
+                    </p>
+                    <p class="post-stat">
+                        {{ post.answers }} réponses
+                    </p>
+                    <p class="post-stat">
+                        {{ post.views }} vues
+                    </p>
+                </div>
+                <div class="flex flex-direction-column w-full">
+                    <a href="/post-10" class="post-title mb-8">
                         {{ post.title }}
                     </a>
-                    <div class="views-votes-container">
-                        <div class="post-stat">
-                            {{ post.votes }} votes
-                        </div>
-                        <div class="post-stat">
-                            {{ post.answers }} réponses
-                        </div>
-                        <div class="post-stat">
-                            {{ post.views }} vues
-                        </div>
-                    </div>
-                </div>
-                <div class="row-container">
+                <div class="row-container justify-between">
                     <div class="tag-container">
                         {% for tag in post.tags %}
                             <div class="tag">{{ tag.title }}</div>
@@ -59,6 +58,7 @@
                     </div>
                 </div>
             </div>
+            </article>
         {% endfor %}
         </div>   
     </div>

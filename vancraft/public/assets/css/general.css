@@ -83,6 +83,14 @@ h2, hr, p, figure {
     align-items: center;
 }
 
+.justify-between {
+    justify-content: space-between;
+}
+
+.w-full {
+    width: 100%;
+}
+
 .align-center {
     align-items: center;
 }

@@ -142,7 +142,7 @@
 
 .post-container {
     background-color: var(--background-window-color);
-    padding: 16px;
+    padding: 16px 32px;
     border-bottom : 1px solid #bf946c;
 }
 
@@ -178,7 +178,6 @@
     color: black;
     text-decoration: none;
     font-size: 20px;
-    order: 2;
 }
 
 .post-title:hover {
@@ -187,10 +186,8 @@
 }
 
 .views-votes-container {
-    order: 1;
     margin-right: 24px;
     white-space: nowrap;
-    height: 24px;
     /*width: 400px;*/ /*try here a padding for all the post-container exept for this class ?*/
 }
 
@@ -201,9 +198,7 @@
 .tag-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
     align-content: center;
-    margin: 8px 0 0 94px;
     font-size: 14px;
 }
 
