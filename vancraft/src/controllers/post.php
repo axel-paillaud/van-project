@@ -4,6 +4,8 @@ use Model\Tag\TagRepository;
 use Model\Post\PostRepository;
 use Validator\Post\PostValidator;
 use Lib\Post\PostLib;
+use Model\User\UserRepository;
+
 require_once base_path('src/model/post.php');
 require_once base_path('src/model/user.php');
 require_once base_path('src/model/tag.php');
@@ -13,8 +15,18 @@ require_once base_path('src/validators/postValidator.php');
 if ($uri === "/post") {
     echo $_GET["id"];
     $postRepository = new PostRepository();
+    $userRepository = new UserRepository();
+    $tagRepository = new TagRepository();
+
+    // need validation for id here, for security
     $post = $postRepository->getPost($_GET["id"]);
-    dd($post);
+    $post_id = $post->id;
+    $user = $userRepository->getUserPost($post_id);
+    $tags = $tagRepository->getTagsPost($post_id);
+    $post->user_name = $user->name;
+    $post->user_image_profile_url = $user->image_profile_url;
+    $post->tags = $tags;
+
     echo $twig->render("article/post.php", [
 
     ]);

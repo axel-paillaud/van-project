@@ -18,7 +18,7 @@ class Post
     public int $answers;
     public int $user_id;
     public string $user_name;
-    public string $user_image_profile__url;
+    public string $user_image_profile_url;
     public array $tags;
 }
 
@@ -30,6 +30,7 @@ class PostRepository
     public function getPost(int $id) : Post
     {
         $this->dbConnect();
+        // get post
         $statement = $this->database->prepare(
             "SELECT *, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss')
             AS french_creation_date, DATE_FORMAT(last_modification, '%d/%m/%Y à %Hh%imin%ss') AS french_last_modification
@@ -39,7 +40,7 @@ class PostRepository
         $row = $statement->fetch();
         
         $post = new Post();
-        
+
         $post->id = $row['post_id'];
         $post->title = $row['title'];
         $post->french_creation_date = $row['french_creation_date'];
@@ -48,6 +49,28 @@ class PostRepository
         $post->content = $row['content'];
         $post->french_last_modification = $row['french_last_modification'];
         $post->answers = $row['answers'];
+
+        // utiliser les fonctions déjà existante du model/user et model/tag. Hydrater $post dans le controller
+/*         //get user from post
+        $statement = $this->database->prepare(
+            "SELECT user_id, name FROM users WHERE user_id IN (
+                SELECT user_id FROM posts_users WHERE post_id = ?);
+            )"
+        );
+        $statement->execute([$id]);
+        $row = $statement->fetch();
+
+        $post->user_id = $row['user_id'];
+        $post->user_name = $row['name'];
+
+        //get image profile from user
+        $statement = $this->database->prepare(
+            "SELECT image_url_sm FROM images_profiles WHERE user_id = ?"
+        );
+        $statement->execute([$post->user_id]);
+        $row = $statement->fetch();
+
+        $post->user_image_profile__url = $row['image_url_sm']; */
 
         return $post;
     }
