@@ -50,28 +50,6 @@ class PostRepository
         $post->french_last_modification = $row['french_last_modification'];
         $post->answers = $row['answers'];
 
-        // utiliser les fonctions déjà existante du model/user et model/tag. Hydrater $post dans le controller
-/*         //get user from post
-        $statement = $this->database->prepare(
-            "SELECT user_id, name FROM users WHERE user_id IN (
-                SELECT user_id FROM posts_users WHERE post_id = ?);
-            )"
-        );
-        $statement->execute([$id]);
-        $row = $statement->fetch();
-
-        $post->user_id = $row['user_id'];
-        $post->user_name = $row['name'];
-
-        //get image profile from user
-        $statement = $this->database->prepare(
-            "SELECT image_url_sm FROM images_profiles WHERE user_id = ?"
-        );
-        $statement->execute([$post->user_id]);
-        $row = $statement->fetch();
-
-        $post->user_image_profile__url = $row['image_url_sm']; */
-
         return $post;
     }
 
