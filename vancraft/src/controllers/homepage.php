@@ -21,7 +21,7 @@ function homepage() {
     //get user and tag from post
     foreach ($posts as $post) {
         $post_id = $post->id;
-        $user = $userRepository->getPostUser($post_id);
+        $user = $userRepository->getUserPost($post_id);
         $tags = $tagRepository->getTagsPost($post_id);
 
         $post->user_id = $user->id;

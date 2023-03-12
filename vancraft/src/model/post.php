@@ -9,10 +9,12 @@ class Post
     public int $id;
     public string $title;
     public string $creation_date;
+    public string $french_creation_date;
     public int $views;
     public int $votes;
     public string $content;
     public string $last_modification;
+    public string $french_last_modification;
     public int $answers;
     public int $user_id;
     public string $user_name;
@@ -24,7 +26,35 @@ class PostRepository
 {
     private ?PDO $database = null;
 
-     public function getPosts(string $limit, string $orderBy) : array {
+    // get one post with ID
+    public function getPost(int $id) : Post
+    {
+        $this->dbConnect();
+        $statement = $this->database->prepare(
+            "SELECT *, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss')
+            AS french_creation_date, DATE_FORMAT(last_modification, '%d/%m/%Y à %Hh%imin%ss') AS french_last_modification
+            FROM posts WHERE post_id = ?;"
+        );
+        $statement->execute([$id]);
+        $row = $statement->fetch();
+        
+        $post = new Post();
+        
+        $post->id = $row['post_id'];
+        $post->title = $row['title'];
+        $post->french_creation_date = $row['french_creation_date'];
+        $post->views = $row['views'];
+        $post->votes = $row['votes'];
+        $post->content = $row['content'];
+        $post->french_last_modification = $row['french_last_modification'];
+        $post->answers = $row['answers'];
+
+        return $post;
+    }
+
+    // get all posts for homepage
+    public function getPosts(string $limit, string $orderBy) : array
+    {
         $this->dbConnect();
         $statement = $this->database->query(
             "SELECT post_id, title, content, views, votes, answers, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss')
@@ -37,19 +67,20 @@ class PostRepository
             $post = new Post();
             $post->id = $row['post_id'];
             $post->title = $row['title'];
-            $post->creation_date = $row['french_creation_date'];
+            $post->french_creation_date = $row['french_creation_date'];
             $post->views = $row['views'];
             $post->votes = $row['votes'];
             $post->answers = $row['answers'];
             $post->content = $row['content'];
-            $post->last_modification = $row['french_last_modification'];
+            $post->french_last_modification = $row['french_last_modification'];
 
             $posts[] = $post;
         }
         return $posts;
     }
 
-    public function sendPost(array $user, string $title, string $content, array $tags, $imageDb = null) {
+    public function sendPost(array $user, string $title, string $content, array $tags, $imageDb = null)
+    {
         $this->dbConnect();
 
         $statement = $this->database->prepare(

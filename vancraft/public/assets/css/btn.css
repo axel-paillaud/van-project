@@ -6,6 +6,7 @@
     border-radius: 3px;
     border: none;
     transition: background-color 0.2s;
+    text-decoration: none;
 }
 
 .btn-orange-alpha {
