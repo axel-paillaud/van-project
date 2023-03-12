@@ -45,10 +45,6 @@
     margin: 0 0 32px 0;
 }
 
-.margin-16--32-64--32 {
-    margin: 16px -32px 64px -32px;
-}
-
 .margin-0-0-32-0 {
     margin: 0 0 32px 0;
 }
@@ -67,4 +63,34 @@
 
 .mb-8 {
     margin-bottom: 8px;
+}
+
+.mb-32 {
+    margin-bottom: 32px;
+}
+
+.mb-64 {
+    margin-bottom: 64px;
+}
+
+.my-16 {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.ml-0 {
+    margin-left: 0;
+}
+
+.mr-24 {
+    margin-right: 24px;
+}
+
+.mt-16 {
+    margin-top: 16px;
+}
+
+.-mx-32 {
+    margin-left: -32px;
+    margin-right: -32px;
 }

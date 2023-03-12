@@ -91,6 +91,14 @@ h2, hr, p, figure {
     width: 100%;
 }
 
+.m-w-full {
+    max-width: 100%;
+}
+
+.min-h-200 {
+    min-height: 200px;
+}
+
 .align-center {
     align-items: center;
 }
