@@ -22,6 +22,22 @@ class Post
     public array $tags;
 }
 
+class PostImage
+{
+    public int $id;
+    public int $post_id;
+    public string $name;
+    public string $image_url;
+}
+
+class AnswerImage
+{
+    public int $id;
+    public int $answer_id;
+    public string $name;
+    public string $image_url;
+}
+
 class PostRepository
 {
     private ?PDO $database = null;
@@ -49,6 +65,11 @@ class PostRepository
         $post->content = $row['content'];
         $post->french_last_modification = $row['french_last_modification'];
         $post->answers = $row['answers'];
+
+        // get post images
+        $statement = $this->database->prepare(
+            ""
+        );
 
         return $post;
     }
@@ -106,6 +127,7 @@ class PostRepository
             'user_id' => $user["user_id"],
         ]);
 
+        // send images
         if ($imageDb !== null) {
             for ($i = 0; $i < count($imageDb); $i++)
             {
@@ -122,6 +144,7 @@ class PostRepository
             }
         }
 
+        // send tags
         for ($i = 0; $i < count($tags); $i++)
         {
             // first check if tag already exist in the table. if no, add it, if yes, get his id

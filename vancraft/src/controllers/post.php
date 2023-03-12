@@ -13,28 +13,34 @@ require_once base_path('src/controllers/lib/post.php');
 require_once base_path('src/validators/postValidator.php');
 
 if ($uri === "/post") {
-    echo $_GET["id"];
     $postRepository = new PostRepository();
     $userRepository = new UserRepository();
     $tagRepository = new TagRepository();
+    $postValidator = new PostValidator();
 
-    // need validation for id here, for security
-    $post = $postRepository->getPost($_GET["id"]);
+    if ($postValidator->idValidator($_GET["id"])) {
+        $post_id = $_GET["id"];
+    }
+    $post = $postRepository->getPost($post_id);
+    //get the actual post id from SQL, instead of passing GET user id
     $post_id = $post->id;
     $user = $userRepository->getUserPost($post_id);
     $tags = $tagRepository->getTagsPost($post_id);
     $post->user_name = $user->name;
+    $post->user_id = $user->id;
     $post->user_image_profile_url = $user->image_profile_url;
     $post->tags = $tags;
 
     echo $twig->render("article/post.php", [
-
+        'post' => $post,
+        'page' => 'post',
     ]);
 }
 else if ($uri === "/post-article") {
     echo $twig->render('article/send_post.php', [
         'page' => 'post',
     ]);
+    // page => post is for the sidenav bar
 }
 else if ($uri === "/submit-post") {
     $postValidator = new PostValidator();

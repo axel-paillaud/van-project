@@ -54,5 +54,5 @@ echo $twig->render('home/homepage.php', [
     'posts' => $posts,
     'message' => $message,
     'bad_message' => $bad_message,
-    'page' => 'home', // ?? what is it ?
+    'page' => 'home',
 ]);

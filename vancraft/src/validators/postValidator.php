@@ -4,7 +4,8 @@ namespace Validator\Post;
 use Exception;
 
 class PostValidator {
-    public function imageValidator($files) {
+    public function imageValidator($files)
+    {
         if ($files[0]->error === 4) {
             return false; //no image is add by user, its not a problem
         }
@@ -31,7 +32,8 @@ class PostValidator {
         }
     }
 
-    public function userValidator($user) {
+    public function userValidator($user)
+    {
         if (empty($user) || !isset($user)) {
             throw new Exception("Erreur : Vous devez être connecté pour pouvoir poster une question");
         }
@@ -40,7 +42,8 @@ class PostValidator {
         }
     }
 
-    public function titleValidator($title) {
+    public function titleValidator($title)
+    {
         if (empty($title) || !isset($title)) {
             throw new Exception("Erreur : Le titre est vide");
         }
@@ -52,7 +55,8 @@ class PostValidator {
         }
     }
 
-    public function contentValidator($content) {
+    public function contentValidator($content)
+    {
         if (empty($content) || !isset($content)) {
             throw new Exception("Erreur : Le contenu est vide");
         }
@@ -61,7 +65,31 @@ class PostValidator {
         }
     }
 
-    public function tagsValidator($tags) {
+    public function idValidator(mixed $id) : bool
+    {
+        $id = intval($id, 10);
+        if (!is_int($id)) {
+            throw new Exception("Erreur : L'id du post n'est pas un nombre");
+        }
+        else if ($id = 0) {
+            throw new Exception("Erreur : un problème est survenu au niveau de l'id du post");
+        }
+        else if (is_float($id)) {
+            throw new Exception("Erreur : L'id du post est un chiffre à virgule");
+        }
+        else if ($id < 0) {
+            throw new Exception("Erreur : L'id du post ne peut pas être un nombre négatif");
+        }
+        else if ($id > 1000000000) {
+            throw new Exception("Erreur : L'id du post ne peut pas être aussi long");
+        }
+        else {
+            return true;
+        }
+    }
+
+    public function tagsValidator($tags)
+    {
         if (empty($tags) || !isset($tags)) {
             throw new Exception("Erreur : Il faut au moins un mot-clef associé à une question");
         }
