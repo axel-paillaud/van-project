@@ -66,12 +66,32 @@ class PostRepository
         $post->french_last_modification = $row['french_last_modification'];
         $post->answers = $row['answers'];
 
-        // get post images
-        $statement = $this->database->prepare(
-            ""
-        );
-
         return $post;
+    }
+
+    public function getPostImage(int $id) : bool|array
+    {
+        $this->dbConnect();
+        $statement = $this->database->prepare(
+            "SELECT * FROM images_posts WHERE post_id = ?"
+        );
+        $statement->execute([$id]);
+        if (empty($statement->fetch())) {
+            return false;
+        };
+        
+        $images = [];
+        while (($row = $statement->fetch())) {
+            $image = new PostImage();
+            $image->id = $row['image_id'];
+            $image->post_id = $row['post_id'];
+            $image->name = $row['name'];
+            $image->image_url = $row['image_url'];
+
+            $images[] = $image;
+        }
+
+        return $images;
     }
 
     // get all posts for homepage

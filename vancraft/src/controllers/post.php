@@ -31,8 +31,11 @@ if ($uri === "/post") {
     $post->user_image_profile_url = $user->image_profile_url;
     $post->tags = $tags;
 
+    $postImages = $postRepository->getPostImage($post_id);
+
     echo $twig->render("article/post.php", [
         'post' => $post,
+        'postImages' => $postImages,
         'page' => 'post',
     ]);
 }
