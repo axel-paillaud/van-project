@@ -1,8 +1,8 @@
--- MariaDB dump 10.19  Distrib 10.10.3-MariaDB, for Linux (x86_64)
+-- MariaDB dump 10.19  Distrib 10.6.12-MariaDB, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: vancraft
 -- ------------------------------------------------------
--- Server version	10.10.3-MariaDB
+-- Server version	10.6.12-MariaDB-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -111,7 +111,7 @@ CREATE TABLE `images_posts` (
   PRIMARY KEY (`image_id`),
   KEY `post_id` (`post_id`),
   CONSTRAINT `images_posts_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,9 +120,7 @@ CREATE TABLE `images_posts` (
 
 LOCK TABLES `images_posts` WRITE;
 /*!40000 ALTER TABLE `images_posts` DISABLE KEYS */;
-INSERT INTO `images_posts` VALUES
-(28,26,'boite640dfb53e6e88.jpeg','assets/images/users/boite/posts_images/boite640dfb53e6e88.jpeg'),
-(29,26,'boite640dfb53e76d9.jpeg','assets/images/users/boite/posts_images/boite640dfb53e76d9.jpeg');
+INSERT INTO `images_posts` VALUES (30,28,'boite640f4839ede1d.png','assets/images/users/boite/posts_images/boite640f4839ede1d.png'),(31,28,'boite640f4839edf26.jpeg','assets/images/users/boite/posts_images/boite640f4839edf26.jpeg');
 /*!40000 ALTER TABLE `images_posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -141,7 +139,7 @@ CREATE TABLE `images_profiles` (
   PRIMARY KEY (`image_id`),
   UNIQUE KEY `user_id` (`user_id`),
   CONSTRAINT `images_profiles_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,14 +148,7 @@ CREATE TABLE `images_profiles` (
 
 LOCK TABLES `images_profiles` WRITE;
 /*!40000 ALTER TABLE `images_profiles` DISABLE KEYS */;
-INSERT INTO `images_profiles` VALUES
-(1,1,'shaun/profile_images/1.jpg',NULL),
-(2,2,'leila/profile_images/1.jpg',NULL),
-(3,3,'quentin/profile_images/1.jpg',NULL),
-(4,4,'anne/profile_images/1.jpg',NULL),
-(5,5,'default/profile_images/1.jpg',NULL),
-(6,6,'default/profile_images/1.jpg',NULL),
-(7,7,'default/profile_images/1.jpg',NULL);
+INSERT INTO `images_profiles` VALUES (8,8,'default/profile_images/1.jpg',NULL);
 /*!40000 ALTER TABLE `images_profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +197,7 @@ CREATE TABLE `posts` (
   `last_modification` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `answers` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -215,12 +206,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES
-(1,'Pourquoi le choix de l\'armaflex est judicieux face à de la laine de verre','2022-10-04 10:04:18',10,4,'Y-a t\'il un réel gain de performance d\'isolation en partant sur de l\'armaflex plutôt que de la laine de verre ? J\'ai des difficultées à positionner la laine de verre par endroit (voir photo) et je pense partir sur de l\'armaflex pour mon prochain véhicule.','2022-10-04 11:33:38',0),
-(2,'Quel chauffage pour un fourgon Jumper L3 H2','2022-10-04 10:11:57',5,-2,'Bonjour, j\'hésite entre deux chauffages, le chinasto et le webasto. Lequel me conseillez vous ?','2022-10-04 11:33:31',0),
-(3,'Le liège projeté n\'adhère pas à mes parois','2022-10-04 11:29:37',14,8,'Bonjour, je n\'arrive pas à faire adhérer correctement le liège projeté à mes parois. J\'ai utilisé de la colle BOSTIK avec une granulométrie de 36. Mes parois sont en tôle peinte.','2022-10-04 11:29:37',0),
-(4,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ultricies, neque quis sagittis finibus, leo mi consectetur lorem, ac interdum lectus nibh fringilla magna. Nam non interdum ligula. Aenean rhoncus massa varius, semper nibh vel, volutpat dui. Nam id urna nibh. Curabitur cursus vulputate orci, nec imperdiet mi varius in. Donec ornare suscipit felis ut condimentum. ','2022-10-11 21:19:42',23,9,' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ultricies, neque quis sagittis finibus, leo mi consectetur lorem, ac interdum lectus nibh fringilla magna. Nam non interdum ligula. Aenean rhoncus massa varius, semper nibh vel, volutpat dui. Nam id urna nibh. Curabitur cursus vulputate orci, nec imperdiet mi varius in. Donec ornare suscipit felis ut condimentum. Pellentesque tincidunt ante nisi, at porta dolor pretium sed. Praesent mattis lorem nec dolor venenatis consequat. Nulla facilisi. Praesent dapibus congue metus et condimentum. Mauris condimentum magna augue, ac elementum augue consectetur non. Maecenas at tempor velit.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vitae lorem auctor, sollicitudin magna eu, blandit diam. Nunc efficitur mi vitae ipsum mollis, at imperdiet quam vestibulum. Duis malesuada erat in magna pharetra, pellentesque posuere libero venenatis. Proin feugiat elit nulla, ut dictum nulla iaculis eu. Morbi at tellus rhoncus, sodales magna quis, lacinia diam. Suspendisse vel tempus nisl, et placerat libero. Nulla malesuada ex nulla, vitae vehicula enim suscipit ut. Ut orci purus, ornare egestas sapien in, mollis ultrices massa. ','2022-10-11 21:19:42',0),
-(26,'Je fais un post de test','2023-03-12 17:18:27',0,0,'Ceci est un post de test pour vérifier que la connexion à la base s&#039;effectue correctement, et que twig affiche les bons contenus. J&#039;ai également ajouté quelques photos.','2023-03-12 17:18:27',0);
+INSERT INTO `posts` VALUES (28,'Je fais un test de post','2023-03-13 16:58:49',0,0,'Lorem ipsum dolor sit <script>window.alert(\"hello\");</script> amet','2023-03-13 16:58:49',0);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,7 +226,7 @@ CREATE TABLE `posts_tags` (
   KEY `tag_id` (`tag_id`),
   CONSTRAINT `posts_tags_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`),
   CONSTRAINT `posts_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`tag_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,19 +235,7 @@ CREATE TABLE `posts_tags` (
 
 LOCK TABLES `posts_tags` WRITE;
 /*!40000 ALTER TABLE `posts_tags` DISABLE KEYS */;
-INSERT INTO `posts_tags` VALUES
-(1,1,1),
-(2,1,2),
-(3,1,3),
-(4,2,1),
-(5,2,2),
-(6,3,1),
-(7,3,4),
-(8,4,1),
-(9,4,3),
-(10,4,4),
-(28,26,5),
-(29,26,1);
+INSERT INTO `posts_tags` VALUES (30,28,15);
 /*!40000 ALTER TABLE `posts_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,7 +255,7 @@ CREATE TABLE `posts_users` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `posts_users_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`),
   CONSTRAINT `posts_users_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -290,12 +264,7 @@ CREATE TABLE `posts_users` (
 
 LOCK TABLES `posts_users` WRITE;
 /*!40000 ALTER TABLE `posts_users` DISABLE KEYS */;
-INSERT INTO `posts_users` VALUES
-(1,1,1),
-(2,2,2),
-(3,3,1),
-(4,4,4),
-(25,26,6);
+INSERT INTO `posts_users` VALUES (27,28,8);
 /*!40000 ALTER TABLE `posts_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -312,7 +281,7 @@ CREATE TABLE `tags` (
   `description` text DEFAULT NULL,
   PRIMARY KEY (`tag_id`),
   UNIQUE KEY `title` (`title`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -321,21 +290,7 @@ CREATE TABLE `tags` (
 
 LOCK TABLES `tags` WRITE;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
-INSERT INTO `tags` VALUES
-(1,'armaflex','Isolant en mousse élastomère. Hautement flexible, contrôle très bien la condensation, et dispose de bonnes propriétés\n    ignifuges en générant peu de fumée. Il est souvent fourni en rouleau, avec un côté \'adhésivé\''),
-(2,'styrodur','Isolant. Mousse de polystyrène rigide extrudée. Haute résistance à la compression, faible hydrophilie, excellent pouvoir d\'isolation thermique. Imputrescible et très léger.\n    Isolant issue de la pétrochimie.'),
-(3,'laine de verre','Isolant. Consistance laineuse obtenu par fusion à partir de sable et de verre recyclé (calcin). Isolation phonique et protection incendie.'),
-(4,'contreplaque','Panneau de bois. Obtenu par collage de couches adjacentes à fils croisés, appelées plis. L\'épaisseur varie entre 1 mm et 50 mm.\n    Très solide.'),
-(5,'armada',NULL),
-(6,'table',NULL),
-(7,'qsdf',NULL),
-(8,'aaaaa',NULL),
-(9,'bbbb',NULL),
-(10,'nouveau tag',NULL),
-(11,'gasoil',NULL),
-(12,'durite',NULL),
-(13,'test',NULL),
-(14,'photos',NULL);
+INSERT INTO `tags` VALUES (15,'armaflex',NULL);
 /*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -356,7 +311,7 @@ CREATE TABLE `users` (
   `numbers_of_answers` int(11) NOT NULL DEFAULT 0,
   `numbers_of_questions` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -365,14 +320,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES
-(1,'Shaun','a.paillaud@laposte.net','2022-10-15 15:19:36','passw0rd','2022-10-15 15:19:36',0,0),
-(2,'Leila','leila.bonsigne@laposte.net','2022-10-15 15:20:36','s3cr3t','2022-10-15 15:20:36',14,2),
-(3,'Quentin','quentin.coupery@laposte.net','2022-10-15 15:21:15','admin','2022-10-15 15:21:15',3,0),
-(4,'Anne','anne.p@laposte.net','2022-10-15 15:21:44','anouk','2022-10-15 15:21:44',7,2),
-(5,'processx','processx@example.com','2023-02-08 16:06:22','$2y$10$qz3CBA4EWscRLhGoLOJp0.KXWCnEaCPgE1LDhYb1pbTRcfXBzx5wS','2023-02-08 16:06:22',0,0),
-(6,'boite','boite@example.com','2023-02-08 16:09:22','$2y$10$LhfILjgBLU9I4W69avuQaeG0FQZ7HCnmYiu.C6iaZtCD0zPKIeZEC','2023-02-08 16:09:22',0,0),
-(7,'ordinateur','ordinateur@example.com','2023-02-16 11:12:09','$2y$10$x33XOdjHMuVHItkZDL0rB.O7o8twc1KlxqXGaQ.zqv.1xTxdhzAlK','2023-02-16 11:12:09',0,0);
+INSERT INTO `users` VALUES (8,'boite','boite@example.com','2023-03-13 16:55:02','$2y$10$ZwTgkkI/GhHJ2KGx83ikjetepWuMLQuhrzy/rEB/uX8jdReBEdYZO','2023-03-13 16:55:02',0,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -443,4 +391,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-12 17:41:14
+-- Dump completed on 2023-03-13 17:04:39

@@ -21,7 +21,7 @@
         <div class="flex">
             <div class="flex flex-direction-column align-center gap-8 flex-basis-10">
                 <div class="circle-vote background-color-di-sierra"><i class="fa-regular fa-thumbs-up"></i></div>
-                <p class="font-size-24">-2</p>
+                <p class="font-size-24">{{ post.votes }}</p>
                 <div class="circle-vote background-color-laser"><i class="fa-solid fa-thumbs-down"></i></div>
             </div>
             <div class="flex-basis-90 padding-0-32">
