@@ -27,7 +27,7 @@ class PostImage
     public int $id;
     public int $post_id;
     public string $name;
-    public string $image_url;
+    public string $url;
 }
 
 class AnswerImage
@@ -35,7 +35,7 @@ class AnswerImage
     public int $id;
     public int $answer_id;
     public string $name;
-    public string $image_url;
+    public string $url;
 }
 
 class PostRepository
@@ -48,8 +48,8 @@ class PostRepository
         $this->dbConnect();
         // get post
         $statement = $this->database->prepare(
-            "SELECT *, DATE_FORMAT(creation_date, '%d/%m/%Y à %Hh%imin%ss')
-            AS french_creation_date, DATE_FORMAT(last_modification, '%d/%m/%Y à %Hh%imin%ss') AS french_last_modification
+            "SELECT *, DATE_FORMAT(creation_date, '%d/%m/%Y à %H h %i min')
+            AS french_creation_date, DATE_FORMAT(last_modification, '%d/%m/%Y à %H h %i min') AS french_last_modification
             FROM posts WHERE post_id = ?;"
         );
         $statement->execute([$id]);
@@ -76,9 +76,6 @@ class PostRepository
             "SELECT * FROM images_posts WHERE post_id = ?"
         );
         $statement->execute([$id]);
-        if (empty($statement->fetch())) {
-            return false;
-        };
         
         $images = [];
         while (($row = $statement->fetch())) {
@@ -86,12 +83,17 @@ class PostRepository
             $image->id = $row['image_id'];
             $image->post_id = $row['post_id'];
             $image->name = $row['name'];
-            $image->image_url = $row['image_url'];
+            $image->url = $row['image_url'];
 
             $images[] = $image;
         }
 
-        return $images;
+        if (empty($images)) {
+            return false;
+        }
+        else {
+            return $images;
+        }
     }
 
     // get all posts for homepage

@@ -7,11 +7,15 @@
 <main class="main">
     <article class="article-container margin-64-0-32-0">
         <div class="flex-space-between">
-            <h2 class="my-16 ml-0 mr-24 font-normal font-size-27">Pourquoi le choix de l'armaflex est judicieux face à de la laine de verre</h2>
+            <h2 class="my-16 ml-0 mr-24 font-normal font-size-27">{{ post.title }}</h2>
             <a href="#" class="btn-orange">Poser une question</a>
         </div>
         <small class="flex align-center gap-16">
-            <p>Date : <time>Aujourd'hui</time></p><p>Nombre de vue : 12</p><p>Dernière modification : <time>Aujourd'hui</time></p>
+            <p>Date : <time>{{ post.french_creation_date }}</time></p><p>Nombre de vue : {{ post.views }}</p>
+            {# only show modification date if not equal to post date to avoid redundance #}
+            {% if post.french_creation_date != post.french_last_modification %}
+                <p>Dernière modification : <time>{{ post.french_last_modification }}</time></p>
+            {% endif %}
         </small>
         <hr class="-mx-32 mt-16 mb-64 light-mid-gray light-hr">
         <div class="flex">
@@ -22,29 +26,31 @@
             </div>
             <div class="flex-basis-90 padding-0-32">
                 <p class="margin-0-0-32-0">
-                    Est-ce qu'il y a vraiment un gain de performance d'isolation en partant sur de l'armaflex plutôt que de la laine de verre ?
-                    J'ai des difficultées à positionner la laine de verre par endroit (voir photo) et je pense partir sur de l'armaflex pour mon prochain véhicule.
+                    {# find a solution here to show htmlspecialchars correctly #}
+                    {{ post.content }}
                 </p>
                 <div class="flex space-between flex-wrap">
                     <div>
+                        {# div for images here #}
+                        {% if postImages %}
                         <div class="flex gap-32 flex-wrap">
+                            {% for image in postImages %}
                             <figure class="img-post">
-                                <img class="full-size cover" src="assets/images/tmp/img-3.jpg" alt="Image utilisateur 1">
+                                <img class="full-size cover" src="{{ image.url }}" alt="Image utilisateur 1">
                             </figure>
-                            <figure class="img-post">
-                                <img class="full-size cover" src="assets/images/tmp/img-2.JPG" alt="Image utilisateur 1">
-                            </figure>
+                            {% endfor %}
                         </div>
+                        {% endif %}
                         <ul class="flex padding-0">
-                            <li class="tag">isolation</li>
-                            <li class="tag">armaflex</i>
-                            <li class="tag">laine de verre</li>
+                            {% for tag in post.tags %}
+                            <li class="tag">{{ tag.title }}</li>
+                            {% endfor %}
                         </ul>
                     </div>
                     <div class="flex align-items-end width-100 justify-content-end">
                         <div class="user-container">
-                            <img class="profile-picture-small" src="assets/images/users/default/profile_images/1.jpg" alt="Photo profil">
-                            <b style="margin-left: 8px;" >Jean-luc</b>
+                            <img class="profile-picture-small" src="assets/images/users/{{ post.user_image_profile_url }}" alt="Photo profil">
+                            <b style="margin-left: 8px;" >{{ post.user_name }}</b>
                         </div>
                     </div>
                 </div>
