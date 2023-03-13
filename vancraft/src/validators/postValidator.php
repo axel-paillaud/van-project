@@ -51,7 +51,8 @@ class PostValidator {
             throw new Exception("Erreur : Le titre est trop long");
         }
         else {
-            return htmlspecialchars($title, ENT_QUOTES);
+            // need more security here ?
+            return $title;
         }
     }
 
@@ -61,7 +62,8 @@ class PostValidator {
             throw new Exception("Erreur : Le contenu est vide");
         }
         else {
-            return htmlspecialchars($content, ENT_QUOTES);
+            // need more security here ?
+            return $content;
         }
     }
 
