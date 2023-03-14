@@ -35,7 +35,7 @@ class PostValidator {
     public function userValidator($user)
     {
         if (empty($user) || !isset($user)) {
-            throw new Exception("Erreur : Vous devez être connecté pour pouvoir poster une question");
+            throw new Exception("Erreur : Vous devez être connecté pour pouvoir poster");
         }
         else {
             return true;
@@ -51,7 +51,6 @@ class PostValidator {
             throw new Exception("Erreur : Le titre est trop long");
         }
         else {
-            // need more security here ?
             return strip_tags($title);
         }
     }
@@ -62,7 +61,6 @@ class PostValidator {
             throw new Exception("Erreur : Le contenu est vide");
         }
         else {
-            // need more security here ?
             return strip_tags($content);
         }
     }

@@ -12,12 +12,13 @@ require_once base_path('src/model/tag.php');
 require_once base_path('src/controllers/lib/post.php');
 require_once base_path('src/validators/postValidator.php');
 
-if ($uri === "/post" && $method === 'GET') {
-    $postRepository = new PostRepository();
-    $userRepository = new UserRepository();
-    $tagRepository = new TagRepository();
-    $postValidator = new PostValidator();
+$postRepository = new PostRepository();
+$userRepository = new UserRepository();
+$tagRepository = new TagRepository();
+$postValidator = new PostValidator();
+$postLib = new PostLib();
 
+if ($uri === "/post") {
     if ($postValidator->idValidator($_GET["id"])) {
         $post_id = $_GET["id"];
     }
@@ -33,6 +34,22 @@ if ($uri === "/post" && $method === 'GET') {
 
     $postImages = $postRepository->getPostImage($post_id);
 
+    if ($method === 'POST') {
+        dd($_POST);
+        $postValidator->userValidator($_SESSION);
+        $images = $postLib->sortFiles($_FILES["image"]);
+        $images = $postValidator->imageValidator($images);
+        $answer = $postValidator->contentValidator($_POST["answer"]);
+
+        if ($images) {
+            $imageDb = $postLib->addImgToServer($_FILES["image"], $_SESSION, "answers_images");
+            $postRepository->sendAnswer($_SESSION, $answer, $imageDb); // TODO
+        }
+        else {
+            $postRepository->sendAnswer($_SESSION, $answer); // TODO
+        }
+    }
+
     echo $twig->render("article/post.php", [
         'post' => $post,
         'postImages' => $postImages,
@@ -46,9 +63,6 @@ else if ($uri === "/post-article") {
     // page => post is for the sidenav bar
 }
 else if ($uri === "/submit-post") {
-    $postValidator = new PostValidator();
-    $postLib = new PostLib();
-    $postRepository = new PostRepository();
     $images = $postLib->sortFiles($_FILES["image"]);
     $postValidator->userValidator($_SESSION);
     $images = $postValidator->imageValidator($images);
@@ -57,7 +71,7 @@ else if ($uri === "/submit-post") {
     $tags = $postValidator->tagsValidator($_POST["tag"]);
 
     if($images) {
-        $imageDb = $postLib->addImgToServer($_FILES["image"], $_SESSION);
+        $imageDb = $postLib->addImgToServer($_FILES["image"], $_SESSION, "posts_images");
         $postRepository->sendPost($_SESSION, $title, $content, $tags, $imageDb);
     }
     else {

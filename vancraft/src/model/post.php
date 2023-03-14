@@ -210,6 +210,13 @@ class PostRepository
         }
     }
 
+    public function sendAnswer(array $user, string $answer, $imageDb = null)
+    {
+        $this->dbConnect();
+
+        // TODO
+    }
+
     private function dbConnect() {
         try {
             if ($this->database == null) {

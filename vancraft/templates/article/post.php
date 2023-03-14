@@ -90,7 +90,7 @@
             </div>
         </div>
     </article>
-        <form action="/post" method="post" enctype="multipart/form-data" >
+        <form action="/post?id={{ post.id }}" method="post" enctype="multipart/form-data" >
             <div class="article-container">
                 <label class="font-size-20" for="answer">Votre réponse</label>
                 <hr class="light-hr light-mid-gray -mx-32 my-16">

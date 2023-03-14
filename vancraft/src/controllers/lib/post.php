@@ -53,8 +53,8 @@ class PostLib {
         }
     }
 
-    public function addImgToServer($images, $user) : array {
-        $targetDir = "assets/images/users/" . $user["user_name"] . "/posts_images/";
+    public function addImgToServer(array $images, array $user, string $dirName) : array {
+        $targetDir = "assets/images/users/" . $user["user_name"] . "/$dirName/";
         $this->createPostDirIfNotExist($targetDir, $user);
 
         $imagesDb = [];
