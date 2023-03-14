@@ -44,7 +44,7 @@
                 </div>
                 <div class="flex flex-direction-column w-full">
                     <a href="/post?id={{ post.id }}" class="post-title mb-8">
-                        {{ post.title }}
+                        {{ post.title|raw }}
                     </a>
                 <div class="row-container justify-between">
                     <div class="tag-container">

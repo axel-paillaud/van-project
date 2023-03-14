@@ -7,7 +7,7 @@
 <main class="main">
     <article class="article-container margin-64-0-32-0">
         <div class="flex-space-between">
-            <h2 class="my-16 ml-0 mr-24 font-normal font-size-27">{{ post.title|e }}</h2>
+            <h2 class="my-16 ml-0 mr-24 font-normal font-size-27">{{ post.title|raw }}</h2>
             <a href="#" class="btn-orange">Poser une question</a>
         </div>
         <small class="flex align-center gap-16">
@@ -27,7 +27,7 @@
             <div class="flex-basis-90 padding-0-32">
                 <p class="margin-0-0-32-0">
                     {# find a solution here to show htmlspecialchars correctly #}
-                    {{ post.content|e }}
+                    {{ post.content|raw }}
                 </p>
                 <div class="flex space-between flex-wrap">
                     <div>
