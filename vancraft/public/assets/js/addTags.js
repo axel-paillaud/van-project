@@ -168,7 +168,7 @@ const addInputTag = function (e) {
         let lastInput = allInput[allInput.length - 1];
 
         // if tag is not equal to number, that's mean its a valid string tag
-        if (!Number.isInteger(tag)) {
+        if (!Number.isInteger(tag) && tag !== false) {
             document.getElementById("js-modal-tag").remove();
     
             let icon = document.createElement("i");
@@ -195,7 +195,12 @@ const addInputTag = function (e) {
                 DOMinitNewInput();
             }
         }
-        // if input tag is equal to number, that's mean it's incorrect, so delete the current input and refocus
+        // if tag is equal false, a problem appear, so delete the current tag and refocus
+        else if (tag === false) {
+            lastInput.value = "";
+            lastInput.focus();
+        }
+        // if input tag is equal to number, that's mean it's already here, so delete the current input and play animation on tag already here
         else {
             lastInput.value = "";
             lastInput.focus();
@@ -225,18 +230,17 @@ const deleteTag = function (e) {
     countUserInputTags--;
 }
 
-function checkInputTag(element, userInputTags) {
+function checkInputTag(event, userInputTags) {
     let tag;
-    console.log(element.target);
-    console.log(userInputTags);
 
     // if user click on "Create tag" div, get this tag and remove quote, else, get list tag
-    if (element.target.id === "js-create-tag") {
+    // if user press Enter or comma, that's mean 'Create tag ***', so do the same things
+    if (event.target.id === "js-create-tag" || event.key === 'Enter' || event.key === ',') {
         tag = document.getElementById("js-update-input").textContent;
         tag = tag.substring(1, tag.length -1); // remove quote
     }
     else {
-        tag = element.target.textContent;
+        tag = event.target.textContent;
     }
 
     // check if tag is already present in input form, and if, return index array
@@ -244,6 +248,9 @@ function checkInputTag(element, userInputTags) {
         if (userInputTags[i] == tag) {
             return i;
         }
+    }
+    if (tag === "" || tag === null) {
+        return false;
     }
     return tag;
 }
