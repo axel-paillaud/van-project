@@ -12,7 +12,7 @@ require_once base_path('src/model/tag.php');
 require_once base_path('src/controllers/lib/post.php');
 require_once base_path('src/validators/postValidator.php');
 
-if ($uri === "/post") {
+if ($uri === "/post" && $method === 'GET') {
     $postRepository = new PostRepository();
     $userRepository = new UserRepository();
     $tagRepository = new TagRepository();

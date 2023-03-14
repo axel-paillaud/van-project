@@ -90,14 +90,23 @@
             </div>
         </div>
     </article>
-        <form>
+        <form action="/post" method="post" enctype="multipart/form-data" >
             <div class="article-container">
                 <label class="font-size-20" for="answer">Votre réponse</label>
                 <hr class="light-hr light-mid-gray -mx-32 my-16">
                 <textarea id="answer" class="m-w-full w-full min-h-200" required autocomplete="off" name="answer"></textarea>
+                <div id="add-img" class="add-img  mt-32 mb-16">
+                    <label for="image">
+                        <p class="btn-brown-light">+ Ajouter des photos</p>
+                        <input class="display-none" id="image" type="file" name="image[]" accept="image/png, image/jpeg, image/gif" multiple max="4">
+                        <img src="assets/images/icons/pictures-brown.svg" alt="Ajouter une photo">
+                    </label>
+                    <small class="margin-left-8">Jusqu'à 4 photos, jpg, png, gif : 2mo max</small>
+                </div>
             </div>
             <input id="submit-answer" class="btn-orange mt-16 mb-32" type="submit" value="Poster la réponse">
         </form>
 </main>
-
+<script src="assets/js/thumbnailImgFunction.js"></script>
+<script src="assets/js/thumbnailImg.js"></script>
 {% endblock %}

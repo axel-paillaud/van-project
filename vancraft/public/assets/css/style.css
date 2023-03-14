@@ -233,7 +233,6 @@
 .add-img {
     display: flex;
     flex-direction: column;
-    margin: 16px 0 32px 0px;
     gap: 8px;
 }
 
