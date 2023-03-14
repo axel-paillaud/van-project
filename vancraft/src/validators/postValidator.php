@@ -52,7 +52,7 @@ class PostValidator {
         }
         else {
             // need more security here ?
-            return htmlspecialchars($title, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401, ('UTF-8'));
+            return strip_tags($title);
         }
     }
 
@@ -63,7 +63,7 @@ class PostValidator {
         }
         else {
             // need more security here ?
-            return htmlspecialchars($content, ENT_QUOTES | ENT_SUBSTITUTE | ENT_HTML401, 'UTF-8');
+            return strip_tags($content);
         }
     }
 
