@@ -70,7 +70,7 @@
                     {{ answer.content }}
                 </p>
                 <div class="flex space-between flex-wrap">
-                    <div class="flex gap-32 flex-wrap margin-0-0-32-0">
+                    <div class="flex gap-32 flex-wrap">
                         {% for image in answer.images %}
                             <figure class="img-post">
                                 <img class="full-size cover" src="{{ image.url }}" alt="Image utilisateur 1">
