@@ -19,6 +19,7 @@ $postValidator = new PostValidator();
 $postLib = new PostLib();
 
 if ($uri === "/post") {
+
     if ($postValidator->idValidator($_GET["id"])) {
         $post_id = $_GET["id"];
     }
@@ -33,9 +34,7 @@ if ($uri === "/post") {
     $post->tags = $tags;
 
     $postImages = $postRepository->getPostImage($post_id);
-
-    $answers = $postRepository->getAnswers($post_id);
-
+    
     if ($method === 'POST') {
         $postValidator->userValidator($_SESSION);
         $images = $postLib->sortFiles($_FILES["image"]);
@@ -50,6 +49,8 @@ if ($uri === "/post") {
             $postRepository->sendAnswer($_SESSION, $post, $answer);
         }
     }
+
+    $answers = $postRepository->getAnswers($post_id);
 
     echo $twig->render("article/post.php", [
         'post' => $post,
