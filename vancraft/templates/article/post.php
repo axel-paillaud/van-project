@@ -57,38 +57,37 @@
         </div>
     </article>
     <p class="margin-16-0">Nombre de réponse : 1</p>
+    {% for answer in answers %}
     <article class="article-container mb-32">
         <div class="flex">
             <div class="flex flex-direction-column align-center gap-8 flex-basis-10">
                 <div class="circle-vote background-color-di-sierra"><i class="fa-regular fa-thumbs-up"></i></div>
-                <p class="font-size-24">-2</p>
+                <p class="font-size-24">{{ answer.votes }}</p>
                 <div class="circle-vote background-color-laser"><i class="fa-solid fa-thumbs-down"></i></div>
             </div>
             <div class="padding-0-32 flex-basis-90">
                 <p class="margin-0-0-32-0">
-                    Oui, l'armaflex a un pouvoir isolant bien supérieur à la laine de verre, de plus il est fourni "adhésivé",
-                    il suffit juste de le coller sur une surface propre. Son inconvénient est le prix, surtout comparé à la
-                    laine de verre, qui elle, n'est pas chère du tout.
+                    {{ answer.content }}
                 </p>
                 <div class="flex space-between flex-wrap">
                     <div class="flex gap-32 flex-wrap margin-0-0-32-0">
-                        <figure class="img-post">
-                            <img class="full-size cover" src="assets/images/tmp/img-3.jpg" alt="Image utilisateur 1">
-                        </figure>
-                        <figure class="img-post">
-                            <img class="full-size cover" src="assets/images/tmp/img-2.JPG" alt="Image utilisateur 1">
-                        </figure>
+                        {% for image in answer.images %}
+                            <figure class="img-post">
+                                <img class="full-size cover" src="{{ image.url }}" alt="Image utilisateur 1">
+                            </figure>
+                        {% endfor %}
                     </div>
                     <div class="flex align-items-end justify-content-end width-100">
                         <div class="user-container">
-                            <img class="profile-picture-small" src="assets/images/users/default/profile_images/1.jpg" alt="Photo profil">
-                            <b style="margin-left: 8px;" >Jean-luc</b>
+                            <img class="profile-picture-small" src="assets/images/users/{{ answer.user_image_profile_url }}" alt="Photo profil">
+                            <b style="margin-left: 8px;" >{{ answer.user_name }}</b>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </article>
+    {% endfor %}
         <form action="/post?id={{ post.id }}" method="post" enctype="multipart/form-data" >
             <div class="article-container">
                 <label class="font-size-20" for="answer">Votre réponse</label>

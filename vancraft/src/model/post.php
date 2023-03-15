@@ -159,7 +159,7 @@ class PostRepository
     }
 
     //get all answers from posts;
-    public function getAnswers(int $post_id)
+    public function getAnswers(int $post_id) : array|bool
     {
         $this->dbConnect();
         $statement = $this->database->prepare(
@@ -173,6 +173,10 @@ class PostRepository
             $answer = new Answer();
             $answer->id = $row['answer_id'];
             $answers[] = $answer;
+        }
+
+        if (count($answers) === 0) {
+            return false;
         }
 
         // for each answers id, get full answers, user, and images
