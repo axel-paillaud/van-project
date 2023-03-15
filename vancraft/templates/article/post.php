@@ -56,7 +56,7 @@
             </div>
         </div>
     </article>
-    <p class="margin-16-0">Nombre de réponse : 1</p>
+    <p class="margin-16-0">Nombre de réponse : {{ post.answers }}</p>
     {% for answer in answers %}
     <article class="article-container mb-32">
         <div class="flex">

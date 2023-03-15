@@ -320,6 +320,14 @@ class PostRepository
             'content' => $answer,
         ]);
 
+        // BUG HERE TODO
+        if ($statement) {
+            $statement = $this->database->prepare(
+                "UPDATE posts SET answers = answers + 1 WHERE post_id = ?"
+            );
+            $statement->execute([$post->id]);
+        }
+
         $answerId = $this->database->lastInsertId();
 
         $statement = $this->database->prepare(
