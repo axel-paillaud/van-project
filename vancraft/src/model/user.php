@@ -46,6 +46,30 @@ class UserRepository
         return $user;
     }
 
+    public function getUser(int $user_id) : User
+    {
+        $this->dbConnect();
+
+        $statement = $this->database->prepare(
+            "SELECT name FROM users WHERE user_id = ?"
+        );
+        $statement->execute([$user_id]);
+        $row = $statement->fetch();
+
+        $user = new User();
+        $user->name = $row['name'];
+
+        $statement = $this->database->prepare(
+            "SELECT image_url_sm FROM images_profiles WHERE user_id = ?"
+        );
+        $statement->execute([$user_id]);
+
+        $row = $statement->fetch();
+        $user->image_profile_url = $row['image_url_sm'];
+
+        return $user;
+    }
+
     public function subscribeUser(string $name, string $email, string $hash_password,string $password, string $confirm_password) : bool {
         $this->dbConnect();
 

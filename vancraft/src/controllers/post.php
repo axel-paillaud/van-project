@@ -34,6 +34,8 @@ if ($uri === "/post") {
 
     $postImages = $postRepository->getPostImage($post_id);
 
+    $answers = $postRepository->getAnswers($post_id);
+
     if ($method === 'POST') {
         $postValidator->userValidator($_SESSION);
         $images = $postLib->sortFiles($_FILES["image"]);
@@ -52,6 +54,7 @@ if ($uri === "/post") {
     echo $twig->render("article/post.php", [
         'post' => $post,
         'postImages' => $postImages,
+        'answers' => $answers,
         'page' => 'post',
     ]);
 }

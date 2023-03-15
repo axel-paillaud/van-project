@@ -3,6 +3,7 @@
 namespace Model\Post;
 use PDO;
 use Exception;
+use Model\User\UserRepository;
 
 class Post 
 {
@@ -32,22 +33,15 @@ class Answer
     public string $french_last_modification;
     public int $votes;
     public int $user_id;
-    public int $user_name;
-    public int $user_image_profile_url;
+    public string $user_name;
+    public string $user_image_profile_url;
+    public array|bool $images;
 }
 
 class PostImage
 {
     public int $id;
     public int $post_id;
-    public string $name;
-    public string $url;
-}
-
-class AnswerImage
-{
-    public int $id;
-    public int $answer_id;
     public string $name;
     public string $url;
 }
@@ -110,6 +104,33 @@ class PostRepository
         }
     }
 
+    public function getAnswerImage(int $answerId) : bool|array
+    {
+        $this->dbConnect();
+        $statement = $this->database->prepare(
+            "SELECT * FROM images_answers WHERE answer_id = ?"
+        );
+        $statement->execute([$answerId]);
+        
+        $images = [];
+        while (($row = $statement->fetch())) {
+            $image = new PostImage();
+            $image->id = $row['image_id'];
+            $image->post_id = $row['answer_id'];
+            $image->name = $row['name'];
+            $image->url = $row['image_url'];
+
+            $images[] = $image;
+        }
+
+        if (empty($images)) {
+            return false;
+        }
+        else {
+            return $images;
+        }
+    }
+
     // get all posts for homepage
     public function getPosts(string $limit, string $orderBy) : array
     {
@@ -142,11 +163,58 @@ class PostRepository
     {
         $this->dbConnect();
         $statement = $this->database->prepare(
-            "SELECT user_id, answer_id, post_id WHERE post_id = ?"
+            "SELECT answer_id FROM answers_posts WHERE post_id = ?"
         );
         $statement->execute([$post_id]);
 
+        $answers = [];
+        while (($row = $statement->fetch())) {
 
+            $answer = new Answer();
+            $answer->id = $row['answer_id'];
+            $answers[] = $answer;
+        }
+
+        // for each answers id, get full answers, user, and images
+        foreach ($answers as $answer) {
+            // get full answers
+            $statement = $this->database->prepare(
+                "SELECT content, DATE_FORMAT(answer_creation_date, '%d/%m/%Y à %H h %i min')
+                AS french_creation_date, votes, 
+                DATE_FORMAT(last_modification, '%d/%m/%Y à %H h %i min') AS french_last_modification
+                FROM answers WHERE answer_id = ?"
+            );
+            $statement->execute([$answer->id]);
+            $row = $statement->fetch();
+
+            $answer->content = $row['content'];
+            $answer->french_creation_date = $row['french_creation_date'];
+            $answer->french_last_modification = $row['french_last_modification'];
+            $answer->votes = $row['votes'];
+
+            // get user
+            $statement = $this->database->prepare(
+                "SELECT user_id FROM users_answers WHERE answer_id = ?"
+            );
+            $statement->execute([$answer->id]);
+            $row = $statement->fetch();
+            $answer->user_id = $row['user_id'];
+
+            $userRepository = new UserRepository();
+            $user = $userRepository->getUser($answer->user_id);
+            $answer->user_name = $user->name;
+            $answer->user_image_profile_url = $user->image_profile_url;
+
+            // get answer images
+            $images = $this->getAnswerImage($answer->id);
+            if($images) {
+                $answer->images = $images;
+            }
+            else {
+                $answer->images = false;
+            }
+        }
+        return $answers;
     }
 
     public function sendPost(array $user, string $title, string $content, array $tags, $imageDb = null)
