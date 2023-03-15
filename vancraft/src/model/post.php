@@ -22,6 +22,20 @@ class Post
     public array $tags;
 }
 
+class Answer
+{
+    public int $id;
+    public string $content;
+    public string $creation_date;
+    public string $french_creation_date;
+    public string $last_modification;
+    public string $french_last_modification;
+    public int $votes;
+    public int $user_id;
+    public int $user_name;
+    public int $user_image_profile_url;
+}
+
 class PostImage
 {
     public int $id;
@@ -123,6 +137,18 @@ class PostRepository
         return $posts;
     }
 
+    //get all answers from posts;
+    public function getAnswers(int $post_id)
+    {
+        $this->dbConnect();
+        $statement = $this->database->prepare(
+            "SELECT user_id, answer_id, post_id WHERE post_id = ?"
+        );
+        $statement->execute([$post_id]);
+
+
+    }
+
     public function sendPost(array $user, string $title, string $content, array $tags, $imageDb = null)
     {
         $this->dbConnect();
@@ -210,11 +236,53 @@ class PostRepository
         }
     }
 
-    public function sendAnswer(array $user, string $answer, $imageDb = null)
+    public function sendAnswer(array $user, Post $post, string $answer, $imageDb = null)
     {
         $this->dbConnect();
 
-        // TODO
+        $statement = $this->database->prepare(
+            "INSERT INTO answers (content, answer_creation_date, votes, last_modification)
+            VALUE (:content, NOW(), DEFAULT, NOW())"
+        );
+        $statement->execute([
+            'content' => $answer,
+        ]);
+
+        $answerId = $this->database->lastInsertId();
+
+        $statement = $this->database->prepare(
+            "INSERT INTO users_answers(user_id, answer_id)
+            VALUE(:user_id, :answer_id)"
+        );
+        $statement->execute([
+            'user_id' => $user["user_id"],
+            'answer_id' => $answerId,
+        ]);
+
+        $statement = $this->database->prepare(
+            "INSERT INTO answers_posts(post_id, answer_id)
+            VALUE(:post_id, :answer_id)"
+        );
+        $statement->execute([
+            'post_id' => $post->id,
+            'answer_id' =>$answerId,
+        ]);
+
+        if ($imageDb !== null) {
+            for ($i = 0; $i < count($imageDb); $i++)
+            {
+                $statement = $this->database->prepare(
+                    "INSERT INTO images_answers (answer_id, name, image_url)
+                    VALUE(:answer_id, :name, :image_url)"
+                );
+    
+                $statement->execute([
+                    'answer_id' => $answerId,
+                    'name' => $imageDb[$i]->name,
+                    'image_url' => $imageDb[$i]->imgUrl,
+                ]);
+            }
+        }
     }
 
     private function dbConnect() {

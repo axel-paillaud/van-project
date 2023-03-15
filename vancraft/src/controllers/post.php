@@ -35,7 +35,6 @@ if ($uri === "/post") {
     $postImages = $postRepository->getPostImage($post_id);
 
     if ($method === 'POST') {
-        dd($_POST);
         $postValidator->userValidator($_SESSION);
         $images = $postLib->sortFiles($_FILES["image"]);
         $images = $postValidator->imageValidator($images);
@@ -43,10 +42,10 @@ if ($uri === "/post") {
 
         if ($images) {
             $imageDb = $postLib->addImgToServer($_FILES["image"], $_SESSION, "answers_images");
-            $postRepository->sendAnswer($_SESSION, $answer, $imageDb); // TODO
+            $postRepository->sendAnswer($_SESSION, $post, $answer, $imageDb);
         }
         else {
-            $postRepository->sendAnswer($_SESSION, $answer); // TODO
+            $postRepository->sendAnswer($_SESSION, $post, $answer);
         }
     }
 

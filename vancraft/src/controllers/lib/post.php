@@ -44,18 +44,18 @@ class PostLib {
         return $images;
     }
 
-    public function createPostDirIfNotExist($targetDir, $user) {
+    public function createPostDirIfNotExist($targetDir, $user, $dirName) {
         if (!is_dir($targetDir)) {
             if (!is_dir("assets/images/users/" . $user["user_name"])) {
                 mkdir("assets/images/users/" . $user["user_name"], 0700);
             }
-            mkdir("assets/images/users/" . $user["user_name"]  . "/posts_images", 0700);
+            mkdir("assets/images/users/" . $user["user_name"]  . "/$dirName", 0700);
         }
     }
 
     public function addImgToServer(array $images, array $user, string $dirName) : array {
         $targetDir = "assets/images/users/" . $user["user_name"] . "/$dirName/";
-        $this->createPostDirIfNotExist($targetDir, $user);
+        $this->createPostDirIfNotExist($targetDir, $user, "answers_images");
 
         $imagesDb = [];
         

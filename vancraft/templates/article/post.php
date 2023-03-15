@@ -26,7 +26,6 @@
             </div>
             <div class="flex-basis-90 padding-0-32">
                 <p class="margin-0-0-32-0">
-                    {# find a solution here to show htmlspecialchars correctly #}
                     {{ post.content }}
                 </p>
                 <div class="flex space-between flex-wrap">

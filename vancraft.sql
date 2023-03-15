@@ -29,7 +29,7 @@ CREATE TABLE `answers` (
   `votes` int(11) DEFAULT 0,
   `last_modification` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`answer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,37 @@ CREATE TABLE `answers` (
 
 LOCK TABLES `answers` WRITE;
 /*!40000 ALTER TABLE `answers` DISABLE KEYS */;
+INSERT INTO `answers` VALUES (13,'test 1','2023-03-15 14:34:53',0,'2023-03-15 14:34:53'),(14,'test 2','2023-03-15 14:35:00',0,'2023-03-15 14:35:00'),(15,'Test','2023-03-15 14:51:37',0,'2023-03-15 14:51:37'),(16,'Test','2023-03-15 14:52:10',0,'2023-03-15 14:52:10'),(17,'Test','2023-03-15 14:52:32',0,'2023-03-15 14:52:32'),(18,'test test','2023-03-15 14:52:53',0,'2023-03-15 14:52:53');
 /*!40000 ALTER TABLE `answers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `answers_posts`
+--
+
+DROP TABLE IF EXISTS `answers_posts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `answers_posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) NOT NULL,
+  `answer_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `post_id` (`post_id`),
+  KEY `answer_id` (`answer_id`),
+  CONSTRAINT `answers_posts_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`),
+  CONSTRAINT `answers_posts_ibfk_2` FOREIGN KEY (`answer_id`) REFERENCES `answers` (`answer_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `answers_posts`
+--
+
+LOCK TABLES `answers_posts` WRITE;
+/*!40000 ALTER TABLE `answers_posts` DISABLE KEYS */;
+INSERT INTO `answers_posts` VALUES (1,35,18);
+/*!40000 ALTER TABLE `answers_posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -84,7 +114,7 @@ CREATE TABLE `images_answers` (
   PRIMARY KEY (`image_id`),
   KEY `answer_id` (`answer_id`),
   CONSTRAINT `images_answers_ibfk_1` FOREIGN KEY (`answer_id`) REFERENCES `answers` (`answer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,6 +123,7 @@ CREATE TABLE `images_answers` (
 
 LOCK TABLES `images_answers` WRITE;
 /*!40000 ALTER TABLE `images_answers` DISABLE KEYS */;
+INSERT INTO `images_answers` VALUES (1,13,'boite6411c97ddc329.jpeg','assets/images/users/boite/answers_images/boite6411c97ddc329.jpeg'),(2,14,'boite6411c984d5fe5.jpeg','assets/images/users/boite/answers_images/boite6411c984d5fe5.jpeg'),(3,18,'boite6411cdb5a2aa4.jpeg','assets/images/users/boite/answers_images/boite6411cdb5a2aa4.jpeg');
 /*!40000 ALTER TABLE `images_answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +142,7 @@ CREATE TABLE `images_posts` (
   PRIMARY KEY (`image_id`),
   KEY `post_id` (`post_id`),
   CONSTRAINT `images_posts_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +151,7 @@ CREATE TABLE `images_posts` (
 
 LOCK TABLES `images_posts` WRITE;
 /*!40000 ALTER TABLE `images_posts` DISABLE KEYS */;
-INSERT INTO `images_posts` VALUES (30,28,'boite640f4839ede1d.png','assets/images/users/boite/posts_images/boite640f4839ede1d.png'),(31,28,'boite640f4839edf26.jpeg','assets/images/users/boite/posts_images/boite640f4839edf26.jpeg');
+INSERT INTO `images_posts` VALUES (33,35,'boite64106eb3c8b6d.jpeg','assets/images/users/boite/posts_images/boite64106eb3c8b6d.jpeg');
 /*!40000 ALTER TABLE `images_posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -139,7 +170,7 @@ CREATE TABLE `images_profiles` (
   PRIMARY KEY (`image_id`),
   UNIQUE KEY `user_id` (`user_id`),
   CONSTRAINT `images_profiles_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -148,7 +179,7 @@ CREATE TABLE `images_profiles` (
 
 LOCK TABLES `images_profiles` WRITE;
 /*!40000 ALTER TABLE `images_profiles` DISABLE KEYS */;
-INSERT INTO `images_profiles` VALUES (8,8,'default/profile_images/1.jpg',NULL);
+INSERT INTO `images_profiles` VALUES (8,8,'default/profile_images/1.jpg',NULL),(9,9,'default/profile_images/1.jpg',NULL);
 /*!40000 ALTER TABLE `images_profiles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +228,7 @@ CREATE TABLE `posts` (
   `last_modification` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `answers` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,7 +237,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (28,'Je fais un test de post','2023-03-13 16:58:49',0,0,'Lorem ipsum dolor sit <script>window.alert(\"hello\");</script> amet','2023-03-13 16:58:49',0);
+INSERT INTO `posts` VALUES (35,'Je fais un test d\'attaque XSS : window.alert(\"hello\");','2023-03-14 13:55:15',0,0,'Hello Je m\'appelle Axel','2023-03-14 13:55:15',0);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,7 +257,7 @@ CREATE TABLE `posts_tags` (
   KEY `tag_id` (`tag_id`),
   CONSTRAINT `posts_tags_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`),
   CONSTRAINT `posts_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`tag_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -235,7 +266,7 @@ CREATE TABLE `posts_tags` (
 
 LOCK TABLES `posts_tags` WRITE;
 /*!40000 ALTER TABLE `posts_tags` DISABLE KEYS */;
-INSERT INTO `posts_tags` VALUES (30,28,15);
+INSERT INTO `posts_tags` VALUES (41,35,16);
 /*!40000 ALTER TABLE `posts_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,7 +286,7 @@ CREATE TABLE `posts_users` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `posts_users_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`),
   CONSTRAINT `posts_users_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -264,7 +295,7 @@ CREATE TABLE `posts_users` (
 
 LOCK TABLES `posts_users` WRITE;
 /*!40000 ALTER TABLE `posts_users` DISABLE KEYS */;
-INSERT INTO `posts_users` VALUES (27,28,8);
+INSERT INTO `posts_users` VALUES (34,35,8);
 /*!40000 ALTER TABLE `posts_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -281,7 +312,7 @@ CREATE TABLE `tags` (
   `description` text DEFAULT NULL,
   PRIMARY KEY (`tag_id`),
   UNIQUE KEY `title` (`title`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -290,7 +321,7 @@ CREATE TABLE `tags` (
 
 LOCK TABLES `tags` WRITE;
 /*!40000 ALTER TABLE `tags` DISABLE KEYS */;
-INSERT INTO `tags` VALUES (15,'armaflex',NULL);
+INSERT INTO `tags` VALUES (15,'armaflex',NULL),(16,'test',NULL),(17,'premier',NULL),(18,'deuxieme',NULL),(19,'troisieme',NULL),(20,'quatrieme',NULL),(21,'cinquieme',NULL);
 /*!40000 ALTER TABLE `tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,7 +342,7 @@ CREATE TABLE `users` (
   `numbers_of_answers` int(11) NOT NULL DEFAULT 0,
   `numbers_of_questions` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -320,7 +351,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (8,'boite','boite@example.com','2023-03-13 16:55:02','$2y$10$ZwTgkkI/GhHJ2KGx83ikjetepWuMLQuhrzy/rEB/uX8jdReBEdYZO','2023-03-13 16:55:02',0,0);
+INSERT INTO `users` VALUES (8,'boite','boite@example.com','2023-03-13 16:55:02','$2y$10$ZwTgkkI/GhHJ2KGx83ikjetepWuMLQuhrzy/rEB/uX8jdReBEdYZO','2023-03-13 16:55:02',0,0),(9,'carpette','carpette@example.com','2023-03-14 09:26:56','$2y$10$IBOouJB0/gHfM.j6iN5Iuui.6gWtlb08t/AwnXvQRfV7E3bV0BPMO','2023-03-14 09:26:56',0,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -335,13 +366,12 @@ CREATE TABLE `users_answers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `answer_id` int(11) NOT NULL,
-  `post_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `answer_id` (`answer_id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `users_answers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   CONSTRAINT `users_answers_ibfk_2` FOREIGN KEY (`answer_id`) REFERENCES `answers` (`answer_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -350,6 +380,7 @@ CREATE TABLE `users_answers` (
 
 LOCK TABLES `users_answers` WRITE;
 /*!40000 ALTER TABLE `users_answers` DISABLE KEYS */;
+INSERT INTO `users_answers` VALUES (3,8,13),(4,8,14),(5,8,18);
 /*!40000 ALTER TABLE `users_answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -391,4 +422,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-13 17:04:39
+-- Dump completed on 2023-03-15 14:54:09
