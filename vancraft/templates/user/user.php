@@ -9,7 +9,7 @@
         <figure class="flex align-center">
             <img class="profile-picture" src="assets/images/users/default/profile_images/nina.jpg" alt="Photo de profil">
             <figcaption class="ml-32 flex flex-col">
-                <span class="font-bold font-24  mb-16">Jules Derouineau</span>
+                <h1 class="font-bold font-24 mb-16 font-lato">Jules Derouineau</h1>
                 <div>
                     <span>Membre depuis : 1 janvier 2001</span>
                     <span class="ml-32">Dernière connexion : aujourd'hui</span>
@@ -46,6 +46,7 @@
             </div>
         </div>
     </div>
+    <!--best article section-->
     <br>
 </main>
 {% endblock %}
