@@ -29,7 +29,7 @@ CREATE TABLE `answers` (
   `votes` int(11) DEFAULT 0,
   `last_modification` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`answer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `answers` (
 
 LOCK TABLES `answers` WRITE;
 /*!40000 ALTER TABLE `answers` DISABLE KEYS */;
-INSERT INTO `answers` VALUES (13,'test 1','2023-03-15 14:34:53',0,'2023-03-15 14:34:53'),(14,'test 2','2023-03-15 14:35:00',0,'2023-03-15 14:35:00'),(15,'Test','2023-03-15 14:51:37',0,'2023-03-15 14:51:37'),(16,'Test','2023-03-15 14:52:10',0,'2023-03-15 14:52:10'),(17,'Test','2023-03-15 14:52:32',0,'2023-03-15 14:52:32'),(18,'test test','2023-03-15 14:52:53',0,'2023-03-15 14:52:53'),(19,'test','2023-03-15 15:01:56',0,'2023-03-15 15:01:56'),(20,'test','2023-03-15 15:50:15',0,'2023-03-15 15:50:15'),(21,'test','2023-03-15 15:56:14',0,'2023-03-15 15:56:14'),(22,'test test avec plusieurs images','2023-03-15 15:56:30',0,'2023-03-15 15:56:30'),(23,'test test avec plusieurs images','2023-03-15 16:22:44',0,'2023-03-15 16:22:44'),(24,'test test avec plusieurs images','2023-03-15 16:23:50',0,'2023-03-15 16:23:50'),(25,'test test avec plusieurs images','2023-03-15 16:25:15',0,'2023-03-15 16:25:15'),(26,'test test avec plusieurs images','2023-03-15 16:26:59',0,'2023-03-15 16:26:59'),(27,'test test avec plusieurs images','2023-03-15 16:29:03',0,'2023-03-15 16:29:03'),(28,'test test avec plusieurs images','2023-03-15 16:29:51',0,'2023-03-15 16:29:51'),(29,'test test avec plusieurs images','2023-03-15 16:30:24',0,'2023-03-15 16:30:24'),(30,'test test avec plusieurs images','2023-03-15 16:31:11',0,'2023-03-15 16:31:11'),(31,'test test avec plusieurs images','2023-03-15 16:31:48',0,'2023-03-15 16:31:48'),(32,'Voila ma réponse ! Avec une photo','2023-03-15 16:32:53',0,'2023-03-15 16:32:53'),(33,'Et voila une autre réponse ! Avec deux photos ','2023-03-15 16:33:14',0,'2023-03-15 16:33:14'),(34,'Je suis ordinateur, je pose également une question.','2023-03-15 16:39:59',0,'2023-03-15 16:39:59'),(35,'Je fais un test de réponse, sans photo','2023-03-15 16:43:31',0,'2023-03-15 16:43:31'),(36,'Je fais un autre test de réponse, sans photo','2023-03-15 16:43:43',0,'2023-03-15 16:43:43'),(37,'Test !','2023-03-15 17:00:49',0,'2023-03-15 17:00:49'),(38,'Test !','2023-03-15 17:01:45',0,'2023-03-15 17:01:45'),(39,'Moulte test !','2023-03-15 17:03:15',0,'2023-03-15 17:03:15'),(40,'Hello !','2023-03-15 17:03:38',0,'2023-03-15 17:03:38'),(41,'Hello !','2023-03-15 17:04:27',0,'2023-03-15 17:04:27'),(42,'Hello !','2023-03-15 17:04:44',0,'2023-03-15 17:04:44'),(43,'Hello !','2023-03-15 17:05:54',0,'2023-03-15 17:05:54'),(44,'Helloooo','2023-03-15 17:06:11',0,'2023-03-15 17:06:11'),(45,'lololol','2023-03-15 17:06:22',0,'2023-03-15 17:06:22'),(46,'lololol','2023-03-15 17:06:41',0,'2023-03-15 17:06:41'),(47,'test','2023-03-15 17:06:49',0,'2023-03-15 17:06:49');
+INSERT INTO `answers` VALUES (58,'Test 1','2023-03-16 10:44:16',0,'2023-03-16 10:44:16'),(59,'Test 1','2023-03-16 10:44:25',0,'2023-03-16 10:44:25'),(60,'test','2023-03-16 10:47:55',0,'2023-03-16 10:47:55'),(61,'test','2023-03-16 10:49:14',0,'2023-03-16 10:49:14'),(62,'test','2023-03-16 10:49:35',0,'2023-03-16 10:49:35'),(63,'test','2023-03-16 10:50:18',0,'2023-03-16 10:50:18'),(64,'test','2023-03-16 10:50:41',0,'2023-03-16 10:50:41'),(65,'test','2023-03-16 10:51:19',0,'2023-03-16 10:51:19'),(66,'test','2023-03-16 10:51:26',0,'2023-03-16 10:51:26'),(67,'test','2023-03-16 11:19:11',0,'2023-03-16 11:19:11'),(68,'test','2023-03-16 11:19:18',0,'2023-03-16 11:19:18'),(69,'Je fais un test de réponse :)','2023-03-16 11:20:26',0,'2023-03-16 11:20:26'),(70,'Encore un test avec photos','2023-03-16 11:20:41',0,'2023-03-16 11:20:41'),(71,'Test !','2023-03-16 11:59:15',0,'2023-03-16 11:59:15'),(72,'Test !','2023-03-16 12:00:32',0,'2023-03-16 12:00:32'),(73,'Test !','2023-03-16 12:00:45',0,'2023-03-16 12:00:45'),(74,'Test !','2023-03-16 12:01:02',0,'2023-03-16 12:01:02'),(75,'Test !','2023-03-16 12:01:28',0,'2023-03-16 12:01:28'),(76,'Test !','2023-03-16 12:01:39',0,'2023-03-16 12:01:39'),(77,'testtest','2023-03-16 12:01:47',0,'2023-03-16 12:01:47');
 /*!40000 ALTER TABLE `answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -58,7 +58,7 @@ CREATE TABLE `answers_posts` (
   KEY `answer_id` (`answer_id`),
   CONSTRAINT `answers_posts_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`),
   CONSTRAINT `answers_posts_ibfk_2` FOREIGN KEY (`answer_id`) REFERENCES `answers` (`answer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -67,7 +67,7 @@ CREATE TABLE `answers_posts` (
 
 LOCK TABLES `answers_posts` WRITE;
 /*!40000 ALTER TABLE `answers_posts` DISABLE KEYS */;
-INSERT INTO `answers_posts` VALUES (1,35,18),(2,35,19),(3,35,20),(4,35,21),(5,35,22),(6,35,23),(7,35,24),(8,35,25),(9,35,26),(10,35,27),(11,35,28),(12,35,29),(13,35,30),(14,35,31),(15,36,32),(16,36,33),(17,36,34),(18,36,35),(19,36,36),(20,36,41),(21,36,46),(22,36,47);
+INSERT INTO `answers_posts` VALUES (26,36,67),(27,36,68),(28,36,69),(29,36,70),(30,36,71),(31,36,72),(32,36,73),(33,36,74),(34,36,75),(35,36,76),(36,36,77);
 /*!40000 ALTER TABLE `answers_posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -114,7 +114,7 @@ CREATE TABLE `images_answers` (
   PRIMARY KEY (`image_id`),
   KEY `answer_id` (`answer_id`),
   CONSTRAINT `images_answers_ibfk_1` FOREIGN KEY (`answer_id`) REFERENCES `answers` (`answer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -123,7 +123,7 @@ CREATE TABLE `images_answers` (
 
 LOCK TABLES `images_answers` WRITE;
 /*!40000 ALTER TABLE `images_answers` DISABLE KEYS */;
-INSERT INTO `images_answers` VALUES (1,13,'boite6411c97ddc329.jpeg','assets/images/users/boite/answers_images/boite6411c97ddc329.jpeg'),(2,14,'boite6411c984d5fe5.jpeg','assets/images/users/boite/answers_images/boite6411c984d5fe5.jpeg'),(3,18,'boite6411cdb5a2aa4.jpeg','assets/images/users/boite/answers_images/boite6411cdb5a2aa4.jpeg'),(4,20,'boite6411db27be6f3.jpeg','assets/images/users/boite/answers_images/boite6411db27be6f3.jpeg'),(5,21,'boite6411dc8ea0867.jpeg','assets/images/users/boite/answers_images/boite6411dc8ea0867.jpeg'),(6,22,'boite6411dc9e19206.jpeg','assets/images/users/boite/answers_images/boite6411dc9e19206.jpeg'),(7,22,'boite6411dc9e1932f.jpeg','assets/images/users/boite/answers_images/boite6411dc9e1932f.jpeg'),(8,23,'boite6411e2c46d2ae.jpeg','assets/images/users/boite/answers_images/boite6411e2c46d2ae.jpeg'),(9,23,'boite6411e2c46d334.jpeg','assets/images/users/boite/answers_images/boite6411e2c46d334.jpeg'),(10,24,'boite6411e306bd04a.jpeg','assets/images/users/boite/answers_images/boite6411e306bd04a.jpeg'),(11,24,'boite6411e306bd110.jpeg','assets/images/users/boite/answers_images/boite6411e306bd110.jpeg'),(12,25,'boite6411e35bf2554.jpeg','assets/images/users/boite/answers_images/boite6411e35bf2554.jpeg'),(13,25,'boite6411e35bf25dd.jpeg','assets/images/users/boite/answers_images/boite6411e35bf25dd.jpeg'),(14,26,'boite6411e3c39e748.jpeg','assets/images/users/boite/answers_images/boite6411e3c39e748.jpeg'),(15,26,'boite6411e3c39e7cc.jpeg','assets/images/users/boite/answers_images/boite6411e3c39e7cc.jpeg'),(16,27,'boite6411e43f347ca.jpeg','assets/images/users/boite/answers_images/boite6411e43f347ca.jpeg'),(17,27,'boite6411e43f34864.jpeg','assets/images/users/boite/answers_images/boite6411e43f34864.jpeg'),(18,28,'boite6411e46f6cb5e.jpeg','assets/images/users/boite/answers_images/boite6411e46f6cb5e.jpeg'),(19,28,'boite6411e46f6cc18.jpeg','assets/images/users/boite/answers_images/boite6411e46f6cc18.jpeg'),(20,29,'boite6411e490a381f.jpeg','assets/images/users/boite/answers_images/boite6411e490a381f.jpeg'),(21,29,'boite6411e490a38b8.jpeg','assets/images/users/boite/answers_images/boite6411e490a38b8.jpeg'),(22,30,'boite6411e4bf3a240.jpeg','assets/images/users/boite/answers_images/boite6411e4bf3a240.jpeg'),(23,30,'boite6411e4bf3a2db.jpeg','assets/images/users/boite/answers_images/boite6411e4bf3a2db.jpeg'),(24,31,'boite6411e4e4bcd25.jpeg','assets/images/users/boite/answers_images/boite6411e4e4bcd25.jpeg'),(25,31,'boite6411e4e4bcdcb.jpeg','assets/images/users/boite/answers_images/boite6411e4e4bcdcb.jpeg'),(26,32,'boite6411e5255f9cd.jpeg','assets/images/users/boite/answers_images/boite6411e5255f9cd.jpeg'),(27,33,'boite6411e53a511bf.png','assets/images/users/boite/answers_images/boite6411e53a511bf.png'),(28,33,'boite6411e53a5126b.png','assets/images/users/boite/answers_images/boite6411e53a5126b.png'),(29,34,'ordinateur6411e6cf06cd4.jpeg','assets/images/users/ordinateur/answers_images/ordinateur6411e6cf06cd4.jpeg');
+INSERT INTO `images_answers` VALUES (30,70,'boite6412ed797417d.jpeg','assets/images/users/boite/answers_images/boite6412ed797417d.jpeg');
 /*!40000 ALTER TABLE `images_answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -228,7 +228,7 @@ CREATE TABLE `posts` (
   `last_modification` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `answers` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`post_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -237,7 +237,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (35,'Je fais un test d\'attaque XSS : window.alert(\"hello\");','2023-03-14 13:55:15',0,0,'Hello Je m\'appelle Axel','2023-03-15 17:03:15',3),(36,'Voila une nouvelle fraiche question de test','2023-03-15 16:32:34',0,0,'hello !','2023-03-15 17:06:22',5);
+INSERT INTO `posts` VALUES (35,'Je fais un test d\'attaque XSS : window.alert(\"hello\");','2023-03-14 13:55:15',0,0,'Hello Je m\'appelle Axel','2023-03-15 17:03:15',3),(36,'Voila une nouvelle fraiche question de test','2023-03-15 16:32:34',0,0,'hello !','2023-03-16 12:01:47',31),(37,'Test pour voir l\'incrémentation des questions sur la table des utilisateurs','2023-03-16 12:03:35',0,0,'hello !','2023-03-16 12:03:35',0);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -257,7 +257,7 @@ CREATE TABLE `posts_tags` (
   KEY `tag_id` (`tag_id`),
   CONSTRAINT `posts_tags_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`),
   CONSTRAINT `posts_tags_ibfk_2` FOREIGN KEY (`tag_id`) REFERENCES `tags` (`tag_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -266,7 +266,7 @@ CREATE TABLE `posts_tags` (
 
 LOCK TABLES `posts_tags` WRITE;
 /*!40000 ALTER TABLE `posts_tags` DISABLE KEYS */;
-INSERT INTO `posts_tags` VALUES (41,35,16),(42,36,16);
+INSERT INTO `posts_tags` VALUES (41,35,16),(42,36,16),(43,37,16);
 /*!40000 ALTER TABLE `posts_tags` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,7 +286,7 @@ CREATE TABLE `posts_users` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `posts_users_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`),
   CONSTRAINT `posts_users_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -295,7 +295,7 @@ CREATE TABLE `posts_users` (
 
 LOCK TABLES `posts_users` WRITE;
 /*!40000 ALTER TABLE `posts_users` DISABLE KEYS */;
-INSERT INTO `posts_users` VALUES (34,35,8),(35,36,8);
+INSERT INTO `posts_users` VALUES (34,35,8),(35,36,8),(36,37,8);
 /*!40000 ALTER TABLE `posts_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -351,7 +351,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (8,'boite','boite@example.com','2023-03-13 16:55:02','$2y$10$ZwTgkkI/GhHJ2KGx83ikjetepWuMLQuhrzy/rEB/uX8jdReBEdYZO','2023-03-13 16:55:02',0,0),(9,'carpette','carpette@example.com','2023-03-14 09:26:56','$2y$10$IBOouJB0/gHfM.j6iN5Iuui.6gWtlb08t/AwnXvQRfV7E3bV0BPMO','2023-03-14 09:26:56',0,0),(10,'ordinateur','ordinateur@example.com','2023-03-15 16:39:05','$2y$10$Sc18In59KnWmLGDubdfJzuaqA4Y/hNtbIyLTo2l35bConupZKtZRy','2023-03-15 16:39:05',0,0);
+INSERT INTO `users` VALUES (8,'boite','boite@example.com','2023-03-13 16:55:02','$2y$10$ZwTgkkI/GhHJ2KGx83ikjetepWuMLQuhrzy/rEB/uX8jdReBEdYZO','2023-03-16 12:03:35',2,1),(9,'carpette','carpette@example.com','2023-03-14 09:26:56','$2y$10$IBOouJB0/gHfM.j6iN5Iuui.6gWtlb08t/AwnXvQRfV7E3bV0BPMO','2023-03-14 09:26:56',0,0),(10,'ordinateur','ordinateur@example.com','2023-03-15 16:39:05','$2y$10$Sc18In59KnWmLGDubdfJzuaqA4Y/hNtbIyLTo2l35bConupZKtZRy','2023-03-15 16:39:05',0,0);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -371,7 +371,7 @@ CREATE TABLE `users_answers` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `users_answers_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`),
   CONSTRAINT `users_answers_ibfk_2` FOREIGN KEY (`answer_id`) REFERENCES `answers` (`answer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -380,7 +380,7 @@ CREATE TABLE `users_answers` (
 
 LOCK TABLES `users_answers` WRITE;
 /*!40000 ALTER TABLE `users_answers` DISABLE KEYS */;
-INSERT INTO `users_answers` VALUES (3,8,13),(4,8,14),(5,8,18),(6,8,19),(7,8,20),(8,8,21),(9,8,22),(10,8,23),(11,8,24),(12,8,25),(13,8,26),(14,8,27),(15,8,28),(16,8,29),(17,8,30),(18,8,31),(19,8,32),(20,8,33),(21,10,34),(22,10,35),(23,10,36),(26,10,41),(31,10,46),(32,10,47);
+INSERT INTO `users_answers` VALUES (48,8,67),(49,8,68),(50,8,69),(51,8,70),(52,8,71),(53,8,72),(54,8,73),(55,8,74),(56,8,75),(57,8,76),(58,8,77);
 /*!40000 ALTER TABLE `users_answers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -422,4 +422,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-15 17:08:07
+-- Dump completed on 2023-03-16 17:07:33
