@@ -21,7 +21,8 @@ class UserRepository
 {
     public ?PDO $database = null;
 
-    public function getUserPost(int $post_id) : User {
+    public function getUserPost(int $post_id) : User
+    {
         $this->dbConnect();
 
         $statement = $this->database->prepare(
@@ -44,6 +45,26 @@ class UserRepository
         $user->image_profile_url = $row['image_url_sm'];
 
         return $user;
+    }
+
+    public function incrementUserPost(int $user_id)
+    {
+        $this->dbConnect();
+
+        $statement = $this->database->prepare(
+            "UPDATE users SET numbers_of_questions = numbers_of_questions + 1 WHERE user_id = ?"
+        );
+        $statement->execute([$user_id]);
+    }
+
+    public function incrementUserAnswer(int $user_id)
+    {
+        $this->dbConnect();
+
+        $statement = $this->database->prepare(
+            "UPDATE users SET numbers_of_answers = numbers_of_answers + 1 WHERE user_id = ?"
+        );
+        $statement->execute([$user_id]);
     }
 
     public function getUser(int $user_id) : User

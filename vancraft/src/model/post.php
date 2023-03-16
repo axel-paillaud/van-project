@@ -306,6 +306,10 @@ class PostRepository
                 ]);
             }
         }
+
+        // increment total number of posts of users table
+        $userRepository = new UserRepository();
+        $userRepository->incrementUserPost($user["user_id"]);
     }
 
     public function sendAnswer(array $user, Post $post, string $answer, $imageDb = null)
@@ -361,6 +365,10 @@ class PostRepository
             "UPDATE posts SET posts.answers = posts.answers + 1 WHERE post_id = ?"
         );
         $statement->execute([$post->id]);
+
+        // add one to the total of answers in users table
+        $userRepository = new UserRepository();
+        $userRepository->incrementUserAnswer($user["user_id"]);
     }
 
     private function dbConnect() {
