@@ -320,14 +320,6 @@ class PostRepository
             'content' => $answer,
         ]);
 
-        // BUG HERE TODO
-        if ($statement) {
-            $statement = $this->database->prepare(
-                "UPDATE posts SET answers = answers + 1 WHERE post_id = ?"
-            );
-            $statement->execute([$post->id]);
-        }
-
         $answerId = $this->database->lastInsertId();
 
         $statement = $this->database->prepare(
@@ -363,6 +355,12 @@ class PostRepository
                 ]);
             }
         }
+
+        // add one to the total number of answers in posts table
+        $statement = $this->database->prepare(
+            "UPDATE posts SET posts.answers = posts.answers + 1 WHERE post_id = ?"
+        );
+        $statement->execute([$post->id]);
     }
 
     private function dbConnect() {
