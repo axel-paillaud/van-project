@@ -9,7 +9,7 @@
         <figure class="flex align-center">
             <img class="profile-picture" src="assets/images/users/default/profile_images/nina.jpg" alt="Photo de profil">
             <figcaption class="ml-32 flex flex-col">
-                <h1 class="font-bold font-24 mb-16 font-lato">Jules Derouineau</h1>
+                <h1 class="font-bold font-24 mb-16 font-lato">Julie Derouineau</h1>
                 <div>
                     <span>Membre depuis : 1 janvier 2001</span>
                     <span class="ml-32">Dernière connexion : aujourd'hui</span>
@@ -47,6 +47,37 @@
         </div>
     </div>
     <!--best article section-->
+    <div class="m-32">
+        <div class="font-24 mb-8">Articles populaires</div>
+        <article class="post-container flex">
+            <div class="views-votes-container">
+                <p class="post-stat">
+                    32 votes
+                </p>
+                <p class="post-stat">
+                    26 réponses
+                </p>
+                <p class="post-stat">
+                    158 vues
+                </p>
+            </div>
+        <div class="flex flex-col w-full">
+            <a href="/post?id={{ post.id }}" class="post-title mb-8">
+                Voila mon meilleur article !
+            </a>
+            <div class="row-container justify-between">
+                <div class="tag-container">
+                    <div class="tag">armaflex</div>
+                    <div class="tag">styrodur</div>
+                </div>
+                <a class="user-container" href="/user">
+                    <img class="profile-picture-small" src="assets/images/users/default/profile_images/nina.jpg" alt="Photo profil">
+                    <b style="margin-left: 8px;" >Julia Derouineau</b>
+                </a>
+            </div>
+        </div>
+        </article>
+    </div>
     <br>
 </main>
 {% endblock %}

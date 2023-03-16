@@ -30,7 +30,7 @@
         <hr class="horizontal-rule">
 
         <!-- parent's div for first child and last child -->
-        <div>
+        <div class="post-border">
         {% for post in posts %}
             <article class="post-container flex">
                 <div class="views-votes-container">
@@ -44,10 +44,10 @@
                         {{ post.views }} vues
                     </p>
                 </div>
-                <div class="flex flex-col w-full">
-                    <a href="/post?id={{ post.id }}" class="post-title mb-8">
-                        {{ post.title }}
-                    </a>
+            <div class="flex flex-col w-full">
+                <a href="/post?id={{ post.id }}" class="post-title mb-8">
+                    {{ post.title }}
+                </a>
                 <div class="row-container justify-between">
                     <div class="tag-container">
                         {% for tag in post.tags %}
