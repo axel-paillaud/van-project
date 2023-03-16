@@ -266,7 +266,7 @@
     padding: 8px;
     transition: background-color 0.2s;
     cursor: pointer;
-    /* see if a min-width is necessary but I thinks yes to prevent shrink */
+    text-decoration: none;
 }
 
 .user-container:hover {

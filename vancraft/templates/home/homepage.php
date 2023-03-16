@@ -1,5 +1,7 @@
 {% extends "layout.php" %}
+
 {% block title %}Vancraft - Page d'accueil{% endblock %}
+
 {% block content %}
 <main class="main">
     {% if bad_message %}
@@ -52,10 +54,10 @@
                             <div class="tag">{{ tag.title }}</div>
                         {% endfor %}
                     </div>
-                    <div class="user-container">
+                    <a class="user-container" href="/user">
                         <img class="profile-picture-small" src="assets/images/users/{{ post.user_image_profile_url }}" alt="Photo profil">
                         <b style="margin-left: 8px;" >{{ post.user_name }}</b>
-                    </div>
+                    </a>
                 </div>
             </div>
             </article>

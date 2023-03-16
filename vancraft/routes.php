@@ -11,4 +11,5 @@ $router->get('/post', 'src/controllers/post.php');
 $router->post('/post', 'src/controllers/post.php');
 $router->get('/post-article', 'src/controllers/post.php');
 $router->post('/submit-post', 'src/controllers/post.php');
+$router->get('/user', 'src/controllers/user.php');
 $router->get('/api/tags', 'src/controllers/api/tags.php');
