@@ -256,6 +256,8 @@
     border-radius: 8px;
 }
 
+/* style for user here */
+
 .user-container {
     display: flex;
     align-items: center;
@@ -267,6 +269,14 @@
     transition: background-color 0.2s;
     cursor: pointer;
     text-decoration: none;
+}
+
+.about-container {
+    background-color: var(--background-window-color);
+    padding: 16px;
+    border-radius: 3px;
+    border: solid 1px rgba(78, 43, 24, 0.50);
+    height: 90%;
 }
 
 .user-container:hover {
