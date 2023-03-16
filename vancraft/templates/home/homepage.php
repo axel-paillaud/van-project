@@ -25,7 +25,7 @@
     <div class="content-post-container">
         <div class="title-btn-post-container">
             <p class="header-title-post">Questions populaires</p>
-            <a href="/post-article"><button class="btn-orange"><b>Poser une question</b></button></a>
+            <a href="/post-article"><button class="btn-orange padding-base"><b>Poser une question</b></button></a>
         </div>
         <hr class="horizontal-rule">
 
@@ -44,7 +44,7 @@
                         {{ post.views }} vues
                     </p>
                 </div>
-                <div class="flex flex-direction-column w-full">
+                <div class="flex flex-col w-full">
                     <a href="/post?id={{ post.id }}" class="post-title mb-8">
                         {{ post.title }}
                     </a>

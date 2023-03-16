@@ -16,10 +16,6 @@
     margin: 8px 0;
 }
 
-.margin-16-0-0-0 {
-    margin: 16px 0 0 0;
-}
-
 .margin-right-8 {
     margin-right: 8px;
 }
@@ -61,6 +57,10 @@
     margin: 64px 0 32px 0;
 }
 
+.m-32 {
+    margin: 32px;
+}
+
 .mb-8 {
     margin-bottom: 8px;
 }
@@ -82,8 +82,21 @@
     margin-bottom: 16px;
 }
 
+.my-32 {
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
 .ml-0 {
     margin-left: 0;
+}
+
+.ml-32 {
+    margin-left: 32px;
+}
+
+.mr-8 {
+    margin-right: 8px;
 }
 
 .mr-24 {
@@ -96,6 +109,11 @@
 
 .mt-32 {
     margin-top: 32px;
+}
+
+.mx-16 {
+    margin-left: 16px;
+    margin-right: 16px;
 }
 
 .-mx-32 {

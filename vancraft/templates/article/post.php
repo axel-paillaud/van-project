@@ -8,7 +8,7 @@
     <article class="article-container margin-64-0-32-0">
         <div class="flex-space-between">
             <h2 class="my-16 ml-0 mr-24 font-normal font-size-27">{{ post.title }}</h2>
-            <a href="#" class="btn-orange">Poser une question</a>
+            <a href="#" class="btn-orange padding-base">Poser une question</a>
         </div>
         <small class="flex align-center gap-16">
             <p>Date : <time>{{ post.french_creation_date }}</time></p><p>Nombre de vue : {{ post.views }}</p>
@@ -19,9 +19,9 @@
         </small>
         <hr class="-mx-32 mt-16 mb-64 light-mid-gray light-hr">
         <div class="flex">
-            <div class="flex flex-direction-column align-center gap-8 flex-basis-10">
+            <div class="flex flex-col align-center gap-8 flex-basis-10">
                 <div class="circle-vote background-color-di-sierra"><i class="fa-regular fa-thumbs-up"></i></div>
-                <p class="font-size-24">{{ post.votes }}</p>
+                <p class="font-24">{{ post.votes }}</p>
                 <div class="circle-vote background-color-laser"><i class="fa-solid fa-thumbs-down"></i></div>
             </div>
             <div class="flex-basis-90 padding-0-32">
@@ -60,9 +60,9 @@
     {% for answer in answers %}
     <article class="article-container mb-32">
         <div class="flex">
-            <div class="flex flex-direction-column align-center gap-8 flex-basis-10">
+            <div class="flex flex-col align-center gap-8 flex-basis-10">
                 <div class="circle-vote background-color-di-sierra"><i class="fa-regular fa-thumbs-up"></i></div>
-                <p class="font-size-24">{{ answer.votes }}</p>
+                <p class="font-24">{{ answer.votes }}</p>
                 <div class="circle-vote background-color-laser"><i class="fa-solid fa-thumbs-down"></i></div>
             </div>
             <div class="padding-0-32 flex-basis-90">
@@ -102,7 +102,7 @@
                     <small class="margin-left-8">Jusqu'à 4 photos, jpg, png, gif : 2mo max</small>
                 </div>
             </div>
-            <input id="submit-answer" class="btn-orange mt-16 mb-32" type="submit" value="Poster la réponse">
+            <input id="submit-answer" class="btn-orange padding-base mt-16 mb-32" type="submit" value="Poster la réponse">
         </form>
 </main>
 <script src="assets/js/thumbnailImgFunction.js"></script>

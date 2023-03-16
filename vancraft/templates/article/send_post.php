@@ -26,7 +26,7 @@
                     <div id="js-modal-tag" class="modal-tags" style="display: none;"></div>
                 </div>
             </div>
-            <input id="submit-btn" class="btn-orange margin-16-0-0-0" type="submit" value="Envoyer la question">
+            <input id="submit-btn" class="btn-orange mt-16 padding-base" type="submit" value="Envoyer la question">
         </form>
     </div>
     <div id="js-error-msg"></div>

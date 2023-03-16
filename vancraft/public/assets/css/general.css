@@ -51,7 +51,7 @@ h2, hr, p, figure {
     font-size: 27px;
 }
 
-.font-size-24 {
+.font-24 {
     font-size: 24px;
 }
 
@@ -65,7 +65,7 @@ h2, hr, p, figure {
     display: flex;
 }
 
-.flex-direction-column {
+.flex-col {
     flex-direction: column;
 }
 
@@ -101,6 +101,10 @@ h2, hr, p, figure {
 
 .align-center {
     align-items: center;
+}
+
+.align-start {
+    align-items: flex-start;
 }
 
 .space-between {
@@ -150,4 +154,22 @@ h2, hr, p, figure {
 
 .background-color-laser {
     background-color: #C6A26D;
+}
+
+.text-black {
+    color: black;
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.px-16 {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.py-10 {
+    padding-top: 10px;
+    padding-bottom: 10px;
 }

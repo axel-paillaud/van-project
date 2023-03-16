@@ -2,11 +2,14 @@
     background-color: var(--main-color);
     white-space: nowrap;
     color: white;
-    padding: 0.7em 1.3em;
     border-radius: 3px;
     border: none;
     transition: background-color 0.2s;
     text-decoration: none;
+}
+
+.padding-base {
+    padding: 0.7em 1.3em;
 }
 
 .btn-orange-alpha {
