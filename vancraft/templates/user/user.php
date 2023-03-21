@@ -50,8 +50,8 @@
     <div class="flex gap-32">
         <!-- This div is to have the same layout than "stats" and "about" section above. -->
         <!-- We can add section later in this div if we need -->
-        <div></div>
-        <div class="m-32">
+        <div class="basis-20"></div>
+        <div class="m-32 basis-80">
             <div class="font-24 mb-8">Articles populaires</div>
             <article class="post-container flex">
                 <div class="views-votes-container">
