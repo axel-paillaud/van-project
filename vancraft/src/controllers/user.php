@@ -13,6 +13,7 @@ $userRepository = new UserRepository();
 
 $user_id = $userValidator->validateId($_GET["user-id"]);
 $user = $userRepository->getUser($user_id);
+// TODO
 dd($user);
 
 echo $twig->render('user/user.php', [
