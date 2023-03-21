@@ -54,7 +54,7 @@
                             <div class="tag">{{ tag.title }}</div>
                         {% endfor %}
                     </div>
-                    <a class="user-container" href="/user">
+                    <a class="user-container" href="/user?user-id= {{ post.user_id }}">
                         <img class="profile-picture-small" src="assets/images/users/{{ post.user_image_profile_url }}" alt="Photo profil">
                         <b style="margin-left: 8px;" >{{ post.user_name }}</b>
                     </a>

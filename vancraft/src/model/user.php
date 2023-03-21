@@ -72,13 +72,14 @@ class UserRepository
         $this->dbConnect();
 
         $statement = $this->database->prepare(
-            "SELECT name FROM users WHERE user_id = ?"
+            "SELECT * FROM users WHERE user_id = ?"
         );
         $statement->execute([$user_id]);
         $row = $statement->fetch();
 
         $user = new User();
         $user->name = $row['name'];
+        $user->id = $row["user_id"];
 
         $statement = $this->database->prepare(
             "SELECT image_url_sm FROM images_profiles WHERE user_id = ?"
