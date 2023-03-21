@@ -46,37 +46,42 @@
             </div>
         </div>
     </div>
-    <!--best article section-->
-    <div class="m-32">
-        <div class="font-24 mb-8">Articles populaires</div>
-        <article class="post-container flex">
-            <div class="views-votes-container">
-                <p class="post-stat">
-                    32 votes
-                </p>
-                <p class="post-stat">
-                    26 réponses
-                </p>
-                <p class="post-stat">
-                    158 vues
-                </p>
-            </div>
-        <div class="flex flex-col w-full">
-            <a href="/post?id={{ post.id }}" class="post-title mb-8">
-                Voila mon meilleur article !
-            </a>
-            <div class="row-container justify-between">
-                <div class="tag-container">
-                    <div class="tag">armaflex</div>
-                    <div class="tag">styrodur</div>
+    <!-- best article section -->
+    <div class="flex gap-32">
+        <!-- This div is to have the same layout than "stats" and "about" section above. -->
+        <!-- We can add section later in this div if we need -->
+        <div></div>
+        <div class="m-32">
+            <div class="font-24 mb-8">Articles populaires</div>
+            <article class="post-container flex">
+                <div class="views-votes-container">
+                    <p class="post-stat">
+                        32 votes
+                    </p>
+                    <p class="post-stat">
+                        26 réponses
+                    </p>
+                    <p class="post-stat">
+                        158 vues
+                    </p>
                 </div>
-                <a class="user-container" href="/user">
-                    <img class="profile-picture-small" src="assets/images/users/default/profile_images/nina.jpg" alt="Photo profil">
-                    <b style="margin-left: 8px;" >Julia Derouineau</b>
+            <div class="flex flex-col w-full">
+                <a href="/post?id={{ post.id }}" class="post-title mb-8">
+                    Voila mon meilleur article !
                 </a>
+                <div class="row-container justify-between">
+                    <div class="tag-container">
+                        <div class="tag">armaflex</div>
+                        <div class="tag">styrodur</div>
+                    </div>
+                    <a class="user-container" href="/user">
+                        <img class="profile-picture-small" src="assets/images/users/default/profile_images/nina.jpg" alt="Photo profil">
+                        <b style="margin-left: 8px;" >Julia Derouineau</b>
+                    </a>
+                </div>
             </div>
+            </article>
         </div>
-        </article>
     </div>
     <br>
 </main>
