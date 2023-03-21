@@ -14,7 +14,7 @@
             <input class="subscribe-field" type="password" name="password">
             <label for="confirm-password"><b>Confirmer le mot de passe</b></label>
             <input class="subscribe-field" type="password" name="confirm-password">
-            <input class="btn-orange" style="margin-left:0;" type="submit" value="S'inscrire">
+            <input class="btn-orange padding-base ml-0" type="submit" value="S'inscrire">
         </form>
     </div>
     {% if subscribe_succes %}

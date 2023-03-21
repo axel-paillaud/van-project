@@ -10,7 +10,6 @@ class User
     public string $name;
     public string $email;
     public string $creation_date;
-    public string $password;
     public string $last_connexion;
     public int $numbers_of_questions;
     public int $numbers_of_answers;
