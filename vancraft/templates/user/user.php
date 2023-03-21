@@ -53,7 +53,7 @@
         <div class="basis-20"></div>
         <div class="m-32 basis-80">
             <div class="font-24 mb-8">Articles populaires</div>
-            <article class="post-container flex">
+            <article class="about-container flex">
                 <div class="views-votes-container">
                     <p class="post-stat">
                         32 votes
